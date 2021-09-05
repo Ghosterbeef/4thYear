@@ -65,26 +65,26 @@ h1, h2, h3, h4, h5, h6 {
 
 
 h1 {
-  font-size: 42px;
+  font-size: $h1;
 }
 
 h2 {
-  font-size: 38px;
+  font-size: $h2;
 }
 
 h3 {
-  font-size: 34px;
+  font-size: $h3;
 }
 
 h4 {
-  font-size: 30px;
+  font-size: $h4;
 }
 
 h5 {
-  font-size: 26px;
+  font-size: $h5;
 }
 
 h6 {
-  font-size: 22px;
+  font-size: $h6;
 }
 </style>

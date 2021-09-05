@@ -1,8 +1,10 @@
 <template>
-  <SideBarNav>
-
-  </SideBarNav>
-  <router-view/>
+  <SideBarNav/>
+  <div class="content">
+  <div class="content_wrapper">
+    <router-view/>
+  </div>
+  </div>
 </template>
 
 <script>
@@ -34,9 +36,42 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
-  background-color: gold;
   height: 100%;
   width: 100%;
+
+  .content{
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8vw;
+    .content_wrapper {
+      background-color: #f5f5f5;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 20px;
+      justify-self: center;
+      max-width: 1200px;
+      min-height: max-content;
+      width: 70%;
+      min-width: min-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+}
+
+@media (max-width: $sm) {
+  #app{
+    padding-right: 0;
+
+    .content_wrapper {
+      padding: 10px;
+      margin: 10px auto;
+      width: 80%;
+    }
+  }
 }
 </style>
 
