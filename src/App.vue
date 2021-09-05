@@ -7,27 +7,30 @@
 
 <script>
 import SideBarNav from "./components/SideBarNav/SideBarNav";
+import Title from "./components/Typography/Title";
 
 export default {
-  components: {SideBarNav}
+  components: {Title, SideBarNav}
 }
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap');
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html,body{
+html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -35,18 +38,5 @@ html,body{
   height: 100%;
   width: 100%;
 }
-
-//#nav {
-//  padding: 30px;
-//
-//  a {
-//    font-weight: bold;
-//    color: #2c3e50;
-//
-//    &.router-link-exact-active {
-//      color: #42b983;
-//    }
-//  }
-//}
 </style>
 
