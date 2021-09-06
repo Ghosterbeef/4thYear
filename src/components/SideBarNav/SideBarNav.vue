@@ -5,12 +5,23 @@
         <box-icon type='solid' name='ghost' color="white" size="md"/>
         <Title :level="4" lang="en" color="light">Ghosterbeef</Title>
       </div>
-      <ul>
-        <li>
-          <Link to="/prune" has-icon>
-            <box-icon type='solid' name='dice-5' color="gold" size="md"></box-icon>
-            <span>ППРУН</span>
-          </Link>
+      <ul class="nav-items">
+        <li @click="isMinimized ? isMinimized = false : undefined">
+          <Accordion :is-active="isActive">
+            <template v-slot:activator>
+              <span class="item-name">
+                <box-icon type='solid' name='dice-5' color="gold" size="md"></box-icon>
+                <span>ППРУН</span>
+              </span>
+            </template>
+            <template v-slot:default>
+              <ul class="sub_menu">
+                <li class="sub_menu-items">
+                  <Link to="/prune"><span>Лабораторная №1</span></Link>
+                </li>
+              </ul>
+            </template>
+          </Accordion>
         </li>
         <li>
           <Link to="/soon" has-icon>
@@ -35,13 +46,25 @@
 <script>
 import Title from "../Typography/Title";
 import Link from "../Typography/Link";
+import Accordion from "@/components/Accordion";
 
 export default {
   name: "SideBarNav",
-  components: {Link, Title},
+  components: {Accordion, Link, Title},
   data() {
     return {
-      isMinimized: true
+      isMinimized: true,
+      isActive: false
+    }
+  },
+  watch: {
+    isMinimized: {
+      handler(val) {
+        if (val) {
+          this.isActive = true;
+          setTimeout(() => this.isActive = false, 0)
+        }
+      }
     }
   }
 }
@@ -58,8 +81,7 @@ nav {
   background-color: $bg-sidebar;
   padding: 20px;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.7,-0.51, 0.35, 1.79);
-  position: relative;
+  transition: all 0.4s cubic-bezier(0.7, -0.51, 0.35, 1.79);
 
   &.minimized {
     width: 76px;
@@ -78,17 +100,37 @@ nav {
     cursor: pointer;
   }
 
-  ul {
+  .nav-items {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 30px;
     list-style: none;
+
+    .item-name {
+      font-weight: bold;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: $link-light;
+      cursor: pointer
+    }
+
+    .sub_menu {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      margin-top: 5px;
+      padding-left: 56px;
+      gap: 5px;
+    }
   }
 }
 
 .nav_wrapper {
   position: relative;
+
   .controls {
     position: absolute;
     display: flex;
@@ -108,6 +150,7 @@ nav {
 @media (max-width: $sm) {
   nav {
     padding: 10px;
+
     &.minimized {
       width: 56px;
       min-width: 56px;

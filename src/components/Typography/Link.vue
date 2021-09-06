@@ -39,13 +39,18 @@ a {
 
   &.light {
     color: $link-light;
+
+    &.router-link-exact-active {
+      color: darken($link-light, 20%)
+    }
   }
 
   &.dark {
     color: $link-dark;
-  }
 
-  &.router-link-exact-active {
+    &.router-link-exact-active {
+      color: darken($link-dark, 20%)
+    }
   }
 }
 </style>
