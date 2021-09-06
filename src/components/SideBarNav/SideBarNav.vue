@@ -18,6 +18,12 @@
             <span>COMING SOON</span>
           </Link>
         </li>
+        <li>
+          <Link to="/progress" has-icon>
+            <box-icon name='trending-up' color="gold" size="md"></box-icon>
+            <span>Прогресс</span>
+          </Link>
+        </li>
       </ul>
     </nav>
     <span class="controls" @click="isMinimized=!isMinimized">

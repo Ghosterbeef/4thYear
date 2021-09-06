@@ -16,7 +16,17 @@ const routes = [
     path: '/soon',
     name: 'Soon',
     component: () => import('../views/Soon.vue')
+  },
+  {
+    path: '/progress',
+    name: 'Progress',
+    component: () => import('../views/Progress.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('../views/404.vue')
   }
+
 ]
 
 const router = createRouter({

@@ -68,8 +68,8 @@ html, body {
 
     .content_wrapper {
       padding: 10px;
-      margin: 10px auto;
-      width: 80%;
+      margin: 10px;
+      min-width: max-content;
     }
   }
 }

@@ -65,26 +65,26 @@ h1, h2, h3, h4, h5, h6 {
 
 
 h1 {
-  font-size: $h1;
+  font-size: var(--h1);
 }
 
 h2 {
-  font-size: $h2;
+  font-size: var(--h2);
 }
 
 h3 {
-  font-size: $h3;
+  font-size: var(--h3);
 }
 
 h4 {
-  font-size: $h4;
+  font-size: var(--h4);
 }
 
 h5 {
-  font-size: $h5;
+  font-size: var(--h5);
 }
 
 h6 {
-  font-size: $h6;
+  font-size: var(--h6);
 }
 </style>
