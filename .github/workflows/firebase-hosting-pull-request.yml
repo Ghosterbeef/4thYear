@@ -10,7 +10,3 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npm run build
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_THYEAR_3E949 }}'
-          projectId: thyear-3e949
