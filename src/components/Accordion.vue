@@ -32,7 +32,6 @@ export default {
     isActive:{
       immediate: true,
       handler (val){
-        console.log(val)
         this.show = val
       }
     }

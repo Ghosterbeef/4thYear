@@ -29,12 +29,12 @@ export default {
 a {
   text-decoration: underline;
   font-weight: bold;
-  font-size: 18px;
+  font-size: var(--a);
 
   &.hasIcon {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: var(--gap-big);
   }
 
   &.light {

@@ -1,9 +1,9 @@
 <template>
   <SideBarNav/>
   <div class="content">
-  <div class="content_wrapper">
-    <router-view/>
-  </div>
+    <div class="content_wrapper">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -28,48 +28,51 @@ export default {
 html, body {
   height: 100%;
   width: 100%;
-  overflow: hidden;
-}
 
-#app {
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  height: 100%;
-  width: 100%;
+  #app {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    height: 100%;
 
-  .content{
-    width: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: 8vw;
-    .content_wrapper {
-      background-color: #f5f5f5;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 20px;
-      justify-self: center;
-      max-width: 1200px;
-      min-height: max-content;
-      width: 70%;
-      min-width: min-content;
+    section, main, footer {
+      border-top: 2px solid #486491;
+      padding-top: 10px;
+    }
+
+    .content {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: var(--padding-right-app);
+
+      .content_wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        width: 80%;
+        max-width: 1200px;
+        min-width: min-content;
+        height: max-content;
+        margin: 20px auto;
+        padding: var(--padding-universal);
+        border-radius: var(--border-radius-big);
+        background-color: $section-background;
+      }
     }
   }
 
-}
-
-@media (max-width: $sm) {
-  #app{
-    padding-right: 0;
-
-    .content_wrapper {
-      padding: 10px;
-      margin: 10px;
-      min-width: max-content;
+  @media (max-width: $sm) {
+    #app {
+      .content {
+        .content_wrapper {
+          margin: 10px;
+          width: 100%;
+        }
+      }
     }
   }
 }
