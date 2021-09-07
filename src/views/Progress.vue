@@ -9,27 +9,29 @@
             <Emphasis styled-like="danger" lang="en" is-bold is-underline v-if="task.isEpic">Epic</Emphasis>
           </span>
           <Paragraph styled-like="description">
-            {{task.description}}
+            {{ task.description }}
           </Paragraph>
         </li>
       </List>
     </section>
-    <section class="version" v-for="(version) in progressData.versions.reverse()" :key="version.value">
-      <Title :level="5">{{version.value}}</Title>
-      <Title :level="5">Реализовано</Title>
-      <List>
-        <li v-for="(task, index) in version.tasks" :key="index">
+    <div v-if="progressData.versions">
+      <section class="version" v-for="version in reversedVersions" :key="version.value">
+        <Title :level="5">{{version.value}}</Title>
+        <Title :level="5">Реализовано</Title>
+        <List>
+          <li v-for="(task, index) in version.tasks" :key="index">
           <span class="name">
             <Title :level="6">{{task.name}}</Title>
           </span>
-          <div v-if="task.descriptions">
-          <Paragraph  v-for="(description, index) in task.descriptions" :key="index" :styled-like="description.type">
-            {{description.text}}
-          </Paragraph>
-          </div>
-        </li>
-      </List>
-    </section>
+            <div v-if="task.descriptions">
+              <Paragraph v-for="(description, index) in task.descriptions" :key="index" :styled-like="description.type">
+                {{ description.text }}
+              </Paragraph>
+            </div>
+          </li>
+        </List>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -50,7 +52,14 @@ export default {
   created() {
     fetch('https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
         .then(res => res.json())
-        .then(json => {this.progressData = json})
+        .then(json => {
+          this.progressData = json
+        })
+  },
+  computed:{
+    reversedVersions: function () {
+      return this.progressData.versions.reverse()
+    }
   }
 }
 </script>
