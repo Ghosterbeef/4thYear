@@ -1,6 +1,90 @@
 <template>
   <div class="progress">
-    <span class="version">
+    <section class="version">
+      <Title :level="5">В разработке</Title>
+      <List>
+        <li>
+          <span class="name">
+            <Title :level="6">Лабораторная работа №1 </Title>
+            <Emphasis styled-like="danger" lang="en" is-bold is-underline>Epic</Emphasis>
+          </span>
+          <Paragraph styled-like="description">
+            В разработке находится раздел содержащий выполнение лабораторной работы №1 по ПРУН
+          </Paragraph>
+        </li>
+        <li>
+          <span class="name">
+            <Title :level="6">Редизайн</Title>
+          </span>
+          <Paragraph styled-like="description">
+            Многие элементы требуют доработки или полной переработки дизайна.
+            Меню и страница SOON первые в очереди на переработку
+          </Paragraph>
+        </li>
+        <li>
+          <span class="name">
+            <Title :level="6">Адаптив</Title>
+          </span>
+          <Paragraph styled-like="description">
+            Доработка верстки для улучшения UX
+          </Paragraph>
+        </li>
+        <li>
+          <span class="name">
+            <Title :level="6">Прогресс </Title>
+            <Emphasis styled-like="danger" lang="en" is-bold is-underline>Epic</Emphasis>
+          </span>
+          <Paragraph styled-like="description">
+            Планируется перенсти отрисовку прогресса на циклы.
+            Хранение информации будет происходить либо в json на хостинге, либо в firebase
+          </Paragraph>
+        </li>
+      </List>
+    </section>
+    <section class="version">
+      <Title :level="5">0.0.18</Title>
+      <Title :level="5">Реализовано</Title>
+      <List>
+        <li>
+          <span class="name">
+            <Title :level="6">Переменные</Title>
+          </span>
+          <Paragraph styled-like="description">
+            90% стилей перенесны на переменные.
+          </Paragraph>
+          <Paragraph styled-like="warning">
+            Оставшиеся 10% будут перенесены по мере необходимости
+          </Paragraph>
+        </li>
+        <li>
+          <span class="name">
+            <Title :level="6">Адаптив</Title>
+          </span>
+          <Paragraph styled-like="description">
+            Адаптив был частично переработан для улучшения использования полезного пространства на экране мобильных устройств.
+            Работа продолжается
+          </Paragraph>
+        </li>
+        <li>
+          <span class="name">
+            <Title :level="6">Компоненты типографии</Title>
+          </span>
+          <Paragraph styled-like="description">
+            Были добавлены компонеты: Акцент (выделение фрагмента текста), Автограф (компонет, для указания источника)
+          </Paragraph>
+        </li>
+        <li>
+          <span class="name">
+            <Title :level="6">Иконки</Title>
+          </span>
+          <Paragraph styled-like="description">
+            Был изменне подход для отрисовки иконок. Создан компонет для иконок, создана анимированная иконка для меню.
+          </Paragraph>
+          <Paragraph styled-like="warning">Иконки не окончательные</Paragraph>
+        </li>
+      </List>
+    </section>
+    <section class="version">
       <Title :level="5">0.0.17</Title>
       <Title :level="5">Реализовано</Title>
       <List>
@@ -44,44 +128,8 @@
           </Paragraph>
         </li>
       </List>
-      <Title :level="5">В разработке</Title>
-      <List>
-        <li>
-          <span class="name">
-            <Title :level="6">Лабораторная работа №1</Title>
-          </span>
-          <Paragraph styled-like="description">
-            В разработке находится раздел содержащий выполнение лабораторной работы №1 по ПРУН
-          </Paragraph>
-        </li>
-        <li>
-          <span class="name">
-            <Title :level="6">Редизайн</Title>
-          </span>
-          <Paragraph styled-like="description">
-            Многие элементы требуют доработки или полной переработки дизайна.
-            Меню и страница SOON первые в очереди на переработку
-          </Paragraph>
-        </li>
-        <li>
-          <span class="name">
-            <Title :level="6">Адаптив</Title>
-          </span>
-          <Paragraph styled-like="description">
-            Адаптив будет переработан дабы улучшить использование полезного пространства на экране
-          </Paragraph>
-        </li>
-        <li>
-          <span class="name">
-            <Title :level="6">Переменные</Title>
-          </span>
-          <Paragraph styled-like="description">
-            Планируется перенести все стили на переменные для удобства поддержки.
-          </Paragraph>
-        </li>
-      </List>
-    </span>
-    <span class="version">
+    </section>
+    <section class="version">
       <Title :level="5">0.0.15</Title>
       <Title :level="5">Реализовано</Title>
       <List>
@@ -99,7 +147,7 @@
           </Paragraph>
         </li>
       </List>
-    </span>
+    </section>
   </div>
 </template>
 
@@ -107,10 +155,11 @@
 import Title from "../components/Typography/Title";
 import Paragraph from "../components/Typography/Paragraph";
 import List from "../components/Typography/List";
+import Emphasis from "@/components/Typography/Emphasis";
 
 export default {
   name: "Progress",
-  components: {List, Paragraph, Title}
+  components: {Emphasis, List, Paragraph, Title}
 }
 </script>
 
@@ -119,14 +168,12 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--gap-big);
 
   .version {
-    border-top: 2px solid #486491;
-    padding-top: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--gap-small);
 
     li {
       .name {

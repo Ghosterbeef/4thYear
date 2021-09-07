@@ -2,7 +2,7 @@
   <div class="nav_wrapper">
     <nav :class="{'minimized': isMinimized}">
       <div class="header" @click="$router.push('/')">
-        <box-icon type='solid' name='ghost' color="white" size="md"/>
+        <Icon icon="ghost"/>
         <Title :level="4" lang="en" color="light">Ghosterbeef</Title>
       </div>
       <ul class="nav-items">
@@ -10,7 +10,7 @@
           <Accordion :is-active="isActive">
             <template v-slot:activator>
               <span class="item-name">
-                <box-icon type='solid' name='dice-5' color="gold" size="md"></box-icon>
+                <Icon icon="rand" styled-like="link"/>
                 <span>ППРУН</span>
               </span>
             </template>
@@ -25,20 +25,22 @@
         </li>
         <li>
           <Link to="/soon" has-icon>
-            <box-icon type='solid' name='time' color="gold" size="md"></box-icon>
+            <Icon icon="soon" styled-like="link"/>
             <span>COMING SOON</span>
           </Link>
         </li>
         <li>
           <Link to="/progress" has-icon>
-            <box-icon name='trending-up' color="gold" size="md"></box-icon>
+            <Icon icon="progress" styled-like="link"/>
             <span>Прогресс</span>
           </Link>
         </li>
       </ul>
     </nav>
-    <span class="controls" @click="isMinimized=!isMinimized">
-      <box-icon name='menu' size="md" color="white"></box-icon>
+    <span class="controls" :class="{'close': !isMinimized}" @click="isMinimized=!isMinimized">
+      <span/>
+      <span/>
+      <span/>
     </span>
   </div>
 </template>
@@ -47,10 +49,11 @@
 import Title from "../Typography/Title";
 import Link from "../Typography/Link";
 import Accordion from "@/components/Accordion";
+import Icon from "@/components/Icon";
 
 export default {
   name: "SideBarNav",
-  components: {Accordion, Link, Title},
+  components: {Icon, Accordion, Link, Title},
   data() {
     return {
       isMinimized: true,
@@ -75,18 +78,15 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 280px;
-  min-width: 280px;
+  width: var(--sidebar-nav-width);
   height: 100%;
   background-color: $bg-sidebar;
-  padding: 20px;
+  padding: var(--padding-universal);
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.7, -0.51, 0.35, 1.79);
 
   &.minimized {
-    width: 76px;
-    min-width: 76px;
-
+    width: var(--sidebar-nav-min-width);
 
     li {
       white-space: nowrap;
@@ -95,7 +95,7 @@ nav {
 
   .header {
     display: flex;
-    gap: 20px;
+    gap: var(--gap-big);
     align-items: center;
     cursor: pointer;
   }
@@ -103,18 +103,18 @@ nav {
   .nav-items {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--gap-small);
     margin-top: 30px;
     list-style: none;
 
     .item-name {
       font-weight: bold;
-      font-size: 18px;
+      font-size: var(--p);
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: var(--gap-big);
       color: $link-light;
-      cursor: pointer
+      cursor: pointer;
     }
 
     .sub_menu {
@@ -122,8 +122,8 @@ nav {
       flex-direction: column;
       list-style: none;
       margin-top: 5px;
-      padding-left: 56px;
-      gap: 5px;
+      padding-left: var(--sidebar-nav-submenu-padding);
+      gap: calc(var(--gap-small) / 2);
     }
   }
 }
@@ -136,32 +136,53 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
-    top: 25px;
-    right: -50px;
-    z-index: 100;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    top: var(--padding-universal);
+    left: calc(100% + var(--padding-universal));
     background-color: $bg-sidebar;
-    border-radius: 5px;
+    border-radius: var(--border-radius-small);
+    z-index: 100;
     cursor: pointer;
-  }
-}
+    opacity: 0.5;
+    transition: all 0.3s ease;
 
-@media (max-width: $sm) {
-  nav {
-    padding: 10px;
+    span {
+      position: absolute;
+      height: 3px;
+      width: 80%;
+      background-color: $icon-default;
+      transition: all 0.3s ease;
 
-    &.minimized {
-      width: 56px;
-      min-width: 56px;
+      &:first-child {
+        top: 25%;
+      }
+
+      &:last-child {
+        bottom: 25%;
+      }
     }
-  }
-  .nav_wrapper {
-    .controls {
-      top: 15px;
-      right: -50px;
-      border-radius: 5px;
-      cursor: pointer;
+
+    &.close {
+      span {
+        &:first-child {
+          top: auto;
+          transform: rotate(45deg);
+        }
+
+        &:nth-child(2){
+          width: 0;
+        }
+
+        &:last-child {
+          bottom: auto;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    &:hover {
+      opacity: 1;
     }
   }
 }

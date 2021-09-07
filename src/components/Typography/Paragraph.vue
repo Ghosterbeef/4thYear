@@ -22,57 +22,53 @@ export default {
 .paragraph {
   font-size: var(--p);
   font-weight: 400;
-  margin-top: 5px;
-  padding: 10px 15px;
-  border-radius: 4px;
+  margin-top: var(--gap-small);
+  padding: var(--padding-top-bottom-small) var(--padding-right-left);
+  border-radius: var(--border-radius-small);
   position: relative;
-  background-color: white;
-  color: #2c3e50;
+  background-color: $default-background;
+  color: $default-font;
 
   &.description {
-    color: #486491;
-    background-color: #e7ecf3;
+    color: $description-font;
+    background-color: $description-background;
   }
 
-  &.warning {
-    color: gold;
-    background-color: lemonchiffon;
-
+  &.warning, &.danger, &.success {
     &::before {
       position: absolute;
       content: "";
-      border-left: 5px solid gold;
       height: 80%;
-      left: 4px;
+      left: calc(var(--padding-right-left) / 2);
+      border-left: calc(var(--padding-right-left) / 3) solid transparent;
       top: 10%;
+    }
+  }
+
+  &.warning {
+    color: $warning-font;
+    background-color: $warning-background;
+
+    &::before {
+      border-color: $warning-font;
     }
   }
 
   &.danger {
-    color: crimson;
-    background-color: mistyrose;
+    color: $danger-font;
+    background-color: $danger-background;
 
     &::before {
-      position: absolute;
-      content: "";
-      border-left: 5px solid crimson;
-      height: 80%;
-      left: 4px;
-      top: 10%;
+      border-color: $danger-font;
     }
   }
 
   &.success {
-    color: #27b062;
-    background-color: #c4f3d8;
+    color: $success-font;
+    background-color: $success-background;
 
     &::before {
-      position: absolute;
-      content: "";
-      border-left: 5px solid #27b062;
-      height: 80%;
-      left: 4px;
-      top: 10%;
+      border-color: $success-font;
     }
   }
 }
