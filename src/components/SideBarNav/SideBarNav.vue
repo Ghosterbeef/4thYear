@@ -144,22 +144,24 @@ nav {
     border-radius: var(--border-radius-small);
     z-index: 100;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.6;
     transition: all 0.3s ease;
 
     span {
       position: absolute;
-      height: 3px;
+      height: 5%;
       width: 80%;
       background-color: $icon-default;
       transition: all 0.3s ease;
 
       &:first-child {
-        top: 25%;
+        top: 30%;
+        height: 5%;
       }
 
       &:last-child {
-        bottom: 25%;
+        bottom: 30%;
+        height: 6%;
       }
     }
 
