@@ -1,5 +1,6 @@
 <template>
-  <div class="progress">
+  <Loader v-if="$store.getters.isLoading"/>
+  <div class="progress" v-else>
     <section class="version">
       <Title :level="5">В разработке</Title>
       <List v-if="progressData.inProgress">
@@ -40,21 +41,23 @@ import Title from "../components/Typography/Title";
 import Paragraph from "../components/Typography/Paragraph";
 import List from "../components/Typography/List";
 import Emphasis from "@/components/Typography/Emphasis";
+import Loader from "@/components/Loader";
 
 export default {
   name: "Progress",
-  components: {Emphasis, List, Paragraph, Title},
+  components: {Loader, Emphasis, List, Paragraph, Title},
   data() {
     return {
       progressData: {}
     }
   },
   created() {
+    this.$store.commit("setIsLoading", {value: true});
     fetch('https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
         .then(res => res.json())
         .then(json => {
           this.progressData = json
-        })
+        }).then(() => this.$store.commit("setIsLoading", {value: false}))
   },
   computed:{
     reversedVersions: function () {
