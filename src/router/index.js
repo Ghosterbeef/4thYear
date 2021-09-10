@@ -10,9 +10,9 @@ const routes = [
         component: Home
     },
     {
-        path: '/prune',
-        name: 'Prune',
-        component: () => import('../views/PRUNE.vue')
+        path: '/pprun/lab1',
+        name: 'PprunLab1',
+        component: () => import('../views/PPRUN/Lab1.vue')
     },
     {
         path: '/soon',
