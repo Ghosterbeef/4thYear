@@ -145,8 +145,7 @@ export default {
       if (this.matrix) {
         console.log(this.matrix.filter(row => !row.includes('')))
         return this.matrix.filter(row => !row.includes(''))
-      }
-      else return 0
+      } else return 0
     }
   },
   methods: {
@@ -167,6 +166,9 @@ export default {
       }
     },
     removeCol: function (key) {
+      if (this.$props.isOneRow) {
+        this.matrix.splice(key, 1)
+      }
       this.matrix.forEach(
           (row) => {
             row.splice(key, 1)
