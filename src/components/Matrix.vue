@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <table class="matrix">
+    <table class="matrix" v-if="!isOneRow">
       <thead>
       <tr v-if="editMode">
         <th class="item edit" v-if="isEditable">
@@ -40,12 +40,52 @@
             v-for="(item,j) in row"
             :key="`${i}+${j}`"
         >
-          <input v-model="matrix[i][j]" type="text" @input="$emit('update:modelValue', matrixToWork)">
+          <input v-model.number="matrix[i][j]" type="text" @input="$emit('update:modelValue', matrixToWork)">
         </td>
       </tr>
       <tr>
         <td class="item w-btn" v-if="editMode">
           <button class="add" @click="addRow"/>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="matrix" v-else>
+      <thead>
+      <tr v-if="editMode">
+        <th class="item empty"/>
+        <th class="item edit" v-if="isEditable">
+          <button class="edit" @click="editMode = !editMode">
+            <Icon icon="edit" styled-like="description"/>
+          </button>
+        </th>
+        <th class="item empty" v-else/>
+        <th class="item w-btn" v-for="(item,i) in this.matrix" :key="`h${i}`" v-if="editMode">
+          <button class="remove" @click="removeCol(i-1)"/>
+        </th>
+        <th class="item w-btn" v-if="editMode">
+          <button class="add" @click="addCol"/>
+        </th>
+      </tr>
+      <tr>
+        <th class="item edit" v-if="isEditable && !editMode">
+          <button class="edit" @click="editMode = !editMode">
+            <Icon icon="edit" styled-like="description"/>
+          </button>
+        </th>
+        <th class="item empty" v-if="editMode"/>
+        <th class="item empty" v-if="editMode"/>
+        <th class="item head" v-for="(item,i) in this.matrix" :key="`h${i}`">
+          p{{ i }}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="item empty" v-if="editMode"/>
+        <td class="item empty"/>
+        <td class="item value" v-for="(item, i) in matrix" :key="`r${i}`">
+          <input v-model.number="matrix[i]" type="text" @input="$emit('update:modelValue', matrixToWork)">
         </td>
       </tr>
       </tbody>
@@ -75,6 +115,10 @@ export default {
     isEditable: {
       type: Boolean,
       default: false
+    },
+    isOneRow: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -98,8 +142,10 @@ export default {
         return 0
     },
     matrixToWork: function () {
-      if (this.matrix)
+      if (this.matrix) {
+        console.log(this.matrix.filter(row => !row.includes('')))
         return this.matrix.filter(row => !row.includes(''))
+      }
       else return 0
     }
   },
@@ -111,12 +157,12 @@ export default {
         return
       }
       this.matrix.forEach((row) => {
-        row.push("")
+        row.push('')
       })
       if (this.$props.isEqual) {
         this.matrix.push([])
         this.matrix[0].forEach(item => {
-          this.matrix[this.matrix.length - 1].push("")
+          this.matrix[this.matrix.length - 1].push('')
         })
       }
     },
@@ -211,10 +257,9 @@ export default {
     }
 
     .item {
-      padding: var(--padding-top-bottom-small);
-      min-width: 40px;
-      width: 40px;
-      height: 40px;
+      text-align: center;
+      width: 50px;
+      height: 50px;
       font-weight: 700;
       font-size: var(--p);
 
@@ -235,7 +280,7 @@ export default {
         border: 1px solid $default-font;
 
         & input {
-          padding: var(--padding-top-bottom-small);
+          text-align: center;
           background-color: $default-background;
           border: none;
         }
