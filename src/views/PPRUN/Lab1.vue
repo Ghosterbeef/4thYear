@@ -10,7 +10,10 @@
     </header>
     <main>
       <Title :level="5">Данные по варианту</Title>
-      <Matrix v-model="matrix" is-editable is-equal/>
+      <Title :level="6">Матрица прибыли/потерь</Title>
+      <Matrix v-model="matrix" is-editable/>
+      <Title :level="6">Матрица вероятностей</Title>
+      <Matrix v-model="probability" is-editable is-one-row/>
       <Paragraph>Метод Вальда
         <Emphasis styled-like="success" is-bold>Прибыль</Emphasis>
         :
@@ -186,6 +189,10 @@ export default {
       return this.matrix
           .map((row) => {
             return row.reduce((prev, val, i) => {
+              console.log('Этап')
+              console.log(prev)
+              console.log(val)
+              console.log(this.probability[i])
               return prev + val * this.probability[i]
             }, 0)
           })
