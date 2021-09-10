@@ -36,9 +36,10 @@ html, body {
     display: flex;
     height: 100%;
 
-    section, main, footer {
+    section, main, header, footer {
       border-top: 2px solid #486491;
       padding-top: 10px;
+      padding-bottom: 10px;
     }
 
     .content {
