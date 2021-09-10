@@ -61,7 +61,7 @@
         </th>
         <th class="item empty" v-else/>
         <th class="item w-btn" v-for="(item,i) in this.matrix" :key="`h${i}`" v-if="editMode">
-          <button class="remove" @click="removeCol(i-1)"/>
+          <button class="remove" @click="removeCol(i)"/>
         </th>
         <th class="item w-btn" v-if="editMode">
           <button class="add" @click="addCol"/>
