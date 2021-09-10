@@ -10,7 +10,7 @@
     </header>
     <main>
       <Title :level="5">Данные по варианту</Title>
-      <Matrix :array="matrix" is-equal/>
+      <Matrix v-model="matrix" is-editable is-equal/>
       <Paragraph>Метод Вальда
         <Emphasis styled-like="success" is-bold>Прибыль</Emphasis>
         :
@@ -43,6 +43,87 @@
         :
         <Emphasis styled-like="description" is-bold>{{ Gurvic }}</Emphasis>
       </Paragraph>
+      <Code>
+        <pre>
+<Emphasis is-bold styled-like="warning">isValid()</Emphasis> {
+    if (this.matrix.length) {
+        if (this.matrix.length)
+            return true
+    }
+}
+
+<Emphasis is-bold styled-like="warning">minInRow</Emphasis>: function() {
+    return this.matrix.map(row => Math.min(...row))
+}
+
+<Emphasis is-bold styled-like="warning">maxInRow</Emphasis>: function() {
+    return this.matrix.map(row => Math.max(...row))
+}
+
+<Emphasis is-bold styled-like="warning">valdaProfit</Emphasis>: function() {
+    if (!this.isValid) return "NaN"
+    const min = this.minInRow
+    return `a${min.indexOf(Math.max(...min)) + 1}`
+}
+
+<Emphasis is-bold styled-like="warning">valdaLosses</Emphasis>: function() {
+    if (!this.isValid) return "NaN"
+    const max = this.maxInRow
+    return `a${max.indexOf(Math.min(...max)) + 1}`
+}
+
+<Emphasis is-bold styled-like="warning">baesaLaplasaTemp</Emphasis>: function() {
+    if (!this.isValid) return "NaN"
+    return this.matrix
+        .map((row) => {
+            return row.reduce((prev, val, i) => {
+                return prev + val * this.probability[i]
+            }, 0)
+        })
+}
+
+<Emphasis is-bold styled-like="warning">baesaLaplasaProfit</Emphasis>: function() {
+    if (!this.isValid) return "NaN"
+    const temp = this.baesaLaplasaTemp
+    return `a${temp.indexOf(Math.max(...temp)) + 1}`
+}
+
+<Emphasis is-bold styled-like="warning">baesaLaplasaLosses</Emphasis>: function() {
+    if (!this.isValid) return "NaN"
+    const temp = this.baesaLaplasaTemp
+    return `a${temp.indexOf(Math.min(...temp)) + 1}`
+}
+
+<Emphasis is-bold styled-like="warning">Savage</Emphasis>: function() {
+    if (!this.isValid) return "NaN"
+
+    function transpose(matrix) {
+        return matrix[0]
+            .map((col, i) => matrix
+                .map(row => row[i]))
+    }
+
+    const transposed = transpose(this.matrix)
+    const max = transposed.map(row => Math.max(...row))
+    const temp = transpose(transposed
+            .map((row, i) => {
+                return row
+                    .map(item => max[i] - item)
+            }))
+        .map(row => Math.max(...row))
+    return `a${temp.indexOf(Math.min(...temp)) + 1}`
+
+}
+
+<Emphasis is-bold styled-like="warning">Gurvic</Emphasis>: function() {
+    if (!this.isValid) return "NaN"
+    const min = this.minInRow
+    const max = this.maxInRow
+    const temp = min.map((element, i) => element + max[i] * this.optimism)
+    return `a${temp.indexOf(Math.max(...temp)) + 1}`
+}
+        </pre>
+      </Code>
     </main>
   </div>
 </template>
@@ -53,10 +134,11 @@ import Title from "@/components/Typography/Title";
 import Paragraph from "@/components/Typography/Paragraph";
 import Matrix from "@/components/Matrix";
 import Emphasis from "@/components/Typography/Emphasis";
+import Code from "@/components/Typography/Code";
 
 export default {
   name: 'PPRUNLab1',
-  components: {Emphasis, Matrix, Paragraph, Title},
+  components: {Code, Emphasis, Matrix, Paragraph, Title},
   data() {
     return {
       matrix: [
@@ -75,6 +157,12 @@ export default {
     }
   },
   computed: {
+    isValid() {
+      if (this.matrix.length) {
+        if (this.matrix.length)
+          return true
+      }
+    },
     minInRow: function () {
       return this.matrix.map(row => Math.min(...row))
     },
@@ -82,16 +170,19 @@ export default {
       return this.matrix.map(row => Math.max(...row))
     },
     valdaProfit: function () {
+      if (!this.isValid) return "NaN"
       const min = this.minInRow
-      return `a${min.indexOf(Math.max(...min)) + 1}`
+      return `Стратегия - a${min.indexOf(Math.max(...min)) + 1}. Причина: ${Math.max(...min)}`
     },
 
     valdaLosses: function () {
+      if (!this.isValid) return "NaN"
       const max = this.maxInRow
-      return `a${max.indexOf(Math.min(...max)) + 1}`
+      return `Стратегия - a${max.indexOf(Math.min(...max)) + 1}. Причина: ${Math.min(...max)}`
     },
 
     baesaLaplasaTemp: function () {
+      if (!this.isValid) return "NaN"
       return this.matrix
           .map((row) => {
             return row.reduce((prev, val, i) => {
@@ -101,23 +192,20 @@ export default {
     },
 
     baesaLaplasaProfit: function () {
+      if (!this.isValid) return "NaN"
       const temp = this.baesaLaplasaTemp
-      return `a${temp.indexOf(Math.max(...temp)) + 1}`
-      // const temp = Object.values(matrix)
-      //     .map((row) => {
-      //       return Object.values(row).reduce((prev, val, i) => {
-      //         return prev + val * Object.values(probability)[i]
-      //       }, 0)
-      //     })
-      // console.log(`Убытки: a${temp.indexOf(Math.min(...temp)) + 1}`)
+      return `Стратегия - a${temp.indexOf(Math.max(...temp)) + 1}. Причина: ${Math.max(...temp)}`
     },
 
     baesaLaplasaLosses: function () {
+      if (!this.isValid) return "NaN"
       const temp = this.baesaLaplasaTemp
-      return `a${temp.indexOf(Math.min(...temp)) + 1}`
+      return `Стратегия - a${temp.indexOf(Math.min(...temp)) + 1}. Причина: ${Math.min(...temp)}`
     },
 
     Savage: function () {
+      if (!this.isValid) return "NaN"
+
       function transpose(matrix) {
         return matrix[0]
             .map((col, i) => matrix
@@ -132,16 +220,29 @@ export default {
                 .map(item => max[i] - item)
           }))
           .map(row => Math.max(...row))
-      return `a${temp.indexOf(Math.min(...temp)) + 1}`
+      return `Стратегия - a${temp.indexOf(Math.min(...temp)) + 1}. Причина: ${Math.min(...temp)}`
 
     },
 
     Gurvic: function () {
+      if (!this.isValid) return "NaN"
       const min = this.minInRow
       const max = this.maxInRow
       const temp = min.map((element, i) => element + max[i] * this.optimism)
-      return `a${temp.indexOf(Math.max(...temp)) + 1}`
+      return `Стратегия - a${temp.indexOf(Math.max(...temp)) + 1}. Причина: ${Math.max(...temp)}`
     }
   }
 }
 </script>
+
+<style scoped lang="scss">
+lab1 {
+  width: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+</style>

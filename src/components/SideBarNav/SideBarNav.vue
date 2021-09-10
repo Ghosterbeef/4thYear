@@ -17,7 +17,7 @@
             <template v-slot:default>
               <ul class="sub_menu">
                 <li class="sub_menu-items">
-                  <Link to="/prune"><span>Лабораторная №1</span></Link>
+                  <Link to="/pprun/lab1"><span>Лабораторная №1</span></Link>
                 </li>
               </ul>
             </template>
