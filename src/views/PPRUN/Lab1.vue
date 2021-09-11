@@ -10,6 +10,19 @@
     </header>
     <main>
       <Title :level="5">Данные по варианту</Title>
+      <Accordion>
+        <template v-slot:activator>
+          <Paragraph styledLike="danger">
+            Соблюдайте правила!
+          </Paragraph>
+        </template>
+        <Paragraph styled-like="danger">
+          Для корректных рассчетов метода Байеса-Лапласа количество значений матрицы вероятностей должно быть равно колчеству столбцов в матрице прибыли/потерь.
+        </Paragraph>
+        <Paragraph styled-like="danger">
+          Учитывайте тот факт, что любая строка двумерной матрицы, содержащая хотя бы одну пустую ячейку, не будет участвовать в рассчетах.
+        </Paragraph>
+      </Accordion>
       <Title :level="6">Матрица прибыли/потерь</Title>
       <DynamicMatrix v-model="matrix" is-editable/>
       <Title :level="6">Матрица вероятностей</Title>
