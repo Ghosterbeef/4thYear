@@ -9,6 +9,7 @@
     "deploy": "firebase deploy"
   },
   "dependencies": {
+    "@vueuse/core": "^6.3.2",
     "boxicons": "^2.0.9",
     "core-js": "^3.17.3",
     "firebase": "^9.0.2",

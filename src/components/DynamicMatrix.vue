@@ -76,7 +76,7 @@
         <th class="item empty" v-if="editMode"/>
         <th class="item empty" v-if="editMode"/>
         <th class="item head" v-for="(item,i) in this.matrix" :key="`h${i}`">
-          p{{ i }}
+          p{{ i+1 }}
         </th>
       </tr>
       </thead>
@@ -94,11 +94,10 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import Icon from "@/components/Icon";
 
 export default {
-  name: "Matrix",
+  name: "DynamicMatrix",
   components: {Icon},
   emits: [
     'update:modelValue'
@@ -143,7 +142,6 @@ export default {
     },
     matrixToWork: function () {
       if (this.matrix) {
-        console.log(this.matrix.filter(row => !row.includes('')))
         return this.matrix.filter(row => !row.includes(''))
       } else return 0
     }
@@ -260,6 +258,7 @@ export default {
 
     .item {
       text-align: center;
+      min-width: 50px;
       width: 50px;
       height: 50px;
       font-weight: 700;

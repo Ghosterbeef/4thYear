@@ -3,6 +3,16 @@
     <Title :level="1">404</Title>
     <Title :level="2">Такую страничку еще не сделали =(</Title>
     <Title :level="2">Опробуйте одну из существующих!</Title>
+    <pre>
+         ／フ　 フ
+　　　　| 　_　 _|
+ 　　　／`ミ _x 彡
+　 　 /　　　 　 |
+　　 /　 ヽ　　 ﾉ
+／￣|　　 |　|　|
+| (￣ヽ＿_ヽ_)_)
+＼二つ
+    </pre>
   </div>
 </template>
 
@@ -15,10 +25,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .p404 {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    pre {
+      margin-top: var(--gap-big);
+      font-size: var(--p);
+        font-weight: bold;
+    }
 }
 </style>

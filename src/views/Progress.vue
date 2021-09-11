@@ -1,6 +1,7 @@
 <template>
-  <Loader v-if="$store.getters.isLoading"/>
-  <div class="progress" v-else>
+  <Paragraph v-if="isError" styled-like="danger">При зарузке данных произошла ошибка</Paragraph>
+  <Loader v-if="$store.getters.isLoading && !isError"/>
+  <div class="progress" v-else-if="!isError">
     <section class="version">
       <Title :level="5">В разработке</Title>
       <List v-if="progressData.inProgress">
@@ -48,18 +49,24 @@ export default {
   components: {Loader, Emphasis, List, Paragraph, Title},
   data() {
     return {
-      progressData: {}
+      progressData: {},
+      isError: false
     }
   },
   created() {
     this.$store.commit("setIsLoading", {value: true});
     fetch('https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
-        .then(res => res.json())
-        .then(json => {
-          this.progressData = json
-        }).then(() => this.$store.commit("setIsLoading", {value: false}))
+      .then(res => res.json())
+      .then(json => {
+        this.progressData = json
+      }).then(() => this.$store.commit("setIsLoading", {value: false}))
+      .catch(
+        () => {
+          this.isError = true
+          this.$store.commit("setIsLoading", {value: false})
+        })
   },
-  computed:{
+  computed: {
     reversedVersions: function () {
       return this.progressData.versions.reverse()
     }
