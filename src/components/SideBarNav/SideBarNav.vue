@@ -1,5 +1,5 @@
 <template>
-  <div class="nav_wrapper" ref="nav_wrapper">
+  <div class="nav_wrapper" ref="nav_wrapper"  v-click-outside="() => {isMinimized = true}">
     <nav :class="{'minimized': isMinimized}">
       <div class="header" @click="$router.push('/'); isMinimized=true">
         <Icon icon="ghost"/>
@@ -53,19 +53,19 @@ import Title from "../Typography/Title";
 import Link from "../Typography/Link";
 import Accordion from "@/components/Accordion";
 import Icon from "@/components/Icon";
-import {onClickOutside} from '@vueuse/core/index.cjs'
+import clickOutside from "../../directives/clickOutside";
 
 export default {
   name: "SideBarNav",
   components: {Icon, Accordion, Link, Title},
+  directives:{
+    "click-outside": clickOutside
+  },
   data() {
     return {
       isMinimized: true,
       isActive: false
     }
-  },
-  mounted() {
-    onClickOutside(this.$refs.nav_wrapper, () => this.isMinimized = true)
   },
   watch: {
     isMinimized: {
