@@ -53,7 +53,7 @@ import Title from "../Typography/Title";
 import Link from "../Typography/Link";
 import Accordion from "@/components/Accordion";
 import Icon from "@/components/Icon";
-import {onClickOutside} from '@vueuse/core'
+import {onClickOutside} from '@vueuse/core/index.cjs'
 
 export default {
   name: "SideBarNav",
