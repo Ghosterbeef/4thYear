@@ -17,10 +17,12 @@
           </Paragraph>
         </template>
         <Paragraph styled-like="danger">
-          Для корректных рассчетов метода Байеса-Лапласа количество значений матрицы вероятностей должно быть равно колчеству столбцов в матрице прибыли/потерь.
+          Для корректных рассчетов метода Байеса-Лапласа, количество значений матрицы вероятностей должно быть равно
+          колчеству столбцов в матрице прибыли/потерь.
         </Paragraph>
         <Paragraph styled-like="danger">
-          Учитывайте тот факт, что любая строка двумерной матрицы, содержащая хотя бы одну пустую ячейку, не будет участвовать в рассчетах.
+          Учитывайте тот факт, что любая строка двумерной матрицы, содержащая хотя бы одну пустую ячейку, не будет
+          участвовать в рассчетах.
         </Paragraph>
       </Accordion>
       <Title :level="6">Матрица прибыли/потерь</Title>
@@ -436,13 +438,13 @@ export default {
     valdaProfit: function () {
       if (!this.isValid) return "NaN"
       const min = this.minInRow
-      return `Стратегия - a${min.indexOf(Math.max(...min)) + 1}. Причина: ${Math.max(...min)}`
+      return `Стратегия - a${min.indexOf(Math.max(...min)) + 1}. Причина: ${Math.floor(Math.max(...min).toFixed(5) * 100) / 100}`
     },
 
     valdaLosses: function () {
       if (!this.isValid) return "NaN"
       const max = this.maxInRow
-      return `Стратегия - a${max.indexOf(Math.min(...max)) + 1}. Причина: ${Math.min(...max)}`
+      return `Стратегия - a${max.indexOf(Math.min(...max)) + 1}. Причина: ${Math.floor(Math.min(...max).toFixed(5) * 100) / 100}`
     },
 
     baesaLaplasaTemp: function () {
@@ -459,13 +461,13 @@ export default {
     baesaLaplasaProfit: function () {
       if (!this.isValid) return "NaN"
       const temp = this.baesaLaplasaTemp
-      return `Стратегия - a${temp.indexOf(Math.max(...temp)) + 1}. Причина: ${Math.max(...temp)}`
+      return `Стратегия - a${temp.indexOf(Math.max(...temp)) + 1}. Причина: ${Math.floor(Math.max(...temp) * 100) / 100}`
     },
 
     baesaLaplasaLosses: function () {
       if (!this.isValid) return "NaN"
       const temp = this.baesaLaplasaTemp
-      return `Стратегия - a${temp.indexOf(Math.min(...temp)) + 1}. Причина: ${Math.min(...temp)}`
+      return `Стратегия - a${temp.indexOf(Math.min(...temp)) + 1}. Причина: ${Math.floor(Math.min(...temp) * 100) / 100}`
     },
 
     Savage: function () {
@@ -478,7 +480,7 @@ export default {
             .map(item => max[i] - item)
         }))
         .map(row => Math.max(...row))
-      return `Стратегия - a${temp.indexOf(Math.min(...temp)) + 1}. Причина: ${Math.min(...temp)}`
+      return `Стратегия - a${temp.indexOf(Math.min(...temp)) + 1}. Причина: ${Math.floor(Math.min(...temp) * 100) / 100}`
 
     },
 
@@ -492,7 +494,7 @@ export default {
     Gurvic: function () {
       if (!this.isValid) return "NaN"
       const temp = this.gurvicCalculations
-      return `Стратегия - a${temp.indexOf(Math.max(...temp)) + 1}. Причина: ${Math.max(...temp)}`
+      return `Стратегия - a${temp.indexOf(Math.max(...temp)) + 1}. Причина: ${Math.floor(Math.max(...temp) * 100) / 100}`
     },
 
     //DescriptionSection
