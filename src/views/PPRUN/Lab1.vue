@@ -14,7 +14,7 @@
       <DynamicMatrix v-model="matrix" is-editable/>
       <Title :level="6">Матрица вероятностей</Title>
       <DynamicMatrix v-model="probability" is-editable is-one-row/>
-      <Accordion>
+      <Accordion v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Вальда
             <Emphasis styled-like="success" is-bold>Прибыль</Emphasis>
@@ -55,7 +55,7 @@
           <br/>&nbsp;
         </Paragraph>
       </Accordion>
-      <Accordion>
+      <Accordion v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Вальда
             <Emphasis styled-like="danger" is-bold>Убытки</Emphasis>
@@ -76,7 +76,7 @@
           />
           <br/>&nbsp;
           2. Создаем массив из найденных элементов и среди них находим
-          <Emphasis styled-like="warning" is-bold>мминимальное</Emphasis>
+          <Emphasis styled-like="warning" is-bold>минимальное</Emphasis>
           значение
           <br/>&nbsp;
           <StaticMatrix
@@ -96,7 +96,7 @@
           <br/>&nbsp;
         </Paragraph>
       </Accordion>
-      <Accordion>
+      <Accordion v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Байеса-Лапласа
             <Emphasis styled-like="success" is-bold>Прибыль</Emphasis>
@@ -130,7 +130,7 @@
           <br/>&nbsp;
         </Paragraph>
       </Accordion>
-      <Accordion>
+      <Accordion v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Байеса-Лапласа
             <Emphasis styled-like="danger" is-bold>Убытки</Emphasis>
@@ -164,7 +164,7 @@
           <br/>&nbsp;
         </Paragraph>
       </Accordion>
-      <Accordion>
+      <Accordion v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Сэвиджа
             <Emphasis styled-like="success" is-bold>Прибыль</Emphasis>
@@ -236,7 +236,7 @@
           <br/>&nbsp;
         </Paragraph>
       </Accordion>
-      <Accordion>
+      <Accordion v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Гарвика
             <Emphasis :styled-like="optimism > 0.5 ? 'success' : 'danger'" is-bold>
@@ -408,15 +408,16 @@ export default {
   computed: {
     isValid() {
       if (this.matrix.length) {
-        this.markMinInRow
-        if (this.matrix.length)
+        if (this.matrix[0].length)
           return true
       }
     },
     minInRow: function () {
+      if (!this.isValid) return []
       return this.matrix.map(row => Math.min(...row))
     },
     maxInRow: function () {
+      if (!this.isValid) return []
       return this.matrix.map(row => Math.max(...row))
     },
     valdaProfit: function () {
@@ -432,7 +433,7 @@ export default {
     },
 
     baesaLaplasaTemp: function () {
-      if (!this.isValid) return "NaN"
+      if (!this.isValid) return []
       return this.matrix
         .map((row) => {
           return row.reduce((prev, val, i) => {
@@ -468,6 +469,7 @@ export default {
     },
 
     gurvicCalculations: function () {
+      if (!this.isValid) return []
       const min = this.minInRow
       const max = this.maxInRow
       return min.map((element, i) => (1 - this.optimism) * element + max[i] * this.optimism)
@@ -481,6 +483,7 @@ export default {
 
     //DescriptionSection
     markMinInRows: function () {
+      if (!this.isValid) return []
       return this.matrix.map((row) => {
         const min = Math.min(...row)
         return row.map(
@@ -495,6 +498,7 @@ export default {
       })
     },
     markMaxInRows: function () {
+      if (!this.isValid) return []
       return this.matrix.map((row) => {
         const min = Math.max(...row)
         return row.map(
@@ -511,11 +515,13 @@ export default {
   },
   methods: {
     transpose: function (matrix) {
+      if (!this.isValid) return []
       return matrix[0]
         .map((col, i) => matrix
           .map(row => row[i]))
     },
     markMaxInRow: function (row) {
+      if (!this.isValid) return []
       const max = Math.max(...row)
       return row.map(
         (item) => {
@@ -528,6 +534,7 @@ export default {
       )
     },
     markMinInRow: function (row) {
+      if (!this.isValid) return []
       const min = Math.min(...row)
       return row.map(
         (item) => {
@@ -540,17 +547,21 @@ export default {
       )
     },
     getIndexOfMax: function (row) {
+      if (!this.isValid) return -1
       return row.indexOf(Math.max(...row))
     },
     getIndexOfMin: function (row) {
+      if (!this.isValid) return -1
       return row.indexOf(Math.min(...row))
     },
     getRightRow: function (index) {
+      if (!this.isValid) return []
       return this.matrix.filter((row, i) => {
         if (index === i) return row
       })
     },
     markMaxInRowsF: function (matrix) {
+      if (!this.isValid) return []
       return matrix.map((row) => {
         const min = Math.max(...row)
         return row.map(
@@ -565,6 +576,7 @@ export default {
       })
     },
     savageCalculations: function (matrix) {
+      if (!this.isValid) return []
       const max = this.transpose(this.matrix).map(row => Math.max(...row))
       return matrix.map((row, i) => {
         return row
@@ -572,9 +584,11 @@ export default {
       })
     },
     getMinInRows: function (matrix) {
+      if (!this.isValid) return "0"
       return matrix.map(row => Math.min(...row))
     },
     getMaxInRows: function (matrix) {
+      if (!this.isValid) return "0"
       return matrix.map(row => Math.max(...row))
     }
   }
