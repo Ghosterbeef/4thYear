@@ -434,6 +434,7 @@ export default {
 
     baesaLaplasaTemp: function () {
       if (!this.isValid) return []
+      if (this.probability.length < this.matrix.length) return []
       return this.matrix
         .map((row) => {
           return row.reduce((prev, val, i) => {

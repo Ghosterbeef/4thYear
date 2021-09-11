@@ -141,6 +141,9 @@ export default {
         return 0
     },
     matrixToWork: function () {
+      if (this.$props.isOneRow) {
+        return this.matrix.filter(item => item !== '')
+      }
       if (this.matrix) {
         return this.matrix.filter(row => !row.includes(''))
       } else return 0
