@@ -2,12 +2,9 @@ import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
-import Loader from "@/components/Loader";
-
-import firebase from "firebase/compat";
-import 'firebase/auth'
-import 'firebase/database'
+import firebase from "firebase/compat/app";
+import 'firebase/compat/auth'
+import 'firebase/compat/database'
 
 
 

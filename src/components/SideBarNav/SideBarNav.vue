@@ -1,12 +1,12 @@
 <template>
-  <div class="nav_wrapper">
+  <div class="nav_wrapper" ref="nav_wrapper"  v-click-outside="() => {isMinimized = true}">
     <nav :class="{'minimized': isMinimized}">
-      <div class="header" @click="$router.push('/')">
+      <div class="header" @click="$router.push('/'); isMinimized=true">
         <Icon icon="ghost"/>
         <Title :level="4" lang="en" color="light">Ghosterbeef</Title>
       </div>
       <ul class="nav-items">
-        <li @click="isMinimized ? isMinimized = false : undefined">
+        <li @click="isMinimized && !isActive ? isMinimized = false : undefined">
           <Accordion :is-active="isActive">
             <template v-slot:activator>
               <span class="item-name">
@@ -17,20 +17,23 @@
             <template v-slot:default>
               <ul class="sub_menu">
                 <li class="sub_menu-items">
-                  <Link to="/pprun/lab1"><span>Лабораторная №1</span></Link>
+                  <Link to="/pprun/lab1" @click="isMinimized=true"><span>Лабораторная №1</span></Link>
+                </li>
+                <li class="sub_menu-items">
+                  <Link to="/pprun/lab2" @click="isMinimized=true"><span>Лабораторная №2</span></Link>
                 </li>
               </ul>
             </template>
           </Accordion>
         </li>
         <li>
-          <Link to="/soon" has-icon>
+          <Link to="/soon" has-icon @click="isMinimized=true">
             <Icon icon="soon" styled-like="link"/>
             <span>COMING SOON</span>
           </Link>
         </li>
         <li>
-          <Link to="/progress" has-icon>
+          <Link to="/progress" has-icon @click="isMinimized=true">
             <Icon icon="progress" styled-like="link"/>
             <span>Прогресс</span>
           </Link>
@@ -50,10 +53,14 @@ import Title from "../Typography/Title";
 import Link from "../Typography/Link";
 import Accordion from "@/components/Accordion";
 import Icon from "@/components/Icon";
+import clickOutside from "../../directives/clickOutside";
 
 export default {
   name: "SideBarNav",
   components: {Icon, Accordion, Link, Title},
+  directives:{
+    "click-outside": clickOutside
+  },
   data() {
     return {
       isMinimized: true,
@@ -172,7 +179,7 @@ nav {
           transform: rotate(45deg);
         }
 
-        &:nth-child(2){
+        &:nth-child(2) {
           width: 0;
         }
 
