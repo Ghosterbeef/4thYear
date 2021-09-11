@@ -148,10 +148,12 @@ export default {
   },
   methods: {
     addCol: function () {
+      if (this.$props.isOneRow) {
+        this.matrix.push('')
+        return
+      }
       if (!this.cols) {
         this.matrix.push([])
-        this.matrix[0].push('')
-        return
       }
       this.matrix.forEach((row) => {
         row.push('')
@@ -166,6 +168,7 @@ export default {
     removeCol: function (key) {
       if (this.$props.isOneRow) {
         this.matrix.splice(key, 1)
+        return
       }
       this.matrix.forEach(
           (row) => {

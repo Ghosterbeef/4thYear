@@ -1,5 +1,5 @@
 <template>
-  <Paragraph v-if="isError" styled-like="danger">При зарузке данных произошла ошибка</Paragraph>
+  <Paragraph v-if="isError" styled-like="danger">При загрузке данных произошла ошибка</Paragraph>
   <Loader v-if="$store.getters.isLoading && !isError"/>
   <div class="progress" v-else-if="!isError">
     <section class="version">
