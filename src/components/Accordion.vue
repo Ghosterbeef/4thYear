@@ -51,6 +51,8 @@ export default {
   perspective: 100000px;
 
   & .controls {
+    height: var(--icon-size);
+    background-color: $bg-sidebar;
     z-index: 100;
     position: absolute;
     right: var(--gap-small);
