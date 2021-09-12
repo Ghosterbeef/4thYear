@@ -58,7 +58,7 @@
           значение
           <br/>&nbsp;
           <StaticMatrix
-            :axes="{x:'p'}"
+            :axes="{x:'a'}"
             :matrix="markMaxInRow(minInRow)"
             is-one-row
             styled-like="warning"
@@ -99,7 +99,7 @@
           значение
           <br/>&nbsp;
           <StaticMatrix
-            :axes="{x:'p'}"
+            :axes="{x:'a'}"
             :matrix="markMinInRow(maxInRow)"
             is-one-row
             styled-like="warning"
