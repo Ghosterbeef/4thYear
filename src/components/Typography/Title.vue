@@ -1,20 +1,20 @@
 <template>
-  <h1 v-if="level === 1" :class="[lang,color]">
+  <h1 v-if="level === 1" :class="[lang,color, {'centered': isCentered}]">
     <slot></slot>
   </h1>
-  <h2 v-else-if="level === 2" :class="[lang,color]">
+  <h2 v-else-if="level === 2" :class="[lang,color, {'centered': isCentered}]">
     <slot></slot>
   </h2>
-  <h3 v-else-if="level === 3" :class="[lang,color]">
+  <h3 v-else-if="level === 3" :class="[lang,color, {'centered': isCentered}]">
     <slot></slot>
   </h3>
-  <h4 v-else-if="level === 4" :class="[lang, color]">
+  <h4 v-else-if="level === 4" :class="[lang, color, {'centered': isCentered}]">
     <slot></slot>
   </h4>
-  <h5 v-else-if="level === 5" :class="[lang, color]">
+  <h5 v-else-if="level === 5" :class="[lang, color, {'centered': isCentered}]">
     <slot></slot>
   </h5>
-  <h6 v-else-if="level === 6" :class="[lang, color]">
+  <h6 v-else-if="level === 6" :class="[lang, color, {'centered': isCentered}]">
     <slot></slot>
   </h6>
 </template>
@@ -41,6 +41,10 @@ export default {
         return ["dark", "light"].includes(value)
       },
       default: "dark"
+    },
+    isCentered: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -60,6 +64,10 @@ h1, h2, h3, h4, h5, h6 {
 
   &.light{
     color: whitesmoke;
+  }
+
+  &.centered{
+    text-align: center;
   }
 }
 
