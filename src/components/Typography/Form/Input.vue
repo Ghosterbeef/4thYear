@@ -1,5 +1,10 @@
 <template>
-  <input :type="type" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)">
+  <input
+    :class="[{'centered': isCentered}]"
+    :type="type"
+    :inputmode="type==='number' ? 'decimal': undefined"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)">
 </template>
 
 <script>
@@ -10,14 +15,18 @@ export default {
   ],
   props: {
     modelValue: {
-      type: String,
+      type: [String, Number],
       required: true,
     },
     type: {
       validator(val) {
-        return ["text", "password"].includes(val)
+        return ["text", "password", "number"].includes(val)
       },
       default: "text"
+    },
+    isCentered: {
+      type: Boolean,
+      default: false,
     }
   }
 }
@@ -25,6 +34,12 @@ export default {
 
 <style scoped lang="scss">
 input {
+  &.centered {
+    width: var(--matrix-item-size);
+    height: var(--matrix-item-size);
+    align-self: center;
+    text-align: center;
+  }
 
   &[type="text"], &[type="password"] {
     width: 70%;

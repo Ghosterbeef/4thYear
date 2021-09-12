@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Icon from "@/components/Icon";
+import Icon from "./Icon";
 
 export default {
   name: "StaticMatrix",
@@ -107,57 +107,11 @@ export default {
     margin: 0 auto;
     border-collapse: collapse;
 
-    button {
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      background-color: $default-background;
-      border: 1px solid $default-font;
-      border-radius: var(--border-radius-small);
-      transition: all 0.3s ease;
-      position: relative;
-
-      &:hover {
-        background-color: darken($default-background, 10%);
-      }
-
-      &.remove, &.add {
-        &::before, &::after {
-          position: absolute;
-          content: "";
-          border: 2px solid $danger-font;
-          border-radius: 2px;
-          height: 80%;
-          top: 10%;
-          left: calc(50% - 2px);
-        }
-      }
-
-      &.add {
-        &::before, &::after {
-          border: 2px solid $success-font !important;
-          transform: rotate(0deg);
-        }
-
-        &::after {
-          transform: rotate(90deg);
-        }
-      }
-
-      &::before {
-        transform: rotate(-45deg);
-      }
-
-      &::after {
-        transform: rotate(45deg);
-      }
-    }
-
     .item {
       text-align: center;
-      min-width: 50px;
-      width: 50px;
-      height: 50px;
+      min-width: var(--matrix-item-size);
+      width: var(--matrix-item-size);
+      height: var(--matrix-item-size);
       font-weight: 700;
       font-size: var(--p);
 
@@ -211,15 +165,6 @@ export default {
             }
           }
         }
-      }
-
-      &.w-btn {
-        padding: 0 !important;
-        text-align: center;
-      }
-
-      &.edit {
-        padding: 0 !important;
       }
     }
   }

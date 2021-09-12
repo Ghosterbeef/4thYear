@@ -1,7 +1,7 @@
 <template>
   <div class="lab1">
     <header>
-      <Title :level="3">Лабораторная работа №1</Title>
+      <Title :level="3" is-centered>Лабораторная работа №1</Title>
       <Title :level="5">Цель работы</Title>
       <Paragraph>
         Изучить и исследовать методы принятия решений при отсутствии какой либо информации
@@ -9,26 +9,30 @@
       </Paragraph>
     </header>
     <main>
-      <Title :level="5">Данные по варианту</Title>
-      <Accordion>
-        <template v-slot:activator>
-          <Paragraph styledLike="danger">
-            Соблюдайте правила!
+      <section class="info zero-border">
+        <Title :level="5">Данные по варианту</Title>
+        <Accordion>
+          <template v-slot:activator>
+            <Paragraph styledLike="danger">
+              Соблюдайте правила!
+            </Paragraph>
+          </template>
+          <Paragraph styled-like="danger">
+            Для корректных рассчетов метода Байеса-Лапласа, количество значений матрицы вероятностей должно быть равно
+            колчеству столбцов в матрице прибыли/потерь.
           </Paragraph>
-        </template>
-        <Paragraph styled-like="danger">
-          Для корректных рассчетов метода Байеса-Лапласа, количество значений матрицы вероятностей должно быть равно
-          колчеству столбцов в матрице прибыли/потерь.
-        </Paragraph>
-        <Paragraph styled-like="danger">
-          Учитывайте тот факт, что любая строка двумерной матрицы, содержащая хотя бы одну пустую ячейку, не будет
-          участвовать в рассчетах.
-        </Paragraph>
-      </Accordion>
-      <Title :level="6">Матрица прибыли/потерь</Title>
-      <DynamicMatrix v-model="matrix" is-editable/>
-      <Title :level="6">Матрица вероятностей</Title>
-      <DynamicMatrix v-model="probability" is-editable is-one-row/>
+          <Paragraph styled-like="danger">
+            Учитывайте тот факт, что любая строка двумерной матрицы, содержащая хотя бы одну пустую ячейку, не будет
+            участвовать в рассчетах.
+          </Paragraph>
+        </Accordion>
+        <Title :level="6">Матрица прибыли/потерь</Title>
+        <DynamicMatrix v-model="matrix" is-editable/>
+        <Title :level="6">Матрица вероятностей</Title>
+        <DynamicMatrix v-model="probability" is-editable is-one-row/>
+        <Title :level="6">Значение α</Title>
+        <Input isCentered type="number" v-model="optimism"/>
+      </section>
       <Accordion v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Вальда
@@ -305,7 +309,16 @@
           <br/>&nbsp;
         </Paragraph>
       </Accordion>
-      <Code>
+    </main>
+    <section>
+      <Title :level="5">Вывод</Title>
+      <Paragraph>
+        Изучены и исследованы методы принятия решений при отсутствии какой либо информации
+        о связях принимаемых решений и исходов.
+      </Paragraph>
+    </section>
+    <Title :level="5">Приложение (Код методов)</Title>
+    <Code>
         <pre>
 <Emphasis is-bold styled-like="warning">isValid()</Emphasis> {
     if (this.matrix.length) {
@@ -385,24 +398,24 @@
     return `a${temp.indexOf(Math.max(...temp)) + 1}`
 }
         </pre>
-      </Code>
-    </main>
+    </Code>
   </div>
 </template>
 
 
 <script>
-import Title from "@/components/Typography/Title";
-import Paragraph from "@/components/Typography/Paragraph";
-import DynamicMatrix from "@/components/DynamicMatrix";
-import Emphasis from "@/components/Typography/Emphasis";
-import Code from "@/components/Typography/Code";
+import Title from "../../components/Typography/Title";
+import Paragraph from "../../components/Typography/Paragraph";
+import DynamicMatrix from "../../components/DynamicMatrix";
+import Emphasis from "../../components/Typography/Emphasis";
+import Code from "../../components/Typography/Code";
 import Accordion from "../../components/Accordion";
 import StaticMatrix from "../../components/StaticMatrix";
+import Input from "../../components/Typography/Form/Input";
 
 export default {
   name: 'PPRUNLab1',
-  components: {StaticMatrix, Accordion, Code, Emphasis, DynamicMatrix, Paragraph, Title},
+  components: {Input, StaticMatrix, Accordion, Code, Emphasis, DynamicMatrix, Paragraph, Title},
   data() {
     return {
       matrix: [
@@ -599,10 +612,10 @@ export default {
           .map(item => max[i] - item)
       })
     },
-    getMinInRows: function (matrix) {
-      if (!this.isValid) return "0"
-      return matrix.map(row => Math.min(...row))
-    },
+    // getMinInRows: function (matrix) {
+    //   if (!this.isValid) return "0"
+    //   return matrix.map(row => Math.min(...row))
+    // },
     getMaxInRows: function (matrix) {
       if (!this.isValid) return "0"
       return matrix.map(row => Math.max(...row))
@@ -612,13 +625,19 @@ export default {
 </script>
 
 <style scoped lang="scss">
-lab1 {
-  width: 100%;
-}
-
 main {
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding-bottom: var(--gap-small);
+
+  .info{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-small);
+    &.zero-border{
+      border: none !important;
+    }
+  }
 }
 </style>

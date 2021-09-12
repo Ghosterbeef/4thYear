@@ -40,7 +40,7 @@
             v-for="(item,j) in row"
             :key="`${i}+${j}`"
         >
-          <input v-model.number="matrix[i][j]" type="text" @input="$emit('update:modelValue', matrixToWork)">
+          <input v-model.number="matrix[i][j]" type="number" inputmode="decimal" @input="$emit('update:modelValue', matrixToWork)">
         </td>
       </tr>
       <tr>
@@ -85,7 +85,7 @@
         <td class="item empty" v-if="editMode"/>
         <td class="item empty"/>
         <td class="item value" v-for="(item, i) in matrix" :key="`r${i}`">
-          <input v-model.number="matrix[i]" type="text" @input="$emit('update:modelValue', matrixToWork)">
+          <input v-model.number="matrix[i]" type="number" inputmode="decimal" @input="$emit('update:modelValue', matrixToWork)">
         </td>
       </tr>
       </tbody>
@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import Icon from "@/components/Icon";
+import Icon from "./Icon";
 
 export default {
   name: "DynamicMatrix",
@@ -163,7 +163,7 @@ export default {
       })
       if (this.$props.isEqual) {
         this.matrix.push([])
-        this.matrix[0].forEach(item => {
+        this.matrix[0].forEach(() => {
           this.matrix[this.matrix.length - 1].push('')
         })
       }
@@ -185,7 +185,7 @@ export default {
     addRow: function () {
       if (!this.$props.isEqual) {
         this.matrix.push([])
-        this.matrix[0].forEach(item => {
+        this.matrix[0].forEach(() => {
           this.matrix[this.matrix.length - 1].push("")
         })
       } else {
@@ -264,9 +264,9 @@ export default {
 
     .item {
       text-align: center;
-      min-width: 50px;
-      width: 50px;
-      height: 50px;
+      min-width: var(--matrix-item-size);
+      width: var(--matrix-item-size);
+      height: var(--matrix-item-size);
       font-weight: 700;
       font-size: var(--p);
 
@@ -274,6 +274,12 @@ export default {
         width: 100%;
         height: 100%;
         padding: 0;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
       }
 
       &.head, &.aside {

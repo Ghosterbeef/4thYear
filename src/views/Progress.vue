@@ -1,5 +1,9 @@
 <template>
-  <Paragraph v-if="isError" styled-like="danger">При загрузке данных произошла ошибка</Paragraph>
+  <div v-if="isError">
+    <Paragraph v-if="isError" styled-like="danger">При загрузке данных произошла ошибка!</Paragraph>
+    <Paragraph v-if="isError" styled-like="danger">Возможно это связано с политикой Google по отношению к Крыму.</Paragraph>
+    <Paragraph v-if="isError" styled-like="danger">Включите vpn и перезагрузите страницу.</Paragraph>
+  </div>
   <Loader v-if="$store.getters.isLoading && !isError"/>
   <div class="progress" v-else-if="!isError">
     <section class="version">
@@ -41,8 +45,8 @@
 import Title from "../components/Typography/Title";
 import Paragraph from "../components/Typography/Paragraph";
 import List from "../components/Typography/List";
-import Emphasis from "@/components/Typography/Emphasis";
-import Loader from "@/components/Loader";
+import Emphasis from "../components/Typography/Emphasis";
+import Loader from "../components/Loader";
 
 export default {
   name: "Progress",
