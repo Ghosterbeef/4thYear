@@ -25,15 +25,21 @@
       </Allusion>
       <Allusion>
         Icons made by
-        <Link href="https://www.flaticon.com/authors/good-ware" color="dark">Good Ware</Link>
+        <Link href="https://www.flaticon.com/ru/" color="dark">srip</Link>
+        from
+        <Link href="https://www.flaticon.com/ru/" color="dark">www.flaticon.com</Link>
+      </Allusion>
+      <Allusion>
+        Icons made by
+        <Link href="https://icon54.com/" color="dark">Pixel perfect</Link>
         from
         <Link href="https://www.flaticon.com/" color="dark">www.flaticon.com</Link>
       </Allusion>
       <Allusion>
         Icons made by
-        <Link href="https://www.flaticon.com/ru/" color="dark">srip</Link>
+        <Link href="#" color="dark">fjstudio</Link>
         from
-        <Link href="https://www.flaticon.com/ru/" color="dark">www.flaticon.com</Link>
+        <Link href="https://www.flaticon.com/" color="dark">www.flaticon.com</Link>
       </Allusion>
     </footer>
   </div>

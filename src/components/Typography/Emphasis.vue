@@ -47,6 +47,9 @@ export default {
 
 <style scoped lang="scss">
 span {
+  padding: 0 calc(var(--padding-right-left) / 4);
+  border-radius: var(--border-radius-small);
+
   &.en {
     font-family: 'Poppins', sans-serif;
   }

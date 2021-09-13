@@ -38,10 +38,12 @@ export default {
     &::before {
       position: absolute;
       content: "";
-      height: 80%;
-      left: calc(var(--padding-right-left) / 2);
-      border-left: calc(var(--padding-right-left) / 3) solid transparent;
-      top: 10%;
+      height: calc(100% - var(--padding-top-bottom-small));
+      left: calc(var(--padding-universal) / 3);
+      width: calc(var(--padding-universal) / 5);
+      background-color: transparent;
+      border-radius: var(--border-radius-small);
+      top: calc(var(--padding-top-bottom-small) / 2);
     }
   }
 
@@ -50,7 +52,7 @@ export default {
     background-color: $warning-background;
 
     &::before {
-      border-color: $warning-font;
+      background-color: $warning-font;
     }
   }
 
@@ -59,7 +61,7 @@ export default {
     background-color: $danger-background;
 
     &::before {
-      border-color: $danger-font;
+      background-color: $danger-font;
     }
   }
 
@@ -68,7 +70,7 @@ export default {
     background-color: $success-background;
 
     &::before {
-      border-color: $success-font;
+      background-color: $success-font;
     }
   }
 }

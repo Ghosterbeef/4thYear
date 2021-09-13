@@ -2,7 +2,7 @@
   <div class="accordion">
     <div class="accordion__activator" :class="{'active':show}" v-if="$slots.activator" @click="show = !show">
       <span class="controls">
-        <Icon icon="expand" styled-like="warning"/>
+        <Icon icon="expand" size="small" styled-like="warning"/>
       </span>
       <slot name="activator"></slot>
     </div>
@@ -51,8 +51,7 @@ export default {
   perspective: 100000px;
 
   & .controls {
-    height: var(--icon-size);
-    background-color: $bg-sidebar;
+    height: var(--icon-size-small);
     z-index: 100;
     position: absolute;
     right: var(--gap-small);
