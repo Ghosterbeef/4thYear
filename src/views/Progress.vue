@@ -11,7 +11,7 @@
       <List v-if="progressData.inProgress">
         <li v-for="(task, index) in progressData.inProgress.tasks" :key="index">
           <span class="name">
-            <Title :level="6">{{task.name}}</Title>
+            <Title :level="6">{{task.name}}&nbsp;&nbsp;</Title>
             <Emphasis styled-like="danger" lang="en" is-bold is-underline v-if="task.isEpic">Epic</Emphasis>
           </span>
           <Paragraph styled-like="description">

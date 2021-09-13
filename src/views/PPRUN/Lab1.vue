@@ -321,81 +321,88 @@
     <Code>
         <pre>
 <Emphasis is-bold styled-like="warning">isValid()</Emphasis> {
-    if (this.matrix.length) {
-        if (this.matrix.length)
-            return true
+      if (this.matrix.length) {
+        if (this.matrix[0].length)
+          return true
+      }
     }
-}
 
 <Emphasis is-bold styled-like="warning">minInRow</Emphasis>: function() {
-    return this.matrix.map(row => Math.min(...row))
+      if (!this.isValid) return []
+      return this.matrix.map(row => Math.min(...row))
 }
 
 <Emphasis is-bold styled-like="warning">maxInRow</Emphasis>: function() {
-    return this.matrix.map(row => Math.max(...row))
+      if (!this.isValid) return []
+      return this.matrix.map(row => Math.max(...row))
 }
 
 <Emphasis is-bold styled-like="warning">valdaProfit</Emphasis>: function() {
-    if (!this.isValid) return "NaN"
-    const min = this.minInRow
-    return `a${min.indexOf(Math.max(...min)) + 1}`
+      if (!this.isValid) return "NaN"
+      const min = this.minInRow
+      return `Стратегия - a${min.indexOf(Math.max(...min)) + 1}. Причина: ${Math.floor(Math.max(...min).toFixed(5) * 100) / 100}`
 }
 
 <Emphasis is-bold styled-like="warning">valdaLosses</Emphasis>: function() {
-    if (!this.isValid) return "NaN"
-    const max = this.maxInRow
-    return `a${max.indexOf(Math.min(...max)) + 1}`
+      if (!this.isValid) return "NaN"
+      const max = this.maxInRow
+      return `Стратегия - a${max.indexOf(Math.min(...max)) + 1}. Причина: ${Math.floor(Math.min(...max).toFixed(5) * 100) / 100}`
 }
 
 <Emphasis is-bold styled-like="warning">baesaLaplasaTemp</Emphasis>: function() {
-    if (!this.isValid) return "NaN"
-    return this.matrix
+      if (!this.isValid) return []
+      if (this.probability.length &lt; this.matrix.length) return []
+      return this.matrix
         .map((row) => {
-            return row.reduce((prev, val, i) => {
-                return prev + val * this.probability[i]
-            }, 0)
+          return row.reduce((prev, val, i) => {
+            return prev + val * this.probability[i]
+          }, 0)
         })
 }
 
 <Emphasis is-bold styled-like="warning">baesaLaplasaProfit</Emphasis>: function() {
-    if (!this.isValid) return "NaN"
-    const temp = this.baesaLaplasaTemp
-    return `a${temp.indexOf(Math.max(...temp)) + 1}`
+      if (!this.isValid) return "NaN"
+      const temp = this.baesaLaplasaTemp
+      return `Стратегия - a${temp.indexOf(Math.max(...temp)) + 1}. Причина: ${Math.floor(Math.max(...temp) * 100) / 100}`
 }
 
 <Emphasis is-bold styled-like="warning">baesaLaplasaLosses</Emphasis>: function() {
-    if (!this.isValid) return "NaN"
-    const temp = this.baesaLaplasaTemp
-    return `a${temp.indexOf(Math.min(...temp)) + 1}`
+      if (!this.isValid) return "NaN"
+      const temp = this.baesaLaplasaTemp
+      return `Стратегия - a${temp.indexOf(Math.min(...temp)) + 1}. Причина: ${Math.floor(Math.min(...temp) * 100) / 100}`
+}
+
+<Emphasis is-bold styled-like="warning">transpose</Emphasis>: function(matrix) {
+      if (!this.isValid) return []
+      return matrix[0]
+        .map((col, i) => matrix
+          .map(row => row[i]))
 }
 
 <Emphasis is-bold styled-like="warning">Savage</Emphasis>: function() {
-    if (!this.isValid) return "NaN"
-
-    function transpose(matrix) {
-        return matrix[0]
-            .map((col, i) => matrix
-                .map(row => row[i]))
-    }
-
-    const transposed = transpose(this.matrix)
-    const max = transposed.map(row => Math.max(...row))
-    const temp = transpose(transposed
-            .map((row, i) => {
-                return row
-                    .map(item => max[i] - item)
-            }))
+      if (!this.isValid) return "NaN"
+      const transposed = this.transpose(this.matrix)
+      const max = transposed.map(row => Math.max(...row))
+      const temp = this.transpose(transposed
+        .map((row, i) => {
+          return row
+            .map(item => max[i] - item)
+        }))
         .map(row => Math.max(...row))
-    return `a${temp.indexOf(Math.min(...temp)) + 1}`
+      return `Стратегия - a${temp.indexOf(Math.min(...temp)) + 1}. Причина: ${Math.floor(Math.min(...temp) * 100) / 100}`
+}
 
+<Emphasis is-bold styled-like="warning">gurvicCalculations</Emphasis>: function() {
+      if (!this.isValid) return []
+      const min = this.minInRow
+      const max = this.maxInRow
+      return min.map((element, i) => (1 - this.optimism) * element + max[i] * this.optimism)
 }
 
 <Emphasis is-bold styled-like="warning">Gurvic</Emphasis>: function() {
-    if (!this.isValid) return "NaN"
-    const min = this.minInRow
-    const max = this.maxInRow
-    const temp = min.map((element, i) => element + max[i] * this.optimism)
-    return `a${temp.indexOf(Math.max(...temp)) + 1}`
+      if (!this.isValid) return "NaN"
+      const temp = this.gurvicCalculations
+      return `Стратегия - a${temp.indexOf(Math.max(...temp)) + 1}. Причина: ${Math.floor(Math.max(...temp) * 100) / 100}`
 }
         </pre>
     </Code>
@@ -494,7 +501,6 @@ export default {
         }))
         .map(row => Math.max(...row))
       return `Стратегия - a${temp.indexOf(Math.min(...temp)) + 1}. Причина: ${Math.floor(Math.min(...temp) * 100) / 100}`
-
     },
 
     gurvicCalculations: function () {
