@@ -9,7 +9,7 @@
       </Link>
     </Paragraph>
     <Title :level="4">Я не сижу без дела =) Поверьте этому графику!</Title>
-    <LineChart :chart-data="transformData(commits)" :options="chartOptions"/>
+    <LineChartWrapper :data="transformData(commits)"/>
   </div>
 </template>
 
@@ -18,23 +18,38 @@ import Paragraph from "../components/Typography/Paragraph";
 import Title from "../components/Typography/Title";
 import Icon from "../components/Icon";
 import Link from "../components/Typography/Link";
-import {LineChart} from "vue-chart-3";
-import {Chart, registerables} from 'chart.js';
+import LineChartWrapper from "@/components/Charts/LineChartWrapper";
 
-Chart.register(...registerables)
 export default {
   name: "Soon",
-  components: {Link, Icon, Title, Paragraph, LineChart},
+  components: {LineChartWrapper, Link, Icon, Title, Paragraph},
   data() {
     return {
       commits: [],
-      active: [],
-      confirmed: [],
-      recovered: [],
-      deaths: [],
       chartOptions: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            grace: '5%',
+            title: {
+              display: true,
+              text: 'Коммиты'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Дата'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
       }
     }
   },
@@ -61,22 +76,22 @@ export default {
         datasets: [{
           label: "Коммиты",
           data: temp.map(element => element.amount),
-          fill: true,
           backgroundColor: ['rgba(196,243,216,0.5)'],
           pointBackgroundColor: ['#27b062'],
-          tension: 0.2
-        }]
+          tension: 0.2,
+          fill: true
+        },]
       }
-    }
+    },
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .soon {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: stretch;
 }
 </style>
