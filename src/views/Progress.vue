@@ -60,14 +60,14 @@ export default {
   },
   created() {
     this.$store.commit("setIsLoading", {value: true});
-    fetch('https://thingproxy.freeboard.io/fetch/https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
+    fetch('https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
         .then(res => res.json())
         .then(json => {
           this.progressData = json
         }).then(() => this.$store.commit("setIsLoading", {value: false}))
         .catch(
             () => {
-              fetch('https://thingproxy.freeboard.io/fetch/https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
+              fetch('https://ghosterbeefproxy.herokuapp.com/fetch/https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
                   .then(res => res.json())
                   .then(json => {
                     this.progressData = json
