@@ -1,7 +1,8 @@
 <template>
   <div v-if="isError">
     <Paragraph v-if="isError" styled-like="danger">При загрузке данных произошла ошибка!</Paragraph>
-    <Paragraph v-if="isError" styled-like="danger">Возможно это связано с политикой Google по отношению к Крыму.</Paragraph>
+    <Paragraph v-if="isError" styled-like="danger">Возможно это связано с политикой Google по отношению к Крыму.
+    </Paragraph>
     <Paragraph v-if="isError" styled-like="danger">Включите vpn и перезагрузите страницу.</Paragraph>
   </div>
   <Loader v-if="$store.getters.isLoading && !isError"/>
@@ -60,15 +61,24 @@ export default {
   created() {
     this.$store.commit("setIsLoading", {value: true});
     fetch('https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
-      .then(res => res.json())
-      .then(json => {
-        this.progressData = json
-      }).then(() => this.$store.commit("setIsLoading", {value: false}))
-      .catch(
-        () => {
-          this.isError = true
-          this.$store.commit("setIsLoading", {value: false})
-        })
+        .then(res => res.json())
+        .then(json => {
+          this.progressData = json
+        }).then(() => this.$store.commit("setIsLoading", {value: false}))
+        .catch(
+            () => {
+              fetch('https://ghosterbeefproxy.herokuapp.com/fetch/https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
+                  .then(res => res.json())
+                  .then(json => {
+                    this.progressData = json
+                  }).then(() => this.$store.commit("setIsLoading", {value: false}))
+                  .catch(
+                      () => {
+                        this.isError = true
+                        this.$store.commit("setIsLoading", {value: false})
+                      }
+                  )
+            })
   },
   computed: {
     reversedVersions: function () {
