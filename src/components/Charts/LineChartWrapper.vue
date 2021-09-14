@@ -28,7 +28,12 @@ export default {
     },
     options: {
       type: Object,
-      default: {
+      default: {}
+    }
+  },
+  data() {
+    return {
+      options: {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
@@ -52,6 +57,14 @@ export default {
             display: false
           }
         }
+      }
+    }
+  },
+  created() {
+    if (this.$props.options) {
+      this.options = {
+        ...this.options,
+        ...this.$props.options
       }
     }
   },
