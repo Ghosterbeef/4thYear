@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "ui": "vue ui",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy",
+    "ui": "vue ui"
   },
   "dependencies": {
     "chart.js": "^3.5.1",
     "core-js": "^3.17.3",
     "firebase": "^9.0.2",
+    "register-service-worker": "^1.7.1",
     "vue": "^3.2.11",
     "vue-chart-3": "^0.5.8",
     "vue-router": "^4.0.0-0",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-pwa": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
