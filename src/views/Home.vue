@@ -25,12 +25,6 @@
       </Allusion>
       <Allusion>
         Icons made by
-        <Link href="https://www.flaticon.com/ru/" color="dark">srip</Link>
-        from
-        <Link href="https://www.flaticon.com/ru/" color="dark">www.flaticon.com</Link>
-      </Allusion>
-      <Allusion>
-        Icons made by
         <Link href="https://icon54.com/" color="dark">Pixel perfect</Link>
         from
         <Link href="https://www.flaticon.com/" color="dark">www.flaticon.com</Link>
@@ -38,6 +32,12 @@
       <Allusion>
         Icons made by
         <Link href="#" color="dark">fjstudio</Link>
+        from
+        <Link href="https://www.flaticon.com/" color="dark">www.flaticon.com</Link>
+      </Allusion>
+      <Allusion>
+        Icons made by
+        <Link href="https://www.flaticon.com/authors/eucalyp" color="dark">Eucalyp</Link>
         from
         <Link href="https://www.flaticon.com/" color="dark">www.flaticon.com</Link>
       </Allusion>
