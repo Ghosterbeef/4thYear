@@ -8,35 +8,44 @@
   <Loader v-if="$store.getters.isLoading && !isError"/>
   <div class="progress" v-else-if="!isError">
     <section class="version">
-      <Title :level="5">В разработке</Title>
-      <List v-if="progressData.inProgress">
-        <li v-for="(task, index) in progressData.inProgress.tasks" :key="index">
+      <Accordion>
+        <template #activator>
+          <Title :level="5">В разработке</Title>
+        </template>
+        <List v-if="progressData.inProgress">
+          <li v-for="(task, index) in progressData.inProgress.tasks" :key="index">
           <span class="name">
             <Title :level="6">{{task.name}}&nbsp;&nbsp;</Title>
             <Emphasis styled-like="danger" lang="en" is-bold is-underline v-if="task.isEpic">Epic</Emphasis>
           </span>
-          <Paragraph styled-like="description">
-            {{ task.description }}
-          </Paragraph>
-        </li>
-      </List>
+            <Paragraph styled-like="description">
+              {{ task.description }}
+            </Paragraph>
+          </li>
+        </List>
+      </Accordion>
     </section>
     <div v-if="progressData.versions">
       <section class="version" v-for="version in reversedVersions" :key="version.value">
-        <Title :level="5">{{version.value}}</Title>
-        <Title :level="5">Реализовано</Title>
-        <List>
-          <li v-for="(task, index) in version.tasks" :key="index">
+        <Accordion>
+          <template #activator>
+            <Title :level="5">{{version.value}}</Title>
+          </template>
+          <Title :level="5">Реализовано</Title>
+          <List>
+            <li v-for="(task, index) in version.tasks" :key="index">
           <span class="name">
             <Title :level="6">{{task.name}}</Title>
           </span>
-            <div v-if="task.descriptions">
-              <Paragraph v-for="(description, index) in task.descriptions" :key="index" :styled-like="description.type">
-                {{ description.text }}
-              </Paragraph>
-            </div>
-          </li>
-        </List>
+              <div v-if="task.descriptions">
+                <Paragraph v-for="(description, index) in task.descriptions" :key="index"
+                           :styled-like="description.type">
+                  {{ description.text }}
+                </Paragraph>
+              </div>
+            </li>
+          </List>
+        </Accordion>
       </section>
     </div>
   </div>
@@ -48,10 +57,11 @@ import Paragraph from "../components/Typography/Paragraph";
 import List from "../components/Typography/List";
 import Emphasis from "../components/Typography/Emphasis";
 import Loader from "../components/Loader";
+import Accordion from "@/components/Accordion";
 
 export default {
   name: "Progress",
-  components: {Loader, Emphasis, List, Paragraph, Title},
+  components: {Accordion, Loader, Emphasis, List, Paragraph, Title},
   data() {
     return {
       progressData: {},
