@@ -39,6 +39,9 @@ input {
     height: var(--matrix-item-size);
     align-self: center;
     text-align: center;
+    border: 1px solid var(--title-font);
+    background-color: var(--default-background);
+    color: var(--title-font);
   }
 
   &[type="text"], &[type="password"] {
