@@ -11,7 +11,7 @@
     <main>
       <section class="info zero-border">
         <Title :level="5">Данные по варианту</Title>
-        <Accordion>
+        <Accordion color="dark">
           <template v-slot:activator>
             <Paragraph styledLike="danger">
               Соблюдайте правила!
@@ -33,7 +33,7 @@
         <Title :level="6">Значение α</Title>
         <Input isCentered type="number" v-model="optimism"/>
       </section>
-      <Accordion v-if="isValid">
+      <Accordion color="dark" v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Вальда
             <Emphasis styled-like="success" is-bold>Прибыль</Emphasis>
@@ -49,8 +49,8 @@
           .
           <br/>&nbsp;
           <StaticMatrix
-            :matrix="markMinInRows"
-            styled-like="warning"
+              :matrix="markMinInRows"
+              styled-like="warning"
           />
           <br/>&nbsp;
           2. Создаем массив из найденных элементов и среди них находим
@@ -58,23 +58,23 @@
           значение
           <br/>&nbsp;
           <StaticMatrix
-            :axes="{x:'a'}"
-            :matrix="markMaxInRow(minInRow)"
-            is-one-row
-            styled-like="warning"
+              :axes="{x:'a'}"
+              :matrix="markMaxInRow(minInRow)"
+              is-one-row
+              styled-like="warning"
           />
           <br/>&nbsp;
           3. Индекс этого элемента + 1 - правильное решение
           <br/>&nbsp;
           <StaticMatrix
-            :answer="getIndexOfMax(minInRow)+1"
-            :matrix="getRightRow(getIndexOfMax(minInRow))"
-            styled-like="warning"
+              :answer="getIndexOfMax(minInRow)+1"
+              :matrix="getRightRow(getIndexOfMax(minInRow))"
+              styled-like="warning"
           />
           <br/>&nbsp;
         </Paragraph>
       </Accordion>
-      <Accordion v-if="isValid">
+      <Accordion color="dark" v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Вальда
             <Emphasis styled-like="danger" is-bold>Убытки</Emphasis>
@@ -90,8 +90,8 @@
           .
           <br/>&nbsp;
           <StaticMatrix
-            :matrix="markMaxInRows"
-            styled-like="warning"
+              :matrix="markMaxInRows"
+              styled-like="warning"
           />
           <br/>&nbsp;
           2. Создаем массив из найденных элементов и среди них находим
@@ -99,23 +99,23 @@
           значение
           <br/>&nbsp;
           <StaticMatrix
-            :axes="{x:'a'}"
-            :matrix="markMinInRow(maxInRow)"
-            is-one-row
-            styled-like="warning"
+              :axes="{x:'a'}"
+              :matrix="markMinInRow(maxInRow)"
+              is-one-row
+              styled-like="warning"
           />
           <br/>&nbsp;
           3 Индекс этого элемента + 1 - правильное решение
           <br/>&nbsp;
           <StaticMatrix
-            :answer="getIndexOfMin(minInRow)+1"
-            :matrix="getRightRow(getIndexOfMin(minInRow))"
-            styled-like="warning"
+              :answer="getIndexOfMin(minInRow)+1"
+              :matrix="getRightRow(getIndexOfMin(minInRow))"
+              styled-like="warning"
           />
           <br/>&nbsp;
         </Paragraph>
       </Accordion>
-      <Accordion v-if="isValid">
+      <Accordion color="dark" v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Байеса-Лапласа
             <Emphasis styled-like="success" is-bold>Прибыль</Emphasis>
@@ -131,9 +131,9 @@
           .
           <br/>&nbsp;
           <StaticMatrix
-            :axes="{x:'a'}"
-            :matrix="baesaLaplasaTemp"
-            is-one-row
+              :axes="{x:'a'}"
+              :matrix="baesaLaplasaTemp"
+              is-one-row
           />
           <br/>&nbsp;
           2. Формируем матрицу из полученных элементов и находим среди них
@@ -141,15 +141,15 @@
           значение.
           <br/>&nbsp;
           <StaticMatrix
-            :axes="{x:'a'}"
-            styled-like="warning"
-            :matrix="markMaxInRow(baesaLaplasaTemp)"
-            is-one-row
+              :axes="{x:'a'}"
+              styled-like="warning"
+              :matrix="markMaxInRow(baesaLaplasaTemp)"
+              is-one-row
           />
           <br/>&nbsp;
         </Paragraph>
       </Accordion>
-      <Accordion v-if="isValid">
+      <Accordion color="dark" v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Байеса-Лапласа
             <Emphasis styled-like="danger" is-bold>Убытки</Emphasis>
@@ -165,9 +165,9 @@
           .
           <br/>&nbsp;
           <StaticMatrix
-            :axes="{x:'a'}"
-            :matrix="baesaLaplasaTemp"
-            is-one-row
+              :axes="{x:'a'}"
+              :matrix="baesaLaplasaTemp"
+              is-one-row
           />
           <br/>&nbsp;
           2. Формируем матрицу из полученных элементов и находим среди них
@@ -175,15 +175,15 @@
           значение.
           <br/>&nbsp;
           <StaticMatrix
-            :axes="{x:'a'}"
-            styled-like="warning"
-            :matrix="markMinInRow(baesaLaplasaTemp)"
-            is-one-row
+              :axes="{x:'a'}"
+              styled-like="warning"
+              :matrix="markMinInRow(baesaLaplasaTemp)"
+              is-one-row
           />
           <br/>&nbsp;
         </Paragraph>
       </Accordion>
-      <Accordion v-if="isValid">
+      <Accordion color="dark" v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Сэвиджа
             <Emphasis styled-like="success" is-bold>Прибыль</Emphasis>
@@ -195,8 +195,8 @@
           1. Транспонируем матрицу для удобства работы с ней.
           <br/>&nbsp;
           <StaticMatrix
-            :axes="{x:'a', y:'p'}"
-            :matrix="transpose(matrix)"
+              :axes="{x:'a', y:'p'}"
+              :matrix="transpose(matrix)"
           />
           <br/>&nbsp;
           2. Находим
@@ -204,9 +204,9 @@
           значение в каждой строке.
           <br/>&nbsp;
           <StaticMatrix
-            styled-like="warning"
-            :axes="{x:'a', y:'p'}"
-            :matrix="markMaxInRowsF(transpose(matrix))"
+              styled-like="warning"
+              :axes="{x:'a', y:'p'}"
+              :matrix="markMaxInRowsF(transpose(matrix))"
           />
           <br/>&nbsp;
           3. Из каждого элемента строки вычитаем по модулю
@@ -214,14 +214,14 @@
           значение соответствующей строки.
           <br/>&nbsp;
           <StaticMatrix
-            :axes="{x:'a', y:'p'}"
-            :matrix="savageCalculations(transpose(matrix))"
+              :axes="{x:'a', y:'p'}"
+              :matrix="savageCalculations(transpose(matrix))"
           />
           <br/>&nbsp;
           4. Транспонируем матрицу в исходное состояние.
           <br/>&nbsp;
           <StaticMatrix
-            :matrix="transpose(savageCalculations(transpose(matrix)))"
+              :matrix="transpose(savageCalculations(transpose(matrix)))"
           />
           <br/>&nbsp;
           5. Находим
@@ -229,8 +229,8 @@
           значение в каждой строке.
           <br/>&nbsp;
           <StaticMatrix
-            styled-like="warning"
-            :matrix="markMaxInRowsF(transpose(savageCalculations(transpose(matrix))))"
+              styled-like="warning"
+              :matrix="markMaxInRowsF(transpose(savageCalculations(transpose(matrix))))"
           />
           <br/>&nbsp;
           6. Формируем из найденных элементов матрицу и находим среди них
@@ -238,10 +238,10 @@
           значение
           <br/>&nbsp;
           <StaticMatrix
-            styled-like="warning"
-            is-one-row
-            :axes="{x:'a'}"
-            :matrix="markMinInRow(getMaxInRows(transpose(savageCalculations(transpose(matrix)))))"
+              styled-like="warning"
+              is-one-row
+              :axes="{x:'a'}"
+              :matrix="markMinInRow(getMaxInRows(transpose(savageCalculations(transpose(matrix)))))"
           />
           <br/>&nbsp;
           7. Ответ стратегия, содержащая
@@ -249,13 +249,13 @@
           значение
           <br/>&nbsp;
           <StaticMatrix
-            :answer="getIndexOfMin(getMaxInRows(transpose(savageCalculations(transpose(matrix)))))+1"
-            :matrix="getRightRow(getIndexOfMin(getMaxInRows(transpose(savageCalculations(transpose(matrix))))))"
+              :answer="getIndexOfMin(getMaxInRows(transpose(savageCalculations(transpose(matrix)))))+1"
+              :matrix="getRightRow(getIndexOfMin(getMaxInRows(transpose(savageCalculations(transpose(matrix))))))"
           />
           <br/>&nbsp;
         </Paragraph>
       </Accordion>
-      <Accordion v-if="isValid">
+      <Accordion color="dark" v-if="isValid">
         <template v-slot:activator>
           <Paragraph>Метод Гарвика
             <Emphasis :styled-like="optimism > 0.5 ? 'success' : 'danger'" is-bold>
@@ -271,8 +271,8 @@
           значение в каждой строке.
           <br/>&nbsp;
           <StaticMatrix
-            :matrix="markMinInRows"
-            styled-like="warning"
+              :matrix="markMinInRows"
+              styled-like="warning"
           />
           <br/>&nbsp;
           2. Находим
@@ -280,8 +280,8 @@
           значение в каждой строке.
           <br/>&nbsp;
           <StaticMatrix
-            :matrix="markMaxInRows"
-            styled-like="warning"
+              :matrix="markMaxInRows"
+              styled-like="warning"
           />
           <br/>&nbsp;
           3. По формуле (1-α)min(f<sub>ij</sub>)+αmax(f<sub>ij</sub>) прибавляем
@@ -292,10 +292,10 @@
           , умноженному на α.
           <br/>&nbsp;
           <StaticMatrix
-            :axes="{x: 'a'}"
-            :matrix="markMaxInRow(gurvicCalculations)"
-            is-one-row
-            styled-like="warning"
+              :axes="{x: 'a'}"
+              :matrix="markMaxInRow(gurvicCalculations)"
+              is-one-row
+              styled-like="warning"
           />
           <br/>&nbsp;
           4. Выбираем
@@ -303,8 +303,8 @@
           значенеи среди полученных данных. Стратегия, содержащая это значение, является ответом.
           <br/>&nbsp;
           <StaticMatrix
-            :answer="getIndexOfMax(gurvicCalculations)+1"
-            :matrix="getRightRow(getIndexOfMin(gurvicCalculations))"
+              :answer="getIndexOfMax(gurvicCalculations)+1"
+              :matrix="getRightRow(getIndexOfMin(gurvicCalculations))"
           />
           <br/>&nbsp;
         </Paragraph>
@@ -471,11 +471,11 @@ export default {
       if (!this.isValid) return []
       if (this.probability.length < this.matrix.length) return []
       return this.matrix
-        .map((row) => {
-          return row.reduce((prev, val, i) => {
-            return prev + val * this.probability[i]
-          }, 0)
-        })
+          .map((row) => {
+            return row.reduce((prev, val, i) => {
+              return prev + val * this.probability[i]
+            }, 0)
+          })
     },
 
     baesaLaplasaProfit: function () {
@@ -495,11 +495,11 @@ export default {
       const transposed = this.transpose(this.matrix)
       const max = transposed.map(row => Math.max(...row))
       const temp = this.transpose(transposed
-        .map((row, i) => {
-          return row
-            .map(item => max[i] - item)
-        }))
-        .map(row => Math.max(...row))
+          .map((row, i) => {
+            return row
+                .map(item => max[i] - item)
+          }))
+          .map(row => Math.max(...row))
       return `Стратегия - a${temp.indexOf(Math.min(...temp)) + 1}. Причина: ${Math.floor(Math.min(...temp) * 100) / 100}`
     },
 
@@ -522,13 +522,13 @@ export default {
       return this.matrix.map((row) => {
         const min = Math.min(...row)
         return row.map(
-          (item) => {
-            return item === min ? {
-                value: min,
-                marked: true
-              }
-              : item
-          }
+            (item) => {
+              return item === min ? {
+                    value: min,
+                    marked: true
+                  }
+                  : item
+            }
         )
       })
     },
@@ -537,13 +537,13 @@ export default {
       return this.matrix.map((row) => {
         const min = Math.max(...row)
         return row.map(
-          (item) => {
-            return item === min ? {
-                value: min,
-                marked: true
-              }
-              : item
-          }
+            (item) => {
+              return item === min ? {
+                    value: min,
+                    marked: true
+                  }
+                  : item
+            }
         )
       })
     },
@@ -552,33 +552,33 @@ export default {
     transpose: function (matrix) {
       if (!this.isValid) return []
       return matrix[0]
-        .map((col, i) => matrix
-          .map(row => row[i]))
+          .map((col, i) => matrix
+              .map(row => row[i]))
     },
     markMaxInRow: function (row) {
       if (!this.isValid) return []
       const max = Math.max(...row)
       return row.map(
-        (item) => {
-          return item === max ? {
-              value: max,
-              marked: true
-            }
-            : item
-        }
+          (item) => {
+            return item === max ? {
+                  value: max,
+                  marked: true
+                }
+                : item
+          }
       )
     },
     markMinInRow: function (row) {
       if (!this.isValid) return []
       const min = Math.min(...row)
       return row.map(
-        (item) => {
-          return item === min ? {
-              value: min,
-              marked: true
-            }
-            : item
-        }
+          (item) => {
+            return item === min ? {
+                  value: min,
+                  marked: true
+                }
+                : item
+          }
       )
     },
     getIndexOfMax: function (row) {
@@ -600,13 +600,13 @@ export default {
       return matrix.map((row) => {
         const min = Math.max(...row)
         return row.map(
-          (item) => {
-            return item === min ? {
-                value: min,
-                marked: true
-              }
-              : item
-          }
+            (item) => {
+              return item === min ? {
+                    value: min,
+                    marked: true
+                  }
+                  : item
+            }
         )
       })
     },
@@ -615,7 +615,7 @@ export default {
       const max = this.transpose(this.matrix).map(row => Math.max(...row))
       return matrix.map((row, i) => {
         return row
-          .map(item => max[i] - item)
+            .map(item => max[i] - item)
       })
     },
     // getMinInRows: function (matrix) {
@@ -637,11 +637,12 @@ main {
   width: 100%;
   padding-bottom: var(--gap-small);
 
-  .info{
+  .info {
     display: flex;
     flex-direction: column;
     gap: var(--gap-small);
-    &.zero-border{
+
+    &.zero-border {
       border: none !important;
     }
   }

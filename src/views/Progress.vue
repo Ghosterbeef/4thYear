@@ -8,7 +8,7 @@
   <Loader v-if="$store.getters.isLoading && !isError"/>
   <div class="progress" v-else-if="!isError">
     <section class="version">
-      <Accordion>
+      <Accordion color="dark">
         <template #activator>
           <Title :level="5">В разработке</Title>
         </template>
@@ -27,7 +27,7 @@
     </section>
     <div v-if="progressData.versions">
       <section class="version" v-for="version in reversedVersions" :key="version.value">
-        <Accordion>
+        <Accordion color="dark">
           <template #activator>
             <Title :level="5">{{version.value}}</Title>
           </template>
@@ -124,7 +124,7 @@ export default {
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background-color: $bg-sidebar;
+          background-color: var(--title-font);
         }
       }
     }

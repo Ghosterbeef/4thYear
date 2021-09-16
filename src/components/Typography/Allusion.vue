@@ -23,8 +23,8 @@ export default {
   gap: var(--gap-small);
   padding: 0 var(--padding-right-left);
   border-radius: var(--border-radius-small);
-  background-color: $description-background;
-  color: $description-font;
+  background-color: var(--description-background);
+  color: var(--description-font);
   margin-right: 5px;
 }
 </style>

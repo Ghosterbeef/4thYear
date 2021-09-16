@@ -23,7 +23,7 @@ button {
     height: 20px;
     border-radius: 50%;
     border: none;
-    background-color: $bg-sidebar;
+    background-color: var(--bg-sidebar);
   }
 }
 </style>

@@ -26,12 +26,12 @@ export default {
   padding: var(--padding-top-bottom-small) var(--padding-right-left);
   border-radius: var(--border-radius-small);
   position: relative;
-  background-color: $default-background;
-  color: $default-font;
+  background-color: var(--default-background);
+  color: var(--default-font);
 
   &.description {
-    color: $description-font;
-    background-color: $description-background;
+    color: var(--description-font);
+    background-color: var(--description-background);
   }
 
   &.warning, &.danger, &.success {
@@ -48,29 +48,29 @@ export default {
   }
 
   &.warning {
-    color: $warning-font;
-    background-color: $warning-background;
+    color: var(--warning-font);
+    background-color: var(--warning-background);
 
     &::before {
-      background-color: $warning-font;
+      background-color: var(--warning-font);
     }
   }
 
   &.danger {
-    color: $danger-font;
-    background-color: $danger-background;
+    color: var(--danger-font);
+    background-color: var(--danger-background);
 
     &::before {
-      background-color: $danger-font;
+      background-color: var(--danger-font);
     }
   }
 
   &.success {
-    color: $success-font;
-    background-color: $success-background;
+    color: var(--success-font);
+    background-color: var(--success-background);
 
     &::before {
-      background-color: $success-font;
+      background-color: var(--success-font);
     }
   }
 }

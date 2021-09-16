@@ -2,7 +2,7 @@
   <div class="accordion">
     <div class="accordion__activator" :class="{'active':show}" v-if="$slots.activator" @click="show = !show">
       <span class="controls">
-        <Icon icon="expand" size="small" styled-like="warning"/>
+        <Icon icon="expand" size="small" :styled-like="color"/>
       </span>
       <slot name="activator"></slot>
     </div>
@@ -27,6 +27,13 @@ export default {
       type: Boolean,
       default: false
     },
+    color: {
+      type: String,
+      validator(val) {
+        return ["dark", "link"].includes(val)
+      },
+      default: "link"
+    }
   },
   data() {
     return {
