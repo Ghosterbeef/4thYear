@@ -49,7 +49,7 @@ export default {
     styledLike:{
       type: String,
       validator(val){
-        return ["default", "success", "warning", "danger", "description", "link"].includes(val)
+        return ["default", "success", "warning", "danger", "description", "link", "dark"].includes(val)
       },
       default: "default"
     },
@@ -81,36 +81,42 @@ svg {
     height: var(--icon-size-small);
   }
   path{
-    fill: $icon-default;
+    fill: var(--icon-default);
   }
 
   &.success {
     path{
-      fill: $success-font;
+      fill: var(--success-font);
     }
   }
 
   &.warning {
     path{
-      fill: $warning-font;
+      fill: var(--warning-font);
     }
   }
 
   &.danger {
     path{
-      fill: $danger-font;
+      fill: var(--danger-font);
     }
   }
 
   &.description {
     path{
-      fill: $description-font;
+      fill: var(--description-font);
+    }
+  }
+
+  &.dark{
+    path{
+      fill: var(--title-font);
     }
   }
 
   &.link {
     path{
-      fill: $link-light;
+      fill: var(--link-light);
     }
   }
 

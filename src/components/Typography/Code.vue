@@ -15,8 +15,8 @@ export default {
   margin: var(--gap-small) 0;
   padding: var(--padding-universal);
   border-radius: var(--border-radius-small);
-  background-color: $default-background;
-  color: $default-font;
+  background-color: var(--default-background);
+  color: var(--default-font);
   min-width: 100%;
   width: 1px;
   max-width: 100%;

@@ -74,7 +74,7 @@ export default {
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background-color: $bg-sidebar;
+          background-color: var(--bg-sidebar);
         }
       }
     }

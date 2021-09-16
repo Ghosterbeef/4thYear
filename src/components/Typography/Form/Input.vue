@@ -46,7 +46,7 @@ input {
     min-width: 200px;
     max-width: 400px;
     padding: var(--padding-top-bottom-small) var(--padding-right-left);
-    border: 1px solid $link-light;
+    border: 1px solid var(--link-light);
     border-radius: var(--border-radius-small)
   }
 }

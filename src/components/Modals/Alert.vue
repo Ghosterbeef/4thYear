@@ -62,7 +62,7 @@ export default {
   bottom: 0;
   display: flex;
   align-items: center;
-  background-color: $backdrop-color;
+  background-color: var(--backdrop-color);
   z-index: 1001;
   cursor: pointer;
   padding: var(--gap-small);
@@ -72,7 +72,7 @@ export default {
     display: flex;
     gap: var(--gap-small);
     margin: 0 auto;
-    background-color: $default-background;
+    background-color: var(--default-background);
     padding: var(--padding-universal);
     border-radius: var(--border-radius-small);
 
@@ -87,34 +87,34 @@ export default {
     }
 
     &.success {
-      border: 2px solid $success-font;
+      border: 2px solid var(--success-font);
 
       h3 {
-        color: $success-font;
+        color: var(--success-font);
       }
     }
 
     &.warning {
-      border: 2px solid $warning-font;
+      border: 2px solid var(--warning-font);
 
       h3 {
-        color: $warning-font;
+        color: var(--warning-font);
       }
     }
 
     &.danger {
-      border: 2px solid $danger-font;
+      border: 2px solid var(--danger-font);
 
       h3 {
-        color: $danger-font;
+        color: var(--danger-font);
       }
     }
 
     &.description {
-      border: 2px solid $description-font;
+      border: 2px solid var(--description-font);
 
       h3 {
-        color: $description-font;
+        color: var(--description-font);
       }
     }
   }

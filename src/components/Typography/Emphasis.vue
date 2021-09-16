@@ -67,23 +67,23 @@ span {
   }
 
   &.success {
-    color: $success-font;
-    background-color: $success-background;
+    color: var(--success-font);
+    background-color: var(--success-background);
   }
 
   &.warning {
-    color: $warning-font;
-    background-color: $warning-background;
+    color: var(--warning-font);
+    background-color: var(--warning-background);
   }
 
   &.danger {
-    color: $danger-font;
-    background-color: $danger-background;
+    color: var(--danger-font);
+    background-color: var(--danger-background);
   }
 
   &.description {
-    color: $description-font;
-    background-color: $description-background;
+    color: var(--description-font);
+    background-color: var(--description-background);
   }
 }
 </style>

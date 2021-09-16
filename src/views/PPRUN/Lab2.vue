@@ -19,47 +19,50 @@
       </Paragraph>
     </header>
     <main>
-      <table>
-        <thead>
-        <tr>
-          <th rowspan="3">Z<sub>h</sub></th>
-          <th colspan="4">E</th>
-        </tr>
-        <tr>
-          <th colspan="2">e<sub>0</sub></th>
-          <th colspan="2">e<sub>1</sub></th>
-        </tr>
-        <tr>
-          <th>&#952;<sub>0</sub></th>
-          <th>&#952;<sub>1</sub></th>
-          <th>&#952;<sub>0</sub></th>
-          <th>&#952;<sub>1</sub></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>Z<sub>0</sub></td>
-          <td>1,0</td>
-          <td>1,0</td>
-          <td>0,0</td>
-          <td>0,0</td>
-        </tr>
-        <tr>
-          <td>Z<sub>1</sub></td>
-          <td>0,0</td>
-          <td>0,0</td>
-          <td>0,65</td>
-          <td>0,25</td>
-        </tr>
-        <tr>
-          <td>Z<sub>2</sub></td>
-          <td>0,0</td>
-          <td>0,0</td>
-          <td>0,35</td> <!--PZ1Q1-->
-          <td>0,75</td> <!--PZ2Q2-->
-        </tr>
-        </tbody>
-      </table>
+      <section class="info zero-border">
+        <Title :level="5">Данные по варианту</Title>
+        <table>
+          <thead>
+          <tr>
+            <th rowspan="3">Z<sub>h</sub></th>
+            <th colspan="4">E</th>
+          </tr>
+          <tr>
+            <th colspan="2">e<sub>0</sub></th>
+            <th colspan="2">e<sub>1</sub></th>
+          </tr>
+          <tr>
+            <th>&#952;<sub>0</sub></th>
+            <th>&#952;<sub>1</sub></th>
+            <th>&#952;<sub>0</sub></th>
+            <th>&#952;<sub>1</sub></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Z<sub>0</sub></td>
+            <td>1,0</td>
+            <td>1,0</td>
+            <td>0,0</td>
+            <td>0,0</td>
+          </tr>
+          <tr>
+            <td>Z<sub>1</sub></td>
+            <td>0,0</td>
+            <td>0,0</td>
+            <td>0,65</td>
+            <td>0,25</td>
+          </tr>
+          <tr>
+            <td>Z<sub>2</sub></td>
+            <td>0,0</td>
+            <td>0,0</td>
+            <td>0,35</td> <!--PZ1Q1-->
+            <td>0,75</td> <!--PZ2Q2-->
+          </tr>
+          </tbody>
+        </table>
+      </section>
     </main>
   </div>
 </template>
@@ -89,17 +92,34 @@ export default {
 
 <style scoped lang="scss">
 
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: var(--gap-small);
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-small);
+
+    &.zero-border {
+      border: none !important;
+    }
+  }
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
 
   th {
-    border: 1px solid $bg-sidebar;
+    border: 1px solid var(--bg-sidebar);
   }
 
   td {
     text-align: center;
-    border: 1px solid $bg-sidebar;
+    border: 1px solid var(--bg-sidebar);
   }
 
 }

@@ -38,18 +38,18 @@ a {
   }
 
   &.light {
-    color: $link-light;
+    color: var(--link-light);
 
     &.router-link-exact-active {
-      color: darken($link-light, 20%)
+      color: var(--link-light-action)
     }
   }
 
   &.dark {
-    color: $link-dark;
+    color: var(--link-dark);
 
     &.router-link-exact-active {
-      color: darken($link-dark, 20%)
+      color: var(--link-dark-action)
     }
   }
 }

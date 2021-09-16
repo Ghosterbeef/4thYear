@@ -126,42 +126,42 @@ export default {
 
       &.head, &.aside {
         font-size: var(--p);
-        color: $default-font;
-        border: 1px solid $default-font;
-        background-color: $default-background;
+        color: var(--default-font);
+        border: 1px solid var(--default-font);
+        background-color: var(--default-background);
       }
 
       &.value {
         padding: 0;
-        border: 1px solid $default-font;
+        border: 1px solid var(--default-font);
 
         & span {
           text-align: center;
-          background-color: $default-background;
+          background-color: var(--default-background);
           border: none;
 
           &.marked {
             &.success {
-              background-color: $success-font;
-              color: $light-font
+              background-color: var(--success-font);
+              color: var(--light-font)
             }
 
             &.warning {
-              background-color: $warning-font;
+              background-color: var(--warning-font);
             }
 
             &.danger {
-              background-color: $danger-font;
-              color: $light-font
+              background-color: var(--danger-font);
+              color: var(--light-font)
             }
 
             &.description {
-              background-color: $description-font;
-              color: $light-font
+              background-color: var(--description-font);
+              color: var(--light-font)
             }
 
             &.link {
-              background-color: $link-light;
+              background-color: var(--link-light);
             }
           }
         }

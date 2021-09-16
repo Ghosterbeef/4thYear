@@ -220,21 +220,21 @@ export default {
       width: 40px;
       height: 40px;
       cursor: pointer;
-      background-color: $default-background;
-      border: 1px solid $default-font;
+      background-color: var(--default-background);
+      border: 1px solid var(--default-font);
       border-radius: var(--border-radius-small);
       transition: all 0.3s ease;
       position: relative;
 
       &:hover {
-        background-color: darken($default-background, 10%);
+        background-color: var(--default-background-action)
       }
 
       &.remove, &.add {
         &::before, &::after {
           position: absolute;
           content: "";
-          border: 2px solid $danger-font;
+          border: 2px solid var(--danger-font);
           border-radius: 2px;
           height: 80%;
           top: 10%;
@@ -244,7 +244,7 @@ export default {
 
       &.add {
         &::before, &::after {
-          border: 2px solid $success-font !important;
+          border: 2px solid var(--success-font) !important;
           transform: rotate(0deg);
         }
 
@@ -284,17 +284,17 @@ export default {
 
       &.head, &.aside {
         font-size: var(--p);
-        border: 1px solid $default-font;
-        background-color: $default-background;
+        border: 1px solid var(--default-font);
+        background-color: var(--default-background);
       }
 
       &.value {
         padding: 0;
-        border: 1px solid $default-font;
+        border: 1px solid var(--default-font);
 
         & input {
           text-align: center;
-          background-color: $default-background;
+          background-color: var(--default-background);
           border: none;
         }
       }

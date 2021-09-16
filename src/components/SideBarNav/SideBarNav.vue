@@ -1,5 +1,5 @@
 <template>
-  <div class="nav_wrapper" ref="nav_wrapper"  v-click-outside="() => {isMinimized = true}">
+  <div class="nav_wrapper" ref="nav_wrapper" v-click-outside="() => {isMinimized = true}">
     <nav :class="{'minimized': isMinimized}">
       <div class="header" @click="$router.push('/'); isMinimized=true">
         <Icon icon="ghost"/>
@@ -39,6 +39,19 @@
           </Link>
         </li>
       </ul>
+      <VueToggles
+          :value="$store.getters.isDarkTheme"
+          class="theme-toggle"
+          width="50"
+          checked-text="&#127769;"
+          unchecked-text="&#127774;"
+          unchecked-bg="white"
+          checked-bg="hsl(0, 0%, 35%)"
+          dot-color="gold"
+          @click="$store.commit('setIsDarkTheme',
+           {value: !$store.getters.isDarkTheme
+           })"
+      />
     </nav>
     <span class="controls" :class="{'close': !isMinimized}" @click="isMinimized=!isMinimized">
       <span/>
@@ -54,11 +67,12 @@ import Link from "../Typography/Link";
 import Accordion from "@/components/Accordion";
 import Icon from "@/components/Icon";
 import clickOutside from "../../directives/clickOutside";
+import VueToggles from "vue-toggles/src/VueToggles";
 
 export default {
   name: "SideBarNav",
-  components: {Icon, Accordion, Link, Title},
-  directives:{
+  components: {Icon, Accordion, Link, Title, VueToggles},
+  directives: {
     "click-outside": clickOutside
   },
   data() {
@@ -82,15 +96,22 @@ export default {
 
 <style scoped lang="scss">
 nav {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: var(--sidebar-nav-width);
   height: 100%;
-  background-color: $bg-sidebar;
+  background-color: var(--bg-sidebar);
   padding: var(--padding-universal);
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.7, -0.51, 0.35, 1.79);
+
+  .theme-toggle {
+    position: absolute;
+    bottom: var(--gap-big);
+    left: var(--gap-small);
+  }
 
   &.minimized {
     width: var(--sidebar-nav-min-width);
@@ -120,7 +141,7 @@ nav {
       display: flex;
       align-items: center;
       gap: var(--gap-big);
-      color: $link-light;
+      color: var(--link-light);
       cursor: pointer;
     }
 
@@ -147,7 +168,7 @@ nav {
     height: var(--icon-size);
     top: var(--padding-universal);
     left: calc(100% + var(--padding-universal));
-    background-color: $bg-sidebar;
+    background-color: var(--bg-sidebar);
     border-radius: var(--border-radius-small);
     z-index: 100;
     cursor: pointer;
@@ -158,7 +179,7 @@ nav {
       position: absolute;
       height: 5%;
       width: 80%;
-      background-color: $icon-default;
+      background-color: var(--icon-default);
       transition: all 0.3s ease;
 
       &:first-child {
