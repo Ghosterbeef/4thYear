@@ -286,6 +286,7 @@ export default {
         font-size: var(--p);
         border: 1px solid var(--default-font);
         background-color: var(--default-background);
+        color: var(--title-font);
       }
 
       &.value {
@@ -296,6 +297,7 @@ export default {
           text-align: center;
           background-color: var(--default-background);
           border: none;
+          color: var(--title-font);
         }
       }
 

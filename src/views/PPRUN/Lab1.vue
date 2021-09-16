@@ -50,7 +50,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :matrix="markMinInRows"
-              styled-like="warning"
+              styled-like="link"
           />
           <br/>&nbsp;
           2. Создаем массив из найденных элементов и среди них находим
@@ -61,7 +61,7 @@
               :axes="{x:'a'}"
               :matrix="markMaxInRow(minInRow)"
               is-one-row
-              styled-like="warning"
+              styled-like="link"
           />
           <br/>&nbsp;
           3. Индекс этого элемента + 1 - правильное решение
@@ -69,7 +69,7 @@
           <StaticMatrix
               :answer="getIndexOfMax(minInRow)+1"
               :matrix="getRightRow(getIndexOfMax(minInRow))"
-              styled-like="warning"
+              styled-like="link"
           />
           <br/>&nbsp;
         </Paragraph>
@@ -91,7 +91,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :matrix="markMaxInRows"
-              styled-like="warning"
+              styled-like="link"
           />
           <br/>&nbsp;
           2. Создаем массив из найденных элементов и среди них находим
@@ -102,7 +102,7 @@
               :axes="{x:'a'}"
               :matrix="markMinInRow(maxInRow)"
               is-one-row
-              styled-like="warning"
+              styled-like="link"
           />
           <br/>&nbsp;
           3 Индекс этого элемента + 1 - правильное решение
@@ -110,7 +110,7 @@
           <StaticMatrix
               :answer="getIndexOfMin(minInRow)+1"
               :matrix="getRightRow(getIndexOfMin(minInRow))"
-              styled-like="warning"
+              styled-like="link"
           />
           <br/>&nbsp;
         </Paragraph>
@@ -142,7 +142,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :axes="{x:'a'}"
-              styled-like="warning"
+              styled-like="link"
               :matrix="markMaxInRow(baesaLaplasaTemp)"
               is-one-row
           />
@@ -176,7 +176,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :axes="{x:'a'}"
-              styled-like="warning"
+              styled-like="link"
               :matrix="markMinInRow(baesaLaplasaTemp)"
               is-one-row
           />
@@ -204,7 +204,7 @@
           значение в каждой строке.
           <br/>&nbsp;
           <StaticMatrix
-              styled-like="warning"
+              styled-like="link"
               :axes="{x:'a', y:'p'}"
               :matrix="markMaxInRowsF(transpose(matrix))"
           />
@@ -229,7 +229,7 @@
           значение в каждой строке.
           <br/>&nbsp;
           <StaticMatrix
-              styled-like="warning"
+              styled-like="link"
               :matrix="markMaxInRowsF(transpose(savageCalculations(transpose(matrix))))"
           />
           <br/>&nbsp;
@@ -238,7 +238,7 @@
           значение
           <br/>&nbsp;
           <StaticMatrix
-              styled-like="warning"
+              styled-like="link"
               is-one-row
               :axes="{x:'a'}"
               :matrix="markMinInRow(getMaxInRows(transpose(savageCalculations(transpose(matrix)))))"
@@ -272,7 +272,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :matrix="markMinInRows"
-              styled-like="warning"
+              styled-like="link"
           />
           <br/>&nbsp;
           2. Находим
@@ -281,7 +281,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :matrix="markMaxInRows"
-              styled-like="warning"
+              styled-like="link"
           />
           <br/>&nbsp;
           3. По формуле (1-α)min(f<sub>ij</sub>)+αmax(f<sub>ij</sub>) прибавляем
@@ -295,7 +295,7 @@
               :axes="{x: 'a'}"
               :matrix="markMaxInRow(gurvicCalculations)"
               is-one-row
-              styled-like="warning"
+              styled-like="link"
           />
           <br/>&nbsp;
           4. Выбираем
