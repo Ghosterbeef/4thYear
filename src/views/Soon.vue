@@ -52,7 +52,6 @@ export default {
   async created() {
     const github = await fetch('https://api.github.com/repos/Ghosterbeef/4thYear/stats/commit_activity').then(res => res.json())
     const github1 = await fetch('https://api.github.com/repos/Ghosterbeef/4thYear/stats/code_frequency').then(res => res.json())
-    console.log(github1)
     const firstWeek = github.findIndex(i => i.total !== 0)
     github.splice(0, firstWeek)
     const date = new Date(github[0].week * 1000)

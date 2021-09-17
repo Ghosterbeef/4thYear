@@ -31,7 +31,13 @@
         <Title :level="6">Матрица вероятностей</Title>
         <DynamicMatrix v-model="probability" is-editable is-one-row/>
         <Title :level="6">Значение α</Title>
-        <Input isCentered type="number" v-model="optimism"/>
+        <div class="line">
+          <Input isCentered type="number" v-model="optimism" :step="0.1"/>
+          <Emphasis
+              :styled-like="optimism > 0.5 ? 'success' : 'danger'"
+          >{{ optimism > 0.5 ? 'Оптимизм' : 'Пессимизм' }}
+          </Emphasis>
+        </div>
       </section>
       <Accordion color="dark" v-if="isValid">
         <template v-slot:activator>
@@ -50,7 +56,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :matrix="markMinInRows"
-              styled-like="link"
+              styled-like="warning"
           />
           <br/>&nbsp;
           2. Создаем массив из найденных элементов и среди них находим
@@ -61,7 +67,7 @@
               :axes="{x:'a'}"
               :matrix="markMaxInRow(minInRow)"
               is-one-row
-              styled-like="link"
+              styled-like="warning"
           />
           <br/>&nbsp;
           3. Индекс этого элемента + 1 - правильное решение
@@ -69,7 +75,7 @@
           <StaticMatrix
               :answer="getIndexOfMax(minInRow)+1"
               :matrix="getRightRow(getIndexOfMax(minInRow))"
-              styled-like="link"
+              styled-like="warning"
           />
           <br/>&nbsp;
         </Paragraph>
@@ -91,7 +97,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :matrix="markMaxInRows"
-              styled-like="link"
+              styled-like="warning"
           />
           <br/>&nbsp;
           2. Создаем массив из найденных элементов и среди них находим
@@ -102,7 +108,7 @@
               :axes="{x:'a'}"
               :matrix="markMinInRow(maxInRow)"
               is-one-row
-              styled-like="link"
+              styled-like="warning"
           />
           <br/>&nbsp;
           3 Индекс этого элемента + 1 - правильное решение
@@ -110,7 +116,7 @@
           <StaticMatrix
               :answer="getIndexOfMin(minInRow)+1"
               :matrix="getRightRow(getIndexOfMin(minInRow))"
-              styled-like="link"
+              styled-like="warning"
           />
           <br/>&nbsp;
         </Paragraph>
@@ -142,7 +148,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :axes="{x:'a'}"
-              styled-like="link"
+              styled-like="warning"
               :matrix="markMaxInRow(baesaLaplasaTemp)"
               is-one-row
           />
@@ -176,7 +182,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :axes="{x:'a'}"
-              styled-like="link"
+              styled-like="warning"
               :matrix="markMinInRow(baesaLaplasaTemp)"
               is-one-row
           />
@@ -204,7 +210,7 @@
           значение в каждой строке.
           <br/>&nbsp;
           <StaticMatrix
-              styled-like="link"
+              styled-like="warning"
               :axes="{x:'a', y:'p'}"
               :matrix="markMaxInRowsF(transpose(matrix))"
           />
@@ -229,7 +235,7 @@
           значение в каждой строке.
           <br/>&nbsp;
           <StaticMatrix
-              styled-like="link"
+              styled-like="warning"
               :matrix="markMaxInRowsF(transpose(savageCalculations(transpose(matrix))))"
           />
           <br/>&nbsp;
@@ -238,7 +244,7 @@
           значение
           <br/>&nbsp;
           <StaticMatrix
-              styled-like="link"
+              styled-like="warning"
               is-one-row
               :axes="{x:'a'}"
               :matrix="markMinInRow(getMaxInRows(transpose(savageCalculations(transpose(matrix)))))"
@@ -257,10 +263,8 @@
       </Accordion>
       <Accordion color="dark" v-if="isValid">
         <template v-slot:activator>
-          <Paragraph>Метод Гарвика
-            <Emphasis :styled-like="optimism > 0.5 ? 'success' : 'danger'" is-bold>
-              {{ optimism > 0.5 ? 'Приыль' : 'Убытки' }}
-            </Emphasis>
+          <Paragraph>Метод Гурвица
+            <Emphasis styled-like="success" is-bold>Прибыль</Emphasis>
             :
             <Emphasis styled-like="description" is-bold>{{ Gurvic }}</Emphasis>
           </Paragraph>
@@ -272,7 +276,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :matrix="markMinInRows"
-              styled-like="link"
+              styled-like="warning"
           />
           <br/>&nbsp;
           2. Находим
@@ -281,7 +285,7 @@
           <br/>&nbsp;
           <StaticMatrix
               :matrix="markMaxInRows"
-              styled-like="link"
+              styled-like="warning"
           />
           <br/>&nbsp;
           3. По формуле (1-α)min(f<sub>ij</sub>)+αmax(f<sub>ij</sub>) прибавляем
@@ -295,7 +299,7 @@
               :axes="{x: 'a'}"
               :matrix="markMaxInRow(gurvicCalculations)"
               is-one-row
-              styled-like="link"
+              styled-like="warning"
           />
           <br/>&nbsp;
           4. Выбираем
@@ -641,6 +645,13 @@ main {
     display: flex;
     flex-direction: column;
     gap: var(--gap-small);
+
+    .line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--gap-small);
+    }
 
     &.zero-border {
       border: none !important;

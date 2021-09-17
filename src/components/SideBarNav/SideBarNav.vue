@@ -110,7 +110,8 @@ nav {
   .theme-toggle {
     position: absolute;
     bottom: var(--gap-big);
-    left: var(--gap-small);
+    left: calc(var(--padding-universal) / 2);
+    transition: all 0.3s ease;
   }
 
   &.minimized {
@@ -213,6 +214,17 @@ nav {
 
     &:hover {
       opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: $sm) {
+    .theme-toggle {
+      height: max-content;
+      transform: rotate(-90deg) translateY(-32%);
+
+      /deep/ .text{
+        transform: rotate(90deg);
+      }
     }
   }
 }

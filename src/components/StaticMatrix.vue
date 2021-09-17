@@ -11,7 +11,7 @@
       </thead>
       <tbody>
       <tr v-for="(row, i) in matrix" :key="`r${i+1}`">
-        <td class="item aside">{{ axes.y }}{{answer < 0 ? i+1 : answer}}</td>
+        <td class="item aside">{{ axes.y }}{{ answer < 0 ? i + 1 : answer }}</td>
         <td class="item value"
             v-for="(item,j) in row"
             :key="`${i}+${j}`"
@@ -26,7 +26,7 @@
       <thead>
       <tr>
         <th class="item head" v-for="(item,i) in this.matrix" :key="`h${i}`">
-          {{ axes.x }}{{ i+1 }}
+          {{ axes.x }}{{ i + 1 }}
         </th>
       </tr>
       </thead>
@@ -147,7 +147,8 @@ export default {
             }
 
             &.warning {
-              background-color: var(--warning-font);
+              background-color: var(--warning-background);
+              color: var(--warning-font);
             }
 
             &.danger {

@@ -8,9 +8,11 @@
   >
     <LineChart
         :chart-data="data"
-        :options="options"
+        :options="innerOptions"
     />
-    <span ref="cursor" class="cursor"/>
+    <teleport to="body">
+      <span ref="cursor" class="cursor"/>
+    </teleport>
   </div>
 </template>
 
@@ -33,7 +35,7 @@ export default {
   },
   data() {
     return {
-      options: {
+      innerOptions: {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
@@ -62,8 +64,8 @@ export default {
   },
   created() {
     if (this.$props.options) {
-      this.options = {
-        ...this.options,
+      this.innerOptions = {
+        ...this.innerOptions,
         ...this.$props.options
       }
     }
