@@ -86,6 +86,7 @@ export default {
         datasets: [{
           label: "Коммиты",
           data: temp.map(element => element.amount),
+          borderColor: ['rgb(160,239,201)'],
           backgroundColor: ['rgba(196,243,216,0.5)'],
           pointBackgroundColor: ['#27b062'],
           tension: 0.2,
