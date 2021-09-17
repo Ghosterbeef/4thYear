@@ -1,5 +1,5 @@
 <template>
-  <teleport to="body">
+  <teleport to="#content">
     <div class="backdrop" @click="$emit('clickOutside')">
       <div class="alert" :class="[styledLike]">
         <slot name="icon">
@@ -63,7 +63,7 @@ export default {
   display: flex;
   align-items: center;
   background-color: var(--backdrop-color);
-  z-index: 1001;
+  z-index: 100;
   cursor: pointer;
   padding: var(--gap-small);
 

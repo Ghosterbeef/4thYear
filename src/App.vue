@@ -1,6 +1,6 @@
 <template>
   <SideBarNav/>
-  <div class="content" :class="{'dark-theme' : $store.getters.isDarkTheme}">
+  <div id="content" class="content" :class="{'dark-theme' : $store.getters.isDarkTheme}">
     <div class="content_wrapper">
       <router-view/>
     </div>
@@ -53,6 +53,7 @@ html, body {
       padding-right: var(--padding-right-app);
       background-color: var(--default-background);
       transition: all 0.3s ease;
+      position: relative;
 
       .content_wrapper {
         display: flex;

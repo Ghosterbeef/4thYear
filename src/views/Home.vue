@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <main>
-      <Title lang="en">4thYear</Title>
+      <Title :level="0" lang="en" is-centered color="logo">4thYear</Title>
       <Paragraph styled-like="description">
         Веб приложение созданное
         <Emphasis lang="en">Ghosterbeef</Emphasis>

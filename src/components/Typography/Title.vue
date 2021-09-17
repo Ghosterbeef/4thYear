@@ -1,4 +1,7 @@
 <template>
+    <span v-fit2box v-if="level === 0" :class="[lang, color, {'centered': isCentered}]">
+      <slot></slot>
+    </span>
   <h1 v-if="level === 1" :class="[lang,color, {'centered': isCentered}]">
     <slot></slot>
   </h1>
@@ -20,13 +23,16 @@
 </template>
 
 <script>
-
+import Fit2Box from 'vue-fit2box'
 export default {
   name: "Title",
+  directives: {
+    'fit2box' : Fit2Box
+  },
   props: {
     level: {
       validator(value) {
-        return [1, 2, 3, 4, 5, 6].includes(value)
+        return [0, 1, 2, 3, 4, 5, 6].includes(value)
       },
       default: 1
     },
@@ -38,7 +44,7 @@ export default {
     },
     color: {
       validator(value) {
-        return ["dark", "light"].includes(value)
+        return ["dark", "light", "logo"].includes(value)
       },
       default: "dark"
     },
@@ -51,22 +57,30 @@ export default {
 </script>
 
 <style scoped lang="scss">
-h1, h2, h3, h4, h5, h6 {
+span, h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 
   &.en {
     font-family: 'Poppins', sans-serif;
   }
 
-  &.dark{
+  &.dark {
     color: var(--title-font);
   }
 
-  &.light{
+  &.light {
     color: whitesmoke;
   }
 
-  &.centered{
+  &.logo {
+    display: block;
+    background: rgb(255, 215, 0);
+    background: linear-gradient(135deg, var(--logo-color1) 0%, var(--logo-color2) 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  &.centered {
     text-align: center;
   }
 }
