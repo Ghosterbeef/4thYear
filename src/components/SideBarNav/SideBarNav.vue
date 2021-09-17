@@ -222,7 +222,7 @@ nav {
       height: max-content;
       transform: rotate(-90deg) translateY(-32%);
 
-      deep(.text){
+      ::v-deep(.text){
         transform: rotate(90deg);
       }
     }
