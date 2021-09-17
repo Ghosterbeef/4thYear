@@ -5,7 +5,7 @@ export default createStore({
     state: {
         isLoading: false,
         isDarkTheme: false,
-        isLocalhost: window.location.hostname === 'localhost'
+        isLocalhost: window.location.hostname !== 'localhost'
     },
     mutations: {
         setIsLoading: (state, {value}) => {

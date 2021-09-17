@@ -4,6 +4,7 @@
     :type="type"
     :inputmode="type==='number' ? 'decimal': undefined"
     :value="modelValue"
+    :step="step"
     @input="$emit('update:modelValue', $event.target.value)">
 </template>
 
@@ -27,6 +28,10 @@ export default {
     isCentered: {
       type: Boolean,
       default: false,
+    },
+    step: {
+      type: Number,
+      default: 1
     }
   }
 }
