@@ -40,6 +40,9 @@ export default {
         maintainAspectRatio: false,
         scales: {
           y: {
+            grid: {
+              color: "hsl(0, 0%, 70%)"
+            },
             beginAtZero: true,
             grace: '5%',
             title: {
@@ -48,6 +51,9 @@ export default {
             }
           },
           x: {
+            grid: {
+              color: "hsl(0, 0%, 70%)"
+            },
             title: {
               display: true,
               text: 'Дата'

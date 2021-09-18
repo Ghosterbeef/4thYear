@@ -26,10 +26,24 @@
       </Accordion>
     </section>
     <div v-if="progressData.versions">
-      <section class="version" v-for="version in reversedVersions" :key="version.value">
+      <section class="version" v-for="(version,i) in reversedVersions" :key="version.value">
         <Accordion color="dark">
           <template #activator>
-            <Title :level="5">{{version.value}}</Title>
+            <Title :level="5">
+              {{version.value}}
+              <Emphasis
+              styled-like="success"
+              v-if="version.value === $store.getters.getVersion"
+              >
+                Текущая версия
+              </Emphasis>
+              <Emphasis
+              styled-like="danger"
+              v-else-if="i === 0"
+              >
+              Ожидается
+              </Emphasis>
+            </Title>
           </template>
           <Title :level="5">Реализовано</Title>
           <List>

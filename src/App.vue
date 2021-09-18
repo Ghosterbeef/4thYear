@@ -1,6 +1,7 @@
 <template>
   <SideBarNav/>
   <div id="content" class="content" :class="{'dark-theme' : $store.getters.isDarkTheme}">
+    <HeaderNotification v-show="$store.getters.getHeaderAlert.text"/>
     <div class="content_wrapper">
       <router-view/>
     </div>
@@ -10,9 +11,19 @@
 <script>
 import SideBarNav from "./components/SideBarNav/SideBarNav";
 import Title from "./components/Typography/Title";
+import HeaderNotification from "@/components/Modals/HeaderNotification";
 
 export default {
-  components: {Title, SideBarNav}
+  components: {HeaderNotification, Title, SideBarNav},
+  mounted() {
+    if (this.$store.getters.getCheckedVersion !== this.$store.getters.getVersion) {
+      this.$store.commit('setHeaderAlert', {
+        text: 'С вашего последнего визита кое-что изменилось.' +
+            ' Посмотрите пачноут обновления на странице прогресса.',
+        action: 'setCheckedVersion'
+      })
+    }
+  }
 }
 </script>
 
@@ -46,6 +57,7 @@ html, body {
 
     .content {
       display: flex;
+      flex-direction: column;
       width: 100%;
       max-width: 100%;
       overflow-y: auto;

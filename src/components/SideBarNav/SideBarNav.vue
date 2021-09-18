@@ -33,6 +33,7 @@
           </Link>
         </li>
         <li>
+          <span class="attention" v-if="$store.getters.getHeaderAlert.text">!</span>
           <Link to="/progress" has-icon @click="isMinimized=true">
             <Icon icon="progress" styled-like="link"/>
             <span>Прогресс</span>
@@ -113,6 +114,28 @@ nav {
     left: calc(var(--padding-universal) / 2);
     transition: all 0.3s ease;
   }
+
+  li {
+    position: relative;
+
+    .attention {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: calc(var(--icon-size) - 5px);
+      top: -5px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: var(--danger-font);
+      color: var(--danger-background);
+      font-size: 10px;
+      line-height: 11px;
+      font-weight: bold;
+    }
+  }
+
 
   &.minimized {
     width: var(--sidebar-nav-min-width);
@@ -222,7 +245,7 @@ nav {
       height: max-content;
       transform: rotate(-90deg) translateY(-32%);
 
-      ::v-deep(.text){
+      ::v-deep(.text) {
         transform: rotate(90deg);
       }
     }
