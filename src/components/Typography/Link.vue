@@ -41,7 +41,11 @@ a {
     color: var(--link-light);
 
     &.router-link-exact-active {
-      color: var(--link-light-action)
+      color: var(--link-light-action);
+
+      ::v-deep(path){
+        fill: var(--link-light-action);
+      }
     }
   }
 
@@ -49,7 +53,11 @@ a {
     color: var(--link-dark);
 
     &.router-link-exact-active {
-      color: var(--link-dark-action)
+      color: var(--link-dark-action);
+
+      ::v-deep(path){
+        fill: var(--link-dark-action);
+      }
     }
   }
 }

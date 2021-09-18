@@ -33,7 +33,10 @@
           </Link>
         </li>
         <li>
-          <span class="attention" v-if="$store.getters.getHeaderAlert.text">!</span>
+          <span class="attention"
+                v-if="$store.getters.getCheckedVersion !== $store.getters.getVersion"
+          >!
+          </span>
           <Link to="/progress" has-icon @click="isMinimized=true">
             <Icon icon="progress" styled-like="link"/>
             <span>Прогресс</span>
@@ -41,21 +44,20 @@
         </li>
       </ul>
       <VueToggles
-          :value="$store.getters.isDarkTheme"
-          class="theme-toggle"
-          width="50"
-          checked-text="&#127769;"
-          unchecked-text="&#127774;"
-          unchecked-bg="white"
-          checked-bg="hsl(0, 0%, 35%)"
-          dot-color="gold"
-          @click="$store.commit('setIsDarkTheme',
+        :value="$store.getters.isDarkTheme"
+        class="theme-toggle"
+        width="50"
+        checked-text="&#127769;"
+        unchecked-text="&#127774;"
+        unchecked-bg="white"
+        checked-bg="hsl(0, 0%, 35%)"
+        dot-color="gold"
+        @click="$store.commit('setIsDarkTheme',
            {value: !$store.getters.isDarkTheme
            })"
       />
     </nav>
     <span class="controls" :class="{'close': !isMinimized}" @click="isMinimized=!isMinimized">
-      <span/>
       <span/>
       <span/>
     </span>
@@ -190,47 +192,41 @@ nav {
     align-items: center;
     width: var(--icon-size);
     height: var(--icon-size);
-    top: var(--padding-universal);
+    bottom: var(--padding-universal);
     left: calc(100% + var(--padding-universal));
     background-color: var(--bg-sidebar);
     border-radius: var(--border-radius-small);
     z-index: 100;
     cursor: pointer;
     opacity: 0.6;
-    transition: all 0.3s ease;
 
     span {
       position: absolute;
-      height: 5%;
-      width: 80%;
+      height: 10%;
+      width: 52%;
+      border-radius: var(--border-radius-small);
       background-color: var(--icon-default);
       transition: all 0.3s ease;
 
       &:first-child {
         top: 30%;
-        height: 5%;
+        transform: rotate(45deg);
       }
 
       &:last-child {
         bottom: 30%;
-        height: 6%;
+        transform: rotate(-45deg);
       }
     }
 
     &.close {
       span {
         &:first-child {
-          top: auto;
-          transform: rotate(45deg);
-        }
-
-        &:nth-child(2) {
-          width: 0;
+          transform: rotate(135deg);
         }
 
         &:last-child {
-          bottom: auto;
-          transform: rotate(-45deg);
+          transform: rotate(-135deg);
         }
       }
     }

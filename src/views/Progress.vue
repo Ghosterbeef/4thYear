@@ -26,7 +26,7 @@
       </Accordion>
     </section>
     <div v-if="progressData.versions">
-      <section class="version" v-for="(version,i) in reversedVersions" :key="version.value">
+      <section class="version" v-for="(version,i) in reversedVersions" :key="version.value" @click="setPatchNoteChecked(version.value)">
         <Accordion color="dark">
           <template #activator>
             <Title :level="5">
@@ -107,6 +107,12 @@ export default {
   computed: {
     reversedVersions: function () {
       return this.progressData.versions.reverse()
+    }
+  },
+  methods: {
+    setPatchNoteChecked: function (value) {
+      if (value !== this.$store.getters.getVersion) return
+      this.$store.commit('setCheckedVersion')
     }
   }
 }

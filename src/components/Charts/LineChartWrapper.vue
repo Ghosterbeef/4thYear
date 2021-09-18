@@ -1,14 +1,14 @@
 <template>
   <div
-      ref="wrapper"
-      class="chart_wrapper"
-      @mouseenter="enter"
-      @mousemove="move($event)"
-      @mouseleave="leave"
+    ref="wrapper"
+    class="chart_wrapper"
+    @mouseenter="enter"
+    @mousemove="move($event)"
+    @mouseleave="leave"
   >
     <LineChart
-        :chart-data="data"
-        :options="innerOptions"
+      :chart-data="data"
+      :options="innerOptions"
     />
     <teleport to="body">
       <span ref="cursor" class="cursor"/>
@@ -47,7 +47,16 @@ export default {
             grace: '5%',
             title: {
               display: true,
-              text: 'Коммиты'
+              text: 'Коммиты',
+              color: "hsl(0, 0%, 70%)",
+              font: {
+                size: 16,
+                family: 'sans-serif',
+                weight: 'bold',
+              }
+            },
+            ticks: {
+              color: "hsl(0, 0%, 70%)",
             }
           },
           x: {
@@ -56,7 +65,16 @@ export default {
             },
             title: {
               display: true,
-              text: 'Дата'
+              text: 'Дата',
+              color: "hsl(0, 0%, 70%)",
+              font: {
+                size: 16,
+                family: 'sans-serif',
+                weight: 'bold',
+              }
+            },
+            ticks: {
+              color: "hsl(0, 0%, 70%)",
             }
           }
         },
