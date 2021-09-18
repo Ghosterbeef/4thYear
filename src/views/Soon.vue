@@ -34,15 +34,39 @@ export default {
       codeOptions: {
         scales: {
           y: {
+            grid: {
+              color: "hsl(0, 0%, 70%)"
+            },
             title: {
               display: true,
-              text: 'Количество строк'
+              text: 'Количество строк',
+              color: "hsl(0, 0%, 70%)",
+              font: {
+                size: 16,
+                family: 'sans-serif',
+                weight: 'bold',
+              }
+            },
+            ticks: {
+              color: "hsl(0, 0%, 70%)",
             }
           },
           x: {
+            grid: {
+              color: "hsl(0, 0%, 70%)"
+            },
             title: {
               display: true,
-              text: 'Дата'
+              text: 'Дата',
+              color: "hsl(0, 0%, 70%)",
+              font: {
+                size: 16,
+                family: 'sans-serif',
+                weight: 'bold',
+              }
+            },
+            ticks: {
+              color: "hsl(0, 0%, 70%)",
             }
           }
         },

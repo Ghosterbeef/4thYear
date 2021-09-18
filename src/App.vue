@@ -18,9 +18,10 @@ export default {
   mounted() {
     if (this.$store.getters.getCheckedVersion !== this.$store.getters.getVersion) {
       this.$store.commit('setHeaderAlert', {
-        text: 'С вашего последнего визита кое-что изменилось.' +
-            ' Посмотрите пачноут обновления на странице прогресса.',
-        action: 'setCheckedVersion'
+        text: `Новая версия приложения уже здесь!. Посмотрите патчноут обновления на странице прогресса.`,
+        action: 'muteCheckedVersion',
+        styledLike: 'warning',
+        redirect: '/progress'
       })
     }
   }
@@ -70,7 +71,6 @@ html, body {
       .content_wrapper {
         display: flex;
         flex-direction: column;
-        justify-self: center;
         width: 80%;
         max-width: 1200px;
         min-width: min-content;
@@ -87,8 +87,8 @@ html, body {
     #app {
       .content {
         .content_wrapper {
-          margin: 10px;
-          width: 100%;
+          margin: var(--padding-top-bottom-small) auto;
+          width: 97%;
         }
       }
     }

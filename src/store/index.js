@@ -1,55 +1,52 @@
 import {createStore} from 'vuex'
-import auth from './auth'
+import auth from './Modules/auth'
+import modals from "./Modules/modals";
 
 export default createStore({
-    state: {
-        isLoading: false,
-        isDarkTheme: false,
-        isLocalhost: window.location.hostname !== 'localhost',
-        currentVersion: "0.2.5",
-        checkedVersion: localStorage.getItem('checkedVersion'),
-        HeaderAlert: {
-            message: ''
-        }
+  state: {
+    isLoading: false,
+    isDarkTheme: JSON.parse(localStorage.getItem('isDarkTheme')),
+    isLocalhost: window.location.hostname !== 'localhost',
+    currentVersion: "0.2.6",
+    checkedVersion: localStorage.getItem('checkedVersion')
+  },
+  mutations: {
+    setIsLoading: (state, {value}) => {
+      state.isLoading = value
     },
-    mutations: {
-        setIsLoading: (state, {value}) => {
-            state.isLoading = value
-        },
-        setIsDarkTheme: (state, {value}) => {
-            state.isDarkTheme = value
-        },
-        setHeaderAlert: (state, value) => {
-            state.HeaderAlert = value
-        },
-        setCheckedVersion: (state) => {
-            state.checkedVersion = state.currentVersion
-            state.HeaderAlert = {}
-            localStorage.setItem('checkedVersion', state.checkedVersion)
-        }
+    setIsDarkTheme: (state, {value}) => {
+      localStorage.setItem('isDarkTheme', value)
+      state.isDarkTheme = value
     },
-    getters: {
-        isLoading: (state) => {
-            return state.isLoading
-        },
-        isLocalhost: (state) => {
-            return state.isLocalhost
-        },
-        isDarkTheme: (state) => {
-            return state.isDarkTheme
-        },
-        getVersion: (state) => {
-            return state.currentVersion
-        },
-        getCheckedVersion: (state) => {
-            return state.checkedVersion
-        },
-        getHeaderAlert: (state) => {
-            return state.HeaderAlert
-        }
+    setCheckedVersion: (state) => {
+      state.checkedVersion = state.currentVersion
+      state.modals.HeaderAlert = {}
+      localStorage.setItem('checkedVersion', state.checkedVersion)
     },
-    actions: {},
-    modules: {
-        auth
+    muteCheckedVersion: (state) => {
+      state.modals.HeaderAlert = {}
     }
+  },
+  getters: {
+    isLoading: (state) => {
+      return state.isLoading
+    },
+    isLocalhost: (state) => {
+      return state.isLocalhost
+    },
+    isDarkTheme: (state) => {
+      return state.isDarkTheme
+    },
+    getVersion: (state) => {
+      return state.currentVersion
+    },
+    getCheckedVersion: (state) => {
+      return state.checkedVersion
+    },
+  },
+  actions: {},
+  modules: {
+    auth,
+    modals
+  }
 })
