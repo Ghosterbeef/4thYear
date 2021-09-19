@@ -27,7 +27,9 @@ export default {
 
 <style scoped lang="scss">
 .p404 {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
     pre {
       margin-top: var(--gap-big);
