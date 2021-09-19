@@ -35,6 +35,12 @@ const routes = [
         component: () => import('../views/Progress.vue')
     },
     {
+        path: '/projects',
+        name: 'Projects',
+        meta: {title: 'Сторонние проекты'},
+        component: () => import('../views/Projects.vue')
+    },
+    {
         path: '/login',
         name: 'Login',
         meta: {title: 'Логин'},

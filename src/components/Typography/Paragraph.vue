@@ -1,5 +1,5 @@
 <template>
-  <p class="paragraph" :class="[styledLike]">
+  <p class="paragraph" :class="[styledLike, textAlign, {'zero-padding': isZeroPadding}]">
     <slot></slot>
   </p>
 </template>
@@ -13,6 +13,16 @@ export default {
         return ["default", "description", "warning", "danger", "success"].includes(value)
       },
       default: "default"
+    },
+    textAlign: {
+      validator(value) {
+        return ["left", "center", "justify"].includes(value)
+      },
+      default: "left"
+    },
+    isZeroPadding: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -72,6 +82,22 @@ export default {
     &::before {
       background-color: var(--success-font);
     }
+  }
+
+  &.left {
+    text-align: left;
+  }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.justify{
+    text-align: justify;
+  }
+
+  &.zero-padding {
+    padding: 0 !important;
   }
 }
 </style>

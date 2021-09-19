@@ -18,6 +18,11 @@
     </main>
     <footer>
       <Allusion>
+        Особая благодарность
+        <Link href="https://github.com/yyx990803" color="dark">Evan You</Link>
+        за создание Vue.js
+      </Allusion>
+      <Allusion>
         Icons made by
         <Link href="https://www.freepik.com" color="dark">Freepik</Link>
         from
@@ -38,6 +43,12 @@
       <Allusion>
         Icons made by
         <Link href="https://www.flaticon.com/authors/eucalyp" color="dark">Eucalyp</Link>
+        from
+        <Link href="https://www.flaticon.com/" color="dark">www.flaticon.com</Link>
+      </Allusion>
+      <Allusion>
+        Icons made by
+        <Link href="https://www.flaticon.com/authors/roundicons" color="dark">Roundicons</Link>
         from
         <Link href="https://www.flaticon.com/" color="dark">www.flaticon.com</Link>
       </Allusion>

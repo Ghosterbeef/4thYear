@@ -1,5 +1,5 @@
 <template>
-  <a :href="href" v-if="href" :class="[color, {'hasIcon':hasIcon}] ">
+  <a :href="href" v-if="href" :class="[color, {'hasIcon':hasIcon}]" target="_blank">
     <slot></slot>
   </a>
   <router-link :to="to" v-else-if="to" :class="[color, {'hasIcon':hasIcon}] ">
