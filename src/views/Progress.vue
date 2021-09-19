@@ -120,31 +120,25 @@ export default {
 
 <style scoped lang="scss">
 .progress {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
   .version {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-small);
 
     li {
       .name {
-        margin-left: 25px;
-        display: flex;
         position: relative;
+        display: flex;
+        padding-left: 25px;
 
         &::before {
           position: absolute;
           top: 8px;
-          left: - 21px;
-          display: block;
-          content: "";
+          left: 5px;
           width: 8px;
           height: 8px;
+          content: "";
           border-radius: 50%;
-          background-color: var(--title-font);
+          background: var(--title-font);
         }
       }
     }

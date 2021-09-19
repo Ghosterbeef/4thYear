@@ -1,7 +1,7 @@
 <template>
   <div class="p404">
     <Title :level="1">404</Title>
-    <Title :level="2">Такую страничку еще не сделали =(</Title>
+    <Title :level="2">Такую страничку еще не сделали &#128577;</Title>
     <Title :level="2">Опробуйте одну из существующих!</Title>
     <pre>
          ／フ　 フ
@@ -27,14 +27,13 @@ export default {
 
 <style scoped lang="scss">
 .p404 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  text-align: center;
 
     pre {
       margin-top: var(--gap-big);
+      font-weight: bold;
       font-size: var(--p);
-        font-weight: bold;
+      color: var(--title-font);
     }
 }
 </style>

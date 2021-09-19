@@ -8,11 +8,12 @@
         <Icon icon="progress" styled-like="link"/>
       </Link>.
     </Paragraph>
-    <Title :level="5">Я не сижу без дела =) Поверьте этим графикам:</Title>
+    <Title :level="5">Я не сижу без дела &#128521;!</Title>
     <Title :level="6">График количества комитов в день.</Title>
     <LineChartWrapper :data="transformCommits"/>
     <Title :level="6">График количества добавлений и удалений контента в неделю.</Title>
     <LineChartWrapper :data="transformCode" :options="codeOptions"/>
+    <Paragraph styled-like="description">Графики формируются на основании статистики, полученной из Github API </Paragraph>
   </div>
 </template>
 
@@ -37,6 +38,7 @@ export default {
             grid: {
               color: "hsl(0, 0%, 70%)"
             },
+            beginAtZero: true,
             title: {
               display: true,
               text: 'Количество строк',
@@ -146,7 +148,6 @@ export default {
 .soon {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  align-items: stretch;
+  gap: var(--gap-big);
 }
 </style>

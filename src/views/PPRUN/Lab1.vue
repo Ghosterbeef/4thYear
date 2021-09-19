@@ -9,7 +9,7 @@
       </Paragraph>
     </header>
     <main>
-      <section class="info zero-border">
+      <section class="info">
         <Title :level="5">Данные по варианту</Title>
         <Accordion color="dark">
           <template v-slot:activator>
@@ -622,10 +622,6 @@ export default {
             .map(item => max[i] - item)
       })
     },
-    // getMinInRows: function (matrix) {
-    //   if (!this.isValid) return "0"
-    //   return matrix.map(row => Math.min(...row))
-    // },
     getMaxInRows: function (matrix) {
       if (!this.isValid) return "0"
       return matrix.map(row => Math.max(...row))
@@ -636,25 +632,17 @@ export default {
 
 <style scoped lang="scss">
 main {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding-bottom: var(--gap-small);
-
   .info {
     display: flex;
     flex-direction: column;
     gap: var(--gap-small);
+    border: none !important;
 
     .line {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: var(--gap-small);
-    }
-
-    &.zero-border {
-      border: none !important;
     }
   }
 }

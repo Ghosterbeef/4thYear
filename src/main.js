@@ -6,8 +6,6 @@ import firebase from "firebase/compat/app";
 import 'firebase/compat/auth'
 import 'firebase/compat/database'
 
-
-
 firebase.initializeApp({
     apiKey: "AIzaSyAuWnCK1fG0rgZqVLAudWG6KfDO_sszULQ",
     authDomain: "thyear-3e949.firebaseapp.com",
@@ -20,7 +18,6 @@ firebase.initializeApp({
 })
 
 let app
-
 firebase.auth().onAuthStateChanged(() => {
     if (!app) {
         app = createApp(App).use(store).use(router).mount('#app')

@@ -1,4 +1,3 @@
-// Конфигурация observer (за какими изменениями наблюдать)
 const config = {
     attributes: true,
     childList: true,
@@ -9,12 +8,10 @@ const config = {
 const collapse = {
     mounted: (el, binding) => {
         const wrapper = el
-        wrapper.style.transition = 'max-height 0s ease-out'
         wrapper.style.overflow = 'hidden'
         wrapper.style.maxHeight = binding.value ? 'null' : '0px'
-        wrapper.style.transition = 'max-height 0.2s ease-out'
+        wrapper.style.transition = 'max-height 0.2s ease'
 
-        // Колбэк-функция при срабатывании мутации
         const setMaxHeight = () => {
             const {scrollHeight} = wrapper
             if (wrapper.dataset.collapsed)
@@ -24,11 +21,7 @@ const collapse = {
                     wrapper.style.maxHeight = `${scrollHeight}px`
                 }
         };
-
-        // Создаём экземпляр наблюдателя с указанной функцией колбэка
-        el.observer = new MutationObserver(setMaxHeight);
-
-        // Начинаем наблюдение за настроенными изменениями целевого элемента
+        el.observer = new MutationObserver(setMaxHeight)
         el.observer.observe(el, config);
     },
     updated: (el, binding) => {

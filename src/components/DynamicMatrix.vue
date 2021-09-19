@@ -209,22 +209,22 @@ export default {
   width: 1px;
   min-width: 100%;
   max-width: 100%;
-  padding-bottom: 1px;
   overflow-x: auto;
+  padding-bottom: 1px;
 
   .matrix {
     margin: 0 auto;
     border-collapse: collapse;
 
     button {
+      position: relative;
       width: 40px;
       height: 40px;
-      cursor: pointer;
-      background-color: var(--default-background);
       border: 1px solid var(--default-font);
       border-radius: var(--border-radius-small);
+      background-color: var(--default-background);
       transition: all 0.3s ease;
-      position: relative;
+      cursor: pointer;
 
       &:hover {
         background-color: var(--default-background-action)
@@ -233,81 +233,62 @@ export default {
       &.remove, &.add {
         &::before, &::after {
           position: absolute;
-          content: "";
-          border: 2px solid var(--danger-font);
-          border-radius: 2px;
-          height: 80%;
           top: 10%;
           left: calc(50% - 2px);
+          content: "";
+          height: 80%;
+          border-radius: 2px;
+          border: 2px solid var(--danger-font);
+        }
+
+        &::before {
+          transform: rotate(-45deg);
+        }
+
+        &::after {
+          transform: rotate(45deg)
         }
       }
 
       &.add {
         &::before, &::after {
-          border: 2px solid var(--success-font) !important;
           transform: rotate(0deg);
+          border: 2px solid var(--success-font);
         }
 
         &::after {
           transform: rotate(90deg);
         }
       }
-
-      &::before {
-        transform: rotate(-45deg);
-      }
-
-      &::after {
-        transform: rotate(45deg);
-      }
     }
 
     .item {
-      text-align: center;
-      min-width: var(--matrix-item-size);
       width: var(--matrix-item-size);
       height: var(--matrix-item-size);
+      min-width: var(--matrix-item-size);
       font-weight: 700;
+      text-align: center;
       font-size: var(--p);
+      color: var(--title-font);
 
-      input {
-        width: 100%;
-        height: 100%;
-        padding: 0;
-
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-        }
-      }
-
-      &.head, &.aside {
-        font-size: var(--p);
+      &:not(.empty):not(.edit):not(.w-btn){
         border: 1px solid var(--default-font);
         background-color: var(--default-background);
-        color: var(--title-font);
-      }
-
-      &.value {
-        padding: 0;
-        border: 1px solid var(--default-font);
 
         & input {
-          text-align: center;
-          background-color: var(--default-background);
+          width: 100%;
+          height: 100%;
+          padding: 0;
           border: none;
+          text-align: center;
           color: var(--title-font);
+          background-color: var(--default-background);
+
+          &::-webkit-inner-spin-button {
+            margin: 0;
+            -webkit-appearance: none;
+          }
         }
-      }
-
-      &.w-btn {
-        padding: 0 !important;
-        text-align: center;
-      }
-
-      &.edit {
-        padding: 0 !important;
       }
     }
   }
