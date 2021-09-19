@@ -46,8 +46,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
 import Link from "@/components/Typography/Link";
 import Paragraph from "@/components/Typography/Paragraph";
 import Allusion from "@/components/Typography/Allusion";
@@ -68,8 +66,8 @@ export default {
 
   footer {
     display: flex;
-    gap: var(--gap-small);
     flex-wrap: wrap;
+    gap: var(--gap-small);
   }
 }
 </style>

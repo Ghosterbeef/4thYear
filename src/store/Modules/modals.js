@@ -3,7 +3,8 @@ export default {
     HeaderAlert: {
       text: '',
       action: null,
-      styledLike: ''
+      styledLike: '',
+      redirect: ''
     }
   },
   mutations: {

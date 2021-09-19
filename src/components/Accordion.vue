@@ -1,12 +1,12 @@
 <template>
-  <div class="accordion">
+  <div>
     <div class="accordion__activator" :class="{'active':show}" v-if="$slots.activator" @click="show = !show">
       <span class="controls">
         <Icon icon="expand" size="small" :styled-like="color"/>
       </span>
       <slot name="activator"></slot>
     </div>
-    <div class="accordion__body" ref="accordion__body" v-collapse="show">
+    <div v-collapse="show">
       <slot name="default"></slot>
     </div>
   </div>
@@ -54,17 +54,17 @@ export default {
 <style lang="scss" scoped>
 .accordion__activator {
   position: relative;
-  cursor: pointer;
   perspective: 100000px;
+  cursor: pointer;
 
   & .controls {
-    height: var(--icon-size-small);
-    z-index: 100;
     position: absolute;
-    right: var(--gap-small);
     top: 50%;
+    right: var(--gap-small);
+    height: var(--icon-size-small);
     transform: translateY(-45%);
     transition: all 0.3s ease;
+    z-index: 100;
   }
 
   &.active {

@@ -40,18 +40,17 @@ export default {
 
 <style scoped lang="scss">
 .header_notification {
-  align-self: center;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
   width: 80%;
   max-width: 1200px;
-  min-width: min-content;
   height: max-content;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  min-width: min-content;
+  margin: 0 auto;
+  font-size: var(--p);
   gap: var(--gap-small);
   padding: var(--padding-top-bottom-big) var(--padding-right-left);
-  font-size: var(--p);
 
   &.pointer {
     cursor: pointer;
@@ -82,17 +81,17 @@ export default {
   }
 
   .close {
-    align-self: flex-start;
-    margin-left: auto;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 15px;
+    justify-content: center;
     width: 15px;
+    height: 15px;
+    margin-left: auto;
+    align-self: flex-start;
+    border: none;
     font-size: 30px;
     color: var(--danger-font);
     background-color: transparent;
-    border: none;
     border-radius: var(--border-radius-small);
     cursor: pointer;
     transition: all 0.3s ease;

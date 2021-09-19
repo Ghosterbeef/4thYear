@@ -62,19 +62,20 @@ export default {
   bottom: 0;
   display: flex;
   align-items: center;
-  background-color: var(--backdrop-color);
   z-index: 100;
-  cursor: pointer;
   padding: var(--gap-small);
+  background-color: var(--backdrop-color);
+  cursor: pointer;
+
 
   .alert {
-    cursor: default;
     display: flex;
     gap: var(--gap-small);
     margin: 0 auto;
-    background-color: var(--default-background);
     padding: var(--padding-universal);
     border-radius: var(--border-radius-small);
+    background-color: var(--default-background);
+    cursor: default;
 
     .wrapper {
       display: flex;

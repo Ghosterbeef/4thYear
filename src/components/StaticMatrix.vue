@@ -100,70 +100,61 @@ export default {
   width: 1px;
   min-width: 100%;
   max-width: 100%;
-  padding-bottom: 1px;
   overflow-x: auto;
+  padding-bottom: 1px;
 
   .matrix {
     margin: 0 auto;
     border-collapse: collapse;
 
     .item {
-      text-align: center;
-      min-width: var(--matrix-item-size);
-      width: var(--matrix-item-size);
       height: var(--matrix-item-size);
+      width: var(--matrix-item-size);
+      min-width: var(--matrix-item-size);
+      text-align: center;
       font-weight: 700;
       font-size: var(--p);
 
-      span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        padding: 0;
-      }
-
-      &.head, &.aside {
-        font-size: var(--p);
-        color: var(--default-font);
+      &:not(.empty) {
+        color: var(--title-font);
         border: 1px solid var(--default-font);
         background-color: var(--default-background);
       }
 
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
       &.value {
-        padding: 0;
-        border: 1px solid var(--default-font);
+        color: var(--description-font);
 
-        & span {
-          text-align: center;
-          background-color: var(--default-background);
-          border: none;
+        .marked {
+          &.success {
+            color: var(--success-font);
+            background-color: var(--success-background);
+          }
 
-          &.marked {
-            &.success {
-              background-color: var(--success-font);
-              color: var(--light-font)
-            }
+          &.warning {
+            color: var(--warning-font);
+            background-color: var(--warning-background);
+          }
 
-            &.warning {
-              background-color: var(--warning-background);
-              color: var(--warning-font);
-            }
+          &.danger {
+            color: var(--danger-font);
+            background-color: var(--danger-background);
+          }
 
-            &.danger {
-              background-color: var(--danger-font);
-              color: var(--light-font)
-            }
+          &.description {
+            color: var(--description-font);
+            background-color: var(--description-background);
+          }
 
-            &.description {
-              background-color: var(--description-font);
-              color: var(--light-font)
-            }
-
-            &.link {
-              background-color: var(--link-light);
-            }
+          &.link {
+            color: var(--light-font);
+            background-color: var(--link-light);
           }
         }
       }

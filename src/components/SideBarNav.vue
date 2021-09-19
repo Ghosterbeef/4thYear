@@ -65,11 +65,11 @@
 </template>
 
 <script>
-import Title from "../Typography/Title";
-import Link from "../Typography/Link";
+import Title from "./Typography/Title";
+import Link from "./Typography/Link";
 import Accordion from "@/components/Accordion";
 import Icon from "@/components/Icon";
-import clickOutside from "../../directives/clickOutside";
+import clickOutside from "../directives/clickOutside";
 import VueToggles from "vue-toggles/src/VueToggles";
 
 export default {
@@ -99,15 +99,14 @@ export default {
 
 <style scoped lang="scss">
 nav {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: var(--sidebar-nav-width);
-  height: 100%;
-  background-color: var(--bg-sidebar);
-  padding: var(--padding-universal);
   overflow: hidden;
+  height: 100%;
+  width: var(--sidebar-nav-width);
+  padding: var(--padding-universal);
+  background-color: var(--bg-sidebar);
   transition: all 0.4s cubic-bezier(0.7, -0.51, 0.35, 1.79);
 
   .theme-toggle {
@@ -119,54 +118,50 @@ nav {
 
   li {
     position: relative;
+    white-space: nowrap;
 
     .attention {
+      position: absolute;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: absolute;
-      left: calc(var(--icon-size) - 5px);
       top: -5px;
+      left: calc(var(--icon-size) - 5px);
       width: 15px;
       height: 15px;
-      border-radius: 50%;
-      background-color: var(--danger-font);
-      color: var(--danger-background);
       font-size: 10px;
-      line-height: 11px;
       font-weight: bold;
+      line-height: 11px;
+      border-radius: 50%;
+      color: var(--danger-background);
+      background-color: var(--danger-font);
     }
   }
 
-
   &.minimized {
     width: var(--sidebar-nav-min-width);
-
-    li {
-      white-space: nowrap;
-    }
   }
 
   .header {
     display: flex;
-    gap: var(--gap-big);
     align-items: center;
+    gap: var(--gap-big);
     cursor: pointer;
   }
 
   .nav-items {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-small);
     margin-top: 30px;
+    gap: var(--gap-small);
     list-style: none;
 
     .item-name {
-      font-weight: bold;
-      font-size: var(--p);
       display: flex;
       align-items: center;
       gap: var(--gap-big);
+      font-weight: bold;
+      font-size: var(--p);
       color: var(--link-light);
       cursor: pointer;
     }
@@ -174,10 +169,10 @@ nav {
     .sub_menu {
       display: flex;
       flex-direction: column;
-      list-style: none;
-      margin-top: 5px;
-      padding-left: var(--sidebar-nav-submenu-padding);
       gap: calc(var(--gap-small) / 2);
+      padding-left: var(--sidebar-nav-submenu-padding);
+      margin-top: 5px;
+      list-style: none;
     }
   }
 }
@@ -188,24 +183,25 @@ nav {
   .controls {
     position: absolute;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: var(--icon-size);
     height: var(--icon-size);
     bottom: var(--padding-universal);
     left: calc(100% + var(--padding-universal));
+    z-index: 100;
+    opacity: 0.6;
     background-color: var(--bg-sidebar);
     border-radius: var(--border-radius-small);
-    z-index: 100;
+    transition: all 0.3s ease;
     cursor: pointer;
-    opacity: 0.6;
 
     span {
       position: absolute;
       height: 10%;
       width: 52%;
-      border-radius: var(--border-radius-small);
       background-color: var(--icon-default);
+      border-radius: var(--border-radius-small);
       transition: all 0.3s ease;
 
       &:first-child {
@@ -238,7 +234,6 @@ nav {
 
   @media screen and (max-width: $sm) {
     .theme-toggle {
-      height: max-content;
       transform: rotate(-90deg) translateY(-32%);
 
       ::v-deep(.text) {

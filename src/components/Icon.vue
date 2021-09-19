@@ -192,11 +192,5 @@ svg {
       fill: var(--link-light);
     }
   }
-
-  path {
-    &.blackout {
-      fill: black !important;
-    }
-  }
 }
 </style>
