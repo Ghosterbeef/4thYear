@@ -42,6 +42,32 @@
             <span>Прогресс</span>
           </Link>
         </li>
+        <li @click="isMinimized && !isActive ? isMinimized = false : undefined">
+          <Accordion :is-active="isActive">
+            <template v-slot:activator>
+              <span class="item-name">
+                <Icon icon="projects" styled-like="link"/>
+                <span>Ghosterbeef <br> production</span>
+              </span>
+            </template>
+            <template v-slot:default>
+              <ul class="sub_menu">
+                <li class="sub_menu-items">
+                  <Link to="/projects" @click="isMinimized=true"><span>Все проекты</span></Link>
+                </li>
+                <li class="sub_menu-items">
+                  <Link href="https://amfystructures.herokuapp.com/" @click="isMinimized=true"><span>AmfyStructures</span></Link>
+                </li>
+                <li class="sub_menu-items">
+                  <Link href="https://widgetportfolio.herokuapp.com/" @click="isMinimized=true"><span>WidgetPortfolio</span></Link>
+                </li>
+                <li class="sub_menu-items">
+                  <Link to="/404" @click="isMinimized=true"><span>Агрегатор</span></Link>
+                </li>
+              </ul>
+            </template>
+          </Accordion>
+        </li>
       </ul>
       <VueToggles
         :value="$store.getters.isDarkTheme"

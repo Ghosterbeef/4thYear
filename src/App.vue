@@ -18,7 +18,7 @@ export default {
   mounted() {
     if (this.$store.getters.getCheckedVersion !== this.$store.getters.getVersion) {
       this.$store.commit('setHeaderAlert', {
-        text: `Новая версия приложения уже здесь!. Посмотрите патчноут обновления на странице прогресса.`,
+        text: `Новая версия приложения уже здесь! Посмотрите патчноут обновления на странице прогресса.`,
         action: 'muteCheckedVersion',
         styledLike: 'warning',
         redirect: '/progress'
