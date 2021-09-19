@@ -57,6 +57,10 @@ export default {
   perspective: 100000px;
   cursor: pointer;
 
+  & > ::v-deep(*:nth-child(2)){
+    padding-right: calc(var(--icon-size-small) + var(--gap-small) + 5px);
+  }
+
   & .controls {
     position: absolute;
     top: 50%;

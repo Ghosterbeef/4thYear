@@ -155,6 +155,8 @@ nav {
     margin-top: 30px;
     gap: var(--gap-small);
     list-style: none;
+    overflow-y: auto;
+    padding-bottom: 50px;
 
     .item-name {
       display: flex;
