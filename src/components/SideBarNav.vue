@@ -62,7 +62,7 @@
                   <Link href="https://widgetportfolio.herokuapp.com/" @click="isMinimized=true"><span>WidgetPortfolio</span></Link>
                 </li>
                 <li class="sub_menu-items">
-                  <Link to="/404" @click="isMinimized=true"><span>Агрегатор</span></Link>
+                  <Link href="https://vvv-holding.web.app/" @click="isMinimized=true"><span>Агрегатор</span></Link>
                 </li>
               </ul>
             </template>
