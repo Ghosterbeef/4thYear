@@ -52,6 +52,12 @@
         from
         <Link href="https://www.flaticon.com/" color="dark">www.flaticon.com</Link>
       </Allusion>
+      <Allusion>
+        Icons made by
+        <Link href="https://www.flaticon.com/" color="dark">mavadee</Link>
+        from
+        <Link href="https://www.flaticon.com/" color="dark">www.flaticon.com</Link>
+      </Allusion>
     </footer>
   </div>
 </template>

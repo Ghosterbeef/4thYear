@@ -26,6 +26,26 @@
             </template>
           </Accordion>
         </li>
+        <li @click="isMinimized && !isActive ? isMinimized = false : undefined">
+          <Accordion :is-active="isActive">
+            <template v-slot:activator>
+              <span class="item-name">
+                <Icon icon="parallel" styled-like="link"/>
+                <span>ТРСПВ</span>
+              </span>
+            </template>
+            <template v-slot:default>
+              <ul class="sub_menu">
+                <li class="sub_menu-items">
+                  <Link to="/trspv/lab1" @click="isMinimized=true"><span>Лабораторная №1</span></Link>
+                </li>
+                <li class="sub_menu-items">
+                  <Link to="/trspv/lab2" @click="isMinimized=true"><span>Лабораторная №2</span></Link>
+                </li>
+              </ul>
+            </template>
+          </Accordion>
+        </li>
         <li>
           <Link to="/soon" has-icon @click="isMinimized=true">
             <Icon icon="soon" styled-like="link"/>

@@ -23,6 +23,12 @@ const routes = [
         component: () => import('../views/PPRUN/Lab2.vue')
     },
     {
+        path: '/trspv/lab1',
+        name: 'TrspvLab2',
+        meta: {title: 'Лабораторная №1 (ТРСПВ)'},
+        component: () => import('../views/TRSPV/Lab1.vue')
+    },
+    {
         path: '/soon',
         name: 'Soon',
         meta: {title: 'Скоро'},

@@ -23,7 +23,7 @@
             <Icon icon="edit" styled-like="description"/>
           </button>
         </th>
-        <th class="item empty" v-if="editMode"/>
+        <th class="item empty" v-if="editMode || !isEditable"/>
         <th class="item empty" v-if="editMode"/>
         <th class="item head" v-for="i in cols" :key="`h${i}`">
           q{{ i }}
