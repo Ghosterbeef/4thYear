@@ -1,5 +1,5 @@
 <template>
-  <a :href="href" v-if="href" :class="[color, {'hasIcon':hasIcon}]" target="_blank">
+  <a :href="href" v-if="href" :class="[color, lang, {'hasIcon':hasIcon}, {'special': isSpecial}]" target="_blank">
     <slot></slot>
   </a>
   <router-link :to="to" v-else-if="to" :class="[color, {'hasIcon':hasIcon}] ">
@@ -19,7 +19,14 @@ export default {
       },
       default: "light"
     },
+    lang: {
+        validator(value) {
+            return ["ru", "en"].includes(value)
+        },
+        default: "ru"
+    },
     hasIcon: Boolean,
+    isSpecial: Boolean
   }
 }
 </script>
@@ -31,10 +38,19 @@ a {
   font-weight: bold;
   font-size: var(--a);
 
+  &.en {
+    font-family: 'Poppins', sans-serif;
+  }
+
   &.hasIcon {
     display: flex;
     align-items: center;
     gap: var(--gap-big);
+  }
+
+  &.special {
+      font-weight: 700;
+      font-size: var(--h6);
   }
 
   &.light {

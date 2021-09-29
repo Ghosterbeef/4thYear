@@ -3,24 +3,28 @@
     <main>
       <Title :level="0" lang="en" is-centered color="logo">4thYear</Title>
       <Paragraph styled-like="description">
-        Веб приложение созданное
-        <Emphasis lang="en">Ghosterbeef</Emphasis>
-        для выполнения лабораторных работ 4го года обучения.
+        Веб-приложение, созданное
+        <Emphasis lang="en">Ghosterbeef,</Emphasis>
+        для выполнения лабораторных работ 4-го года обучения.
       </Paragraph>
       <Paragraph styled-like="warning">
         Приложение находится в фазе активной разработки.
-        Баги и недоработки - нормальное явление на данном этапе разработки
+        Баги и недоработки - нормальное явление на данном этапе разработки.
       </Paragraph>
       <Paragraph>
         Публикация выполненных лабораторных работ будет происходить по мере их выполнения.
         Опубликованы будут работы, которые возможно выполнить в веб сфере.
       </Paragraph>
+      <Paragraph>
+        Вы можете отслеживать активность разработки нас странице - <Link to="/soon"><Icon icon="soon" styled-like="link"/></Link>,
+        а также изучить изменения в приложении на странице прогресса - <Link to="/progress"><Icon icon="progress" styled-like="link"/></Link>.
+      </Paragraph>
     </main>
     <footer>
-      <Allusion>
+      <Allusion is-special>
         Особая благодарность
-        <Link href="https://github.com/yyx990803" color="dark">Evan You</Link>
-        за создание Vue.js
+        <Link href="https://github.com/yyx990803" color="dark" is-special lang="en">Evan You</Link>
+        за создание <Emphasis lang="en" styled-like="success">Vue.js</Emphasis>
       </Allusion>
       <Allusion>
         Icons made by
@@ -68,10 +72,11 @@ import Paragraph from "@/components/Typography/Paragraph";
 import Allusion from "@/components/Typography/Allusion";
 import Title from "@/components/Typography/Title";
 import Emphasis from "@/components/Typography/Emphasis";
+import Icon from "../components/Icon";
 
 export default {
   name: 'Home',
-  components: {Title, Allusion, Paragraph, Link, Emphasis}
+  components: {Title, Allusion, Paragraph, Link, Emphasis, Icon}
 }
 </script>
 
@@ -85,6 +90,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     gap: var(--gap-small);
+    align-items: flex-start;
   }
 }
 </style>
