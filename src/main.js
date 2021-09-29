@@ -5,6 +5,7 @@ import store from './store'
 import firebase from "firebase/compat/app";
 import 'firebase/compat/auth'
 import 'firebase/compat/database'
+import SimpleWebWorker from 'simple-web-worker'
 
 firebase.initializeApp({
     apiKey: "AIzaSyAuWnCK1fG0rgZqVLAudWG6KfDO_sszULQ",
@@ -20,7 +21,9 @@ firebase.initializeApp({
 let app
 firebase.auth().onAuthStateChanged(() => {
     if (!app) {
-        app = createApp(App).use(store).use(router).mount('#app')
+        app = createApp(App).use(store).use(router)
+        app.config.globalProperties.$worker = SimpleWebWorker
+        app.mount('#app')
     }
 })
 
