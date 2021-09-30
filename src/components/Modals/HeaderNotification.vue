@@ -43,13 +43,14 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: row;
-  width: 80%;
+  width: 90%;
   max-width: 1200px;
   height: max-content;
   min-width: min-content;
   margin: 0 auto;
   font-size: var(--p);
   gap: var(--gap-small);
+  border-radius: var(--border-radius-small);
   padding: var(--padding-top-bottom-big) var(--padding-right-left);
 
   &.pointer {

@@ -10,7 +10,7 @@
             <Accordion color="dark">
                 <template #activator>
                     <Paragraph styled-like="warning">
-                        <Emphasis styled-like="warning" is-bold>Не так быстро</Emphasis>
+                        <Emphasis styled-like="warning" is-bold>Не так быстро!</Emphasis>
                     </Paragraph>
                 </template>
                 <Paragraph styled-like="warning">
