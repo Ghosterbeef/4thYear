@@ -46,22 +46,6 @@
             </template>
           </Accordion>
         </li>
-        <li>
-          <Link to="/soon" has-icon @click="isMinimized=true">
-            <Icon icon="soon" styled-like="link"/>
-            <span>COMING SOON</span>
-          </Link>
-        </li>
-        <li>
-          <span class="attention"
-                v-if="$store.getters.getCheckedVersion !== $store.getters.getVersion"
-          >!
-          </span>
-          <Link to="/progress" has-icon @click="isMinimized=true">
-            <Icon icon="progress" styled-like="link"/>
-            <span>Прогресс</span>
-          </Link>
-        </li>
         <li @click="isMinimized && !isActive ? isMinimized = false : undefined">
           <Accordion :is-active="isActive">
             <template v-slot:activator>
@@ -87,6 +71,22 @@
               </ul>
             </template>
           </Accordion>
+        </li>
+        <li>
+          <Link to="/soon" has-icon @click="isMinimized=true">
+            <Icon icon="soon" styled-like="link"/>
+            <span>COMING SOON</span>
+          </Link>
+        </li>
+        <li>
+          <span class="attention"
+                v-if="$store.getters.getCheckedVersion !== $store.getters.getVersion"
+          >!
+          </span>
+          <Link to="/progress" has-icon @click="isMinimized=true">
+            <Icon icon="progress" styled-like="link"/>
+            <span>Прогресс</span>
+          </Link>
         </li>
       </ul>
       <VueToggles

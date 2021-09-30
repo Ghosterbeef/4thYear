@@ -72,13 +72,13 @@ html, body {
       .content_wrapper {
         display: flex;
         flex-direction: column;
-        width: 80%;
+        width: 90%;
         max-width: 1200px;
         min-width: min-content;
         height: max-content;
         margin: 20px auto;
         padding: var(--padding-universal);
-        border-radius: var(--border-radius-big);
+        border-radius: var(--border-radius-small);
         background-color: var(--section-background);
       }
     }
