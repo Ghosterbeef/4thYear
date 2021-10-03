@@ -16,15 +16,34 @@
         Опубликованы будут работы, которые возможно выполнить в веб сфере.
       </Paragraph>
       <Paragraph>
-        Вы можете отслеживать активность разработки нас странице - <Link to="/soon"><Icon icon="soon" styled-like="link"/></Link>,
-        а также изучить изменения в приложении на странице прогресса - <Link to="/progress"><Icon icon="progress" styled-like="link"/></Link>.
+        Вы можете отслеживать активность разработки нас странице -
+        <Link to="/soon">
+          <Icon icon="soon" styled-like="link"/>
+        </Link>
+        ,
+        а также изучить изменения в приложении на странице прогресса -
+        <Link to="/progress">
+          <Icon icon="progress" styled-like="link"/>
+        </Link>
+        .
       </Paragraph>
     </main>
     <footer>
       <Allusion is-special>
         Особая благодарность
         <Link href="https://github.com/yyx990803" color="dark" is-special lang="en">Evan You</Link>
-        за создание <Emphasis lang="en" styled-like="success">Vue.js</Emphasis>
+        за создание
+        <Link
+          href="https://v3.vuejs.org/"
+          is-special
+        >
+          <Emphasis
+            lang="en"
+            styled-like="success"
+          >
+            Vue.js
+          </Emphasis>
+        </Link>
       </Allusion>
       <Allusion>
         Icons made by
@@ -40,7 +59,7 @@
       </Allusion>
       <Allusion>
         Icons made by
-        <Link href="#" color="dark">fjstudio</Link>
+        <Link href="https://www.flaticon.com/" color="dark">fjstudio</Link>
         from
         <Link href="https://www.flaticon.com/" color="dark">www.flaticon.com</Link>
       </Allusion>

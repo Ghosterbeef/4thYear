@@ -26,7 +26,8 @@
       </Accordion>
     </section>
     <div v-if="progressData.versions">
-      <section class="version" v-for="(version,i) in reversedVersions" :key="version.value" @click="setPatchNoteChecked(version.value)">
+      <section class="version" v-for="(version,i) in reversedVersions" :key="version.value"
+               @click="setPatchNoteChecked(version.value)">
         <Accordion color="dark">
           <template #activator>
             <Title :level="5">
@@ -35,7 +36,7 @@
               styled-like="success"
               v-if="version.value === $store.getters.getVersion"
               >
-                Текущая версия
+              Текущая версия
               </Emphasis>
               <Emphasis
               styled-like="danger"
@@ -85,24 +86,24 @@ export default {
   created() {
     this.$store.commit("setIsLoading", {value: true});
     fetch('https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
-        .then(res => res.json())
-        .then(json => {
-          this.progressData = json
-        }).then(() => this.$store.commit("setIsLoading", {value: false}))
-        .catch(
-            () => {
-              fetch('https://ghosterbeefproxy.herokuapp.com/fetch/https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
-                  .then(res => res.json())
-                  .then(json => {
-                    this.progressData = json
-                  }).then(() => this.$store.commit("setIsLoading", {value: false}))
-                  .catch(
-                      () => {
-                        this.isError = true
-                        this.$store.commit("setIsLoading", {value: false})
-                      }
-                  )
-            })
+      .then(res => res.json())
+      .then(json => {
+        this.progressData = json
+      }).then(() => this.$store.commit("setIsLoading", {value: false}))
+      .catch(
+        () => {
+          fetch('https://ghosterbeefproxy.herokuapp.com/fetch/https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress.json')
+            .then(res => res.json())
+            .then(json => {
+              this.progressData = json
+            }).then(() => this.$store.commit("setIsLoading", {value: false}))
+            .catch(
+              () => {
+                this.isError = true
+                this.$store.commit("setIsLoading", {value: false})
+              }
+            )
+        })
   },
   computed: {
     reversedVersions: function () {
