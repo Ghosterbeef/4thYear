@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import firebase from "firebase/compat";
 import Title from "../components/Typography/Title";
 import Paragraph from "../components/Typography/Paragraph";
 import List from "../components/Typography/List";
@@ -39,10 +38,10 @@ export default {
   },
   created() {
     fetch('https://thyear-3e949-default-rtdb.europe-west1.firebasedatabase.app/progress/inProgress.json')
-        .then(res => res.json())
-        .then(json => {
-          this.inProgress = json
-        })
+      .then(res => res.json())
+      .then(json => {
+        this.inProgress = json
+      })
   }
 }
 </script>

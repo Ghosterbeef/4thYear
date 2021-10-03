@@ -20,10 +20,10 @@ export default {
       default: "light"
     },
     lang: {
-        validator(value) {
-            return ["ru", "en"].includes(value)
-        },
-        default: "ru"
+      validator(value) {
+        return ["ru", "en"].includes(value)
+      },
+      default: "ru"
     },
     hasIcon: Boolean,
     isSpecial: Boolean
@@ -49,8 +49,9 @@ a {
   }
 
   &.special {
-      font-weight: 700;
-      font-size: var(--h6);
+    font-weight: 700;
+    font-size: var(--h6);
+    text-decoration: none;
   }
 
   &.light {
@@ -59,7 +60,7 @@ a {
     &.router-link-exact-active {
       color: var(--link-light-action);
 
-      ::v-deep(path){
+      ::v-deep(path) {
         fill: var(--link-light-action);
       }
     }
@@ -71,7 +72,7 @@ a {
     &.router-link-exact-active {
       color: var(--link-dark-action);
 
-      ::v-deep(path){
+      ::v-deep(path) {
         fill: var(--link-dark-action);
       }
     }

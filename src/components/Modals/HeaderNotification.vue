@@ -104,7 +104,7 @@ export default {
 }
 
 @media (max-width: $sm) {
-  .header_notification{
+  .header_notification {
     margin: 0 auto;
     width: 97%;
   }

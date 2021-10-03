@@ -1,5 +1,5 @@
 <template>
-  <div class="nav_wrapper" ref="nav_wrapper" v-click-outside="() => {isMinimized = true}">
+  <aside class="nav_wrapper" ref="nav_wrapper" v-click-outside="() => {isMinimized = true}">
     <nav :class="{'minimized': isMinimized}">
       <div class="header" @click="$router.push('/'); isMinimized=true">
         <Icon icon="ghost"/>
@@ -60,13 +60,28 @@
                   <Link to="/projects" @click="isMinimized=true"><span>Все проекты</span></Link>
                 </li>
                 <li class="sub_menu-items">
-                  <Link href="https://amfystructures.herokuapp.com/" @click="isMinimized=true"><span>AmfyStructures</span></Link>
+                  <Link href="https://amfystructures.herokuapp.com/" @click="isMinimized=true">
+                    <span>
+                      AmfyStructures
+                      <Icon icon="blank" styled-like="link" size="button"/>
+                    </span>
+                  </Link>
                 </li>
                 <li class="sub_menu-items">
-                  <Link href="https://widgetportfolio.herokuapp.com/" @click="isMinimized=true"><span>WidgetPortfolio</span></Link>
+                  <Link href="https://widgetportfolio.herokuapp.com/" @click="isMinimized=true">
+                    <span>
+                      WidgetPortfolio
+                      <Icon icon="blank" styled-like="link" size="button"/>
+                    </span>
+                  </Link>
                 </li>
                 <li class="sub_menu-items">
-                  <Link href="https://vvv-holding.web.app/" @click="isMinimized=true"><span>Агрегатор</span></Link>
+                  <Link href="https://vvv-holding.web.app/" @click="isMinimized=true">
+                    <span>
+                      Агрегатор
+                      <Icon icon="blank" styled-like="link" size="button"/>
+                    </span>
+                  </Link>
                 </li>
               </ul>
             </template>
@@ -107,7 +122,7 @@
       <span/>
       <span/>
     </span>
-  </div>
+  </aside>
 </template>
 
 <script>

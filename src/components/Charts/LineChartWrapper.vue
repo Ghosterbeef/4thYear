@@ -10,7 +10,7 @@
       :chart-data="data"
       :options="innerOptions"
     />
-    <teleport to="body">
+    <teleport to="#content">
       <span ref="cursor" class="cursor"/>
     </teleport>
   </div>
@@ -19,6 +19,7 @@
 <script>
 import {LineChart} from "vue-chart-3";
 import {Chart, registerables} from 'chart.js';
+import {merge} from 'lodash'
 
 Chart.register(...registerables)
 export default {
@@ -88,10 +89,7 @@ export default {
   },
   created() {
     if (this.$props.options) {
-      this.innerOptions = {
-        ...this.innerOptions,
-        ...this.$props.options
-      }
+      this.innerOptions = merge(this.innerOptions, this.$props.options)
     }
   },
   methods: {
@@ -100,8 +98,9 @@ export default {
       this.$refs.wrapper.style.cursor = "none"
     },
     move: function (e) {
-      this.$refs.cursor.style.top = e.pageY + "px"
-      this.$refs.cursor.style.left = e.pageX + "px"
+      const bounds = e.target.closest('#content').getBoundingClientRect();
+      this.$refs.cursor.style.left = e.pageX - bounds.left + "px"
+      this.$refs.cursor.style.top = e.pageY + e.target.closest('#content').scrollTop - bounds.top + "px"
     },
     leave: function () {
       this.$refs.cursor.style.display = 'none';
@@ -120,5 +119,6 @@ export default {
   border-radius: 50%;
   background-color: var(--cursor-color);
   position: absolute;
+  transform: translate(-50%, -50%);
 }
 </style>

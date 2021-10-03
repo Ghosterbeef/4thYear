@@ -15,17 +15,18 @@ import Input from "@/components/Typography/Form/Input";
 import Form from "@/components/Typography/Form/Form";
 import Label from "@/components/Typography/Form/Label";
 import SubmitButton from "@/components/Typography/Form/SubmitButton";
+
 export default {
   name: "Login",
   components: {SubmitButton, Label, Form, Input},
-  data(){
-    return{
+  data() {
+    return {
       email: "",
       password: ""
     }
   },
-  computed:{
-    isActive: function (){
+  computed: {
+    isActive: function () {
       return !!this.email && !!this.password
     }
   },

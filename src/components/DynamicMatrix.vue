@@ -40,7 +40,8 @@
             v-for="(item,j) in row"
             :key="`${i}+${j}`"
         >
-          <input v-model.number="matrix[i][j]" type="number" inputmode="decimal" @input="$emit('update:modelValue', matrixToWork)">
+          <input v-model.number="matrix[i][j]" type="number" inputmode="decimal"
+                 @input="$emit('update:modelValue', matrixToWork)">
         </td>
       </tr>
       <tr>
@@ -76,7 +77,7 @@
         <th class="item empty" v-if="editMode"/>
         <th class="item empty" v-if="editMode"/>
         <th class="item head" v-for="(item,i) in this.matrix" :key="`h${i}`">
-          p{{ i+1 }}
+          p{{ i + 1 }}
         </th>
       </tr>
       </thead>
@@ -85,7 +86,8 @@
         <td class="item empty" v-if="editMode"/>
         <td class="item empty"/>
         <td class="item value" v-for="(item, i) in matrix" :key="`r${i}`">
-          <input v-model.number="matrix[i]" type="number" inputmode="decimal" @input="$emit('update:modelValue', matrixToWork)">
+          <input v-model.number="matrix[i]" type="number" inputmode="decimal"
+                 @input="$emit('update:modelValue', matrixToWork)">
         </td>
       </tr>
       </tbody>
@@ -174,9 +176,9 @@ export default {
         return
       }
       this.matrix.forEach(
-          (row) => {
-            row.splice(key, 1)
-          }
+        (row) => {
+          row.splice(key, 1)
+        }
       )
       if (this.$props.isEqual) {
         this.matrix.splice(key, 1)
@@ -271,7 +273,7 @@ export default {
       font-size: var(--p);
       color: var(--title-font);
 
-      &:not(.empty):not(.edit):not(.w-btn){
+      &:not(.empty):not(.edit):not(.w-btn) {
         border: 1px solid var(--default-font);
         background-color: var(--default-background);
 

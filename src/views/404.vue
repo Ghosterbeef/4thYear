@@ -31,11 +31,11 @@ export default {
   flex-direction: column;
   align-items: center;
 
-    pre {
-      margin-top: var(--gap-big);
-      font-weight: bold;
-      font-size: var(--p);
-      color: var(--title-font);
-    }
+  pre {
+    margin-top: var(--gap-big);
+    font-weight: bold;
+    font-size: var(--p);
+    color: var(--title-font);
+  }
 }
 </style>

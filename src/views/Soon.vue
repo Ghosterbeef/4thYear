@@ -6,14 +6,33 @@
       разработке на соответствующей странице -
       <Link to="/progress">
         <Icon icon="progress" styled-like="link"/>
-      </Link>.
+      </Link>
+      .
     </Paragraph>
     <Title :level="5">Я не сижу без дела &#128521;!</Title>
-    <Title :level="6">График количества комитов в день.</Title>
-    <LineChartWrapper :data="transformCommits"/>
-    <Title :level="6">График количества добавлений и удалений контента в неделю.</Title>
-    <LineChartWrapper :data="transformCode" :options="codeOptions"/>
-    <Paragraph styled-like="description">Графики формируются на основании статистики, полученной из Github API </Paragraph>
+    <Loader v-if="isLoading"/>
+    <div v-if="commits.length">
+      <Title :level="6">График количества комитов в день.</Title>
+      <LineChartWrapper :data="transformCommits"/>
+    </div>
+    <div v-if="codeAdd.length || codeDelete.length">
+      <Title :level="6">График количества <Emphasis styled-like="success">добавлений</Emphasis>
+        и
+        <Emphasis styled-like="danger">удалений</Emphasis> контента в неделю.</Title>
+      <LineChartWrapper :data="transformCode" :options="codeOptions"/>
+    </div>
+    <Paragraph
+      styled-like="description"
+      v-if="commits.length || codeAdd.length || codeDelete.length"
+    >
+      Графики формируются на основании статистики, полученной из Github API
+    </Paragraph>
+    <Paragraph
+      styled-like="danger"
+      v-if="!isLoading && isError && (!commits.length && !codeAdd.length && !codeDelete.length)"
+    >
+      С графиками что то случилось! Возможно, по пути к вам на них напали маньяки.
+    </Paragraph>
   </div>
 </template>
 
@@ -23,52 +42,29 @@ import Title from "../components/Typography/Title";
 import Icon from "../components/Icon";
 import Link from "../components/Typography/Link";
 import LineChartWrapper from "@/components/Charts/LineChartWrapper";
+import Loader from "@/components/Loader";
+import Emphasis from "@/components/Typography/Emphasis";
 
 export default {
   name: "Soon",
-  components: {LineChartWrapper, Link, Icon, Title, Paragraph},
+  components: {Loader, LineChartWrapper, Link, Icon, Title, Paragraph, Emphasis},
   data() {
     return {
+      isLoading: true,
+      isError: false,
       commits: [],
       codeAdd: [],
       codeDelete: [],
       codeOptions: {
         scales: {
           y: {
-            grid: {
-              color: "hsl(0, 0%, 70%)"
-            },
-            beginAtZero: true,
             title: {
-              display: true,
-              text: 'Количество строк',
-              color: "hsl(0, 0%, 70%)",
-              font: {
-                size: 16,
-                family: 'sans-serif',
-                weight: 'bold',
-              }
-            },
-            ticks: {
-              color: "hsl(0, 0%, 70%)",
+              text: 'Количество строк'
             }
           },
           x: {
-            grid: {
-              color: "hsl(0, 0%, 70%)"
-            },
             title: {
-              display: true,
-              text: 'Дата',
-              color: "hsl(0, 0%, 70%)",
-              font: {
-                size: 16,
-                family: 'sans-serif',
-                weight: 'bold',
-              }
-            },
-            ticks: {
-              color: "hsl(0, 0%, 70%)",
+              text: 'Дата'
             }
           }
         },
@@ -76,32 +72,53 @@ export default {
     }
   },
   async created() {
-    const github = await fetch('https://api.github.com/repos/Ghosterbeef/4thYear/stats/commit_activity').then(res => res.json())
-    const github1 = await fetch('https://api.github.com/repos/Ghosterbeef/4thYear/stats/code_frequency').then(res => res.json())
-    const firstWeek = github.findIndex(i => i.total !== 0)
-    github.splice(0, firstWeek)
-    const date = new Date(github[0].week * 1000)
-    github.forEach((item, i) => {
-      this.commits.push(...item.days.map((d, j) => {
-        if ((i * 7 + j) * 24 * 60 * 60 * 1000 + Date.parse(date) <= Date.now())
-          return {
-            amount: d,
-            date: i * 7 + j + date.getDate()
+    const github = await fetch('https://api.github.com/repos/Ghosterbeef/4thYear/stats/commit_activity')
+      .then(res => {
+        this.isLoading = false
+        return res.ok ? res.json() : Promise.reject(res)
+      })
+      .catch(() => {
+        this.isError = true
+      })
+    const github1 = await fetch('https://api.github.com/repos/Ghosterbeef/4thYear/stats/code_frequency')
+      .then(res => {
+        this.isLoading = false
+        return res.ok ? res.json() : Promise.reject(res)
+      })
+      .catch(() => {
+        this.isError = true
+      })
+
+    if (github?.length) {
+      const firstWeek = github.findIndex(i => i.total !== 0)
+      github.splice(0, firstWeek)
+      const date = new Date(github[0].week * 1000)
+      github.forEach((item, i) => {
+        this.commits.push(...item.days.map((d, j) => {
+          if ((i * 7 + j) * 86400000 + Date.parse(date) <= Date.now()) {
+            const temp = new Date(Date.parse(date) + (i * 7 + j) * 86400000)
+            return {
+              amount: d,
+              date: this.getNormalDate(temp)
+            }
           }
-      }))
-    })
-    github1.forEach((item) => {
-      const startDate = new Date(item[0] * 1000)
-      const endDate = new Date((item[0] * 1000) + 7 * 24 * 60 * 60 * 1000)
-      this.codeAdd.push({
-        code: item[1],
-        date: `${startDate.getDate()}/${startDate.getMonth() + 1}-${endDate.getDate()}/${endDate.getMonth() + 1}`
+        }))
       })
-      this.codeDelete.push({
-        code: item[2],
-        date: `${startDate.getDate()}/${startDate.getMonth() + 1}-${endDate.getDate()}/${endDate.getMonth() + 1}`
+    }
+    if (github1?.length) {
+      github1.forEach((item) => {
+        const startDate = new Date(item[0] * 1000)
+        const endDate = new Date((item[0] * 1000) + 7 * 86400000)
+        this.codeAdd.push({
+          code: item[1],
+          date: `${this.getNormalDate(startDate)}-${this.getNormalDate(endDate)}`
+        })
+        this.codeDelete.push({
+          code: item[2],
+          date: `${this.getNormalDate(startDate)}-${this.getNormalDate(endDate)}`
+        })
       })
-    })
+    }
   },
   computed: {
     transformCommits: function () {
@@ -139,6 +156,13 @@ export default {
           }
         ]
       }
+    }
+  },
+  methods: {
+    getNormalDate: function (date) {
+      const day = date.getDate()
+      const month = date.getMonth() + 1
+      return `${day < 10 ? '0' + day : day}.${month < 10 ? '0' + month : month}`
     }
   }
 }

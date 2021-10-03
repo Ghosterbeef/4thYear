@@ -24,10 +24,11 @@
 
 <script>
 import Fit2Box from 'vue-fit2box'
+
 export default {
   name: "Title",
   directives: {
-    'fit2box' : Fit2Box
+    'fit2box': Fit2Box
   },
   props: {
     level: {

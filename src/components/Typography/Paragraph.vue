@@ -92,7 +92,7 @@ export default {
     text-align: center;
   }
 
-  &.justify{
+  &.justify {
     text-align: justify;
   }
 

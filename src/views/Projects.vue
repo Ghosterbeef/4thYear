@@ -20,8 +20,8 @@ export default {
         {
           title: 'AmfyStructures',
           tag: {
-           text: 'Завершен',
-           type: 'success'
+            text: 'Завершен',
+            type: 'success'
           },
           description: `Одностраничное веб - приложение,
            созданное Ghosterbeef,
@@ -70,7 +70,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.projects{
+.projects {
   display: flex;
   flex-direction: column;
   gap: var(--gap-big);
