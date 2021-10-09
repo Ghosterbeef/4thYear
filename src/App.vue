@@ -33,64 +33,53 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');
 @import "scss/colors";
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
+#app {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
   height: 100%;
-  width: 100%;
 
-  #app {
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    display: flex;
-    height: 100%;
-
-    section, main, header, footer {
-      border-top: 1px solid var(--title-font);
-      padding-top: 10px;
-      padding-bottom: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      max-width: 100%;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding-right: var(--padding-right-app);
-      background-color: var(--default-background);
-      transition: all 0.3s ease;
-      position: relative;
-
-      .content_wrapper {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        max-width: 1200px;
-        min-width: min-content;
-        height: max-content;
-        margin: 20px auto;
-        padding: var(--padding-universal);
-        border-radius: var(--border-radius-small);
-        background-color: var(--section-background);
-      }
-    }
+  section, main, header, footer {
+    border-top: 1px solid var(--title-font);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s ease;
   }
 
-  @media (max-width: $sm) {
-    #app {
-      .content {
-        .content_wrapper {
-          margin: var(--padding-top-bottom-small) auto;
-          width: 97%;
-        }
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: var(--padding-right-app);
+    background-color: var(--default-background);
+    transition: all 0.3s ease;
+    position: relative;
+
+    .content_wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      max-width: 1200px;
+      min-width: min-content;
+      height: max-content;
+      margin: 20px auto;
+      padding: var(--padding-universal);
+      border-radius: var(--border-radius-small);
+      background-color: var(--section-background);
+    }
+  }
+}
+
+@media (max-width: $sm) {
+  #app {
+    .content {
+      .content_wrapper {
+        margin: var(--padding-top-bottom-small) auto;
+        width: 97%;
       }
     }
   }

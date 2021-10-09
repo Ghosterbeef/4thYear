@@ -59,6 +59,12 @@ const routes = [
     component: () => import('../views/Admin.vue')
   },
   {
+    path: '/sandbox',
+    name: 'Sandbox',
+    meta: {title: 'Песочница'},
+    component: () => import('../views/Sandbox.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     meta: {title: '404'},
     component: () => import('../views/404.vue')
