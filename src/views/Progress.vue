@@ -5,7 +5,7 @@
     </Paragraph>
     <Paragraph v-if="isError" styled-like="danger">Включите vpn и перезагрузите страницу.</Paragraph>
   </div>
-  <Loader v-if="$store.getters.isLoading && !isError"/>
+  <NewLoader v-if="$store.getters.isLoading && !isError"/>
   <div class="progress" v-else-if="!isError">
     <section class="version">
       <Accordion color="dark">
@@ -73,10 +73,11 @@ import List from "../components/Typography/List";
 import Emphasis from "../components/Typography/Emphasis";
 import Loader from "../components/Loader";
 import Accordion from "@/components/Accordion";
+import NewLoader from "@/components/NewLoader";
 
 export default {
   name: "Progress",
-  components: {Accordion, Loader, Emphasis, List, Paragraph, Title},
+  components: {NewLoader, Accordion, Emphasis, List, Paragraph, Title},
   data() {
     return {
       progressData: {},

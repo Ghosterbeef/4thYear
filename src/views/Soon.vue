@@ -10,7 +10,7 @@
       .
     </Paragraph>
     <Title :level="5">Я не сижу без дела &#128521;!</Title>
-    <Loader v-if="isLoading"/>
+    <NewLoader v-if="isLoading"/>
     <div v-if="commits.length">
       <Title :level="6">График количества комитов в день.</Title>
       <LineChartWrapper :data="transformCommits"/>
@@ -42,12 +42,12 @@ import Title from "../components/Typography/Title";
 import Icon from "../components/Icon";
 import Link from "../components/Typography/Link";
 import LineChartWrapper from "@/components/Charts/LineChartWrapper";
-import Loader from "@/components/Loader";
 import Emphasis from "@/components/Typography/Emphasis";
+import NewLoader from "@/components/NewLoader";
 
 export default {
   name: "Soon",
-  components: {Loader, LineChartWrapper, Link, Icon, Title, Paragraph, Emphasis},
+  components: {NewLoader, LineChartWrapper, Link, Icon, Title, Paragraph, Emphasis},
   data() {
     return {
       isLoading: true,
