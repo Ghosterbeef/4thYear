@@ -7,7 +7,7 @@ export default createStore({
     isLoading: false,
     isDarkTheme: JSON.parse(localStorage.getItem('isDarkTheme')),
     isLocalhost: window.location.hostname !== 'localhost' && window.location.hostname !== '192.168.0.106',
-    currentVersion: "0.3.3",
+    currentVersion: "0.3.4",
     checkedVersion: localStorage.getItem('checkedVersion')
   },
   mutations: {

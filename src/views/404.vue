@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Title from "../components/Typography/Title";
+import Title from "@/components/Typography/Title";
 
 export default {
   name: "404",

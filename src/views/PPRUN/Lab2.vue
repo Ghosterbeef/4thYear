@@ -270,7 +270,7 @@ export default {
   },
   computed: {
     getAnswer: function () {
-      this.strategy.forEach((element, i) => {
+      this.strategy.forEach((element) => {
         if (element.length === 2) {
           let temp = 0
           element.forEach((strategy, j) => {
@@ -280,7 +280,7 @@ export default {
         }
         if (element.length === 4) {
           const temp = [0, 0]
-          element.forEach((strategy, j) => {
+          element.forEach((strategy) => {
             temp[strategy.q] += this.data[strategy.z][strategy.e][strategy.q] * this.utilityValues[`a${strategy.a}z${strategy.z}e${strategy.e}q${strategy.q}`]
           })
           this.answer.push(temp.reduce((acc, cur, i) => {
@@ -302,11 +302,11 @@ export default {
         [0, 0, 0.35, 0.75]
       ]
       return data.map((row, i) => {
-        return row.map((elemnt, j) => {
+        return row.map((element, j) => {
           return i === I && j === J ? {
-            value: elemnt,
+            value: element,
             marked: true
-          } : elemnt
+          } : element
         })
       })
     }

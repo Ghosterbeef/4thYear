@@ -14,7 +14,7 @@
 
 <script>
 import collapse from "@/directives/element";
-import Icon from "./Icon";
+import Icon from "@/components/Icon";
 
 export default {
   name: "Accordion",

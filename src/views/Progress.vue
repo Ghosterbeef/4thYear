@@ -67,11 +67,10 @@
 </template>
 
 <script>
-import Title from "../components/Typography/Title";
-import Paragraph from "../components/Typography/Paragraph";
-import List from "../components/Typography/List";
-import Emphasis from "../components/Typography/Emphasis";
-import Loader from "../components/Loader";
+import Title from "@/components/Typography/Title";
+import Paragraph from "@/components/Typography/Paragraph";
+import List from "@/components/Typography/List";
+import Emphasis from "@/components/Typography/Emphasis";
 import Accordion from "@/components/Accordion";
 import NewLoader from "@/components/NewLoader";
 

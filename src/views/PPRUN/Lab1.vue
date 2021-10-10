@@ -415,14 +415,14 @@
 
 
 <script>
-import Title from "../../components/Typography/Title";
-import Paragraph from "../../components/Typography/Paragraph";
-import DynamicMatrix from "../../components/DynamicMatrix";
-import Emphasis from "../../components/Typography/Emphasis";
-import Code from "../../components/Typography/Code";
-import Accordion from "../../components/Accordion";
-import StaticMatrix from "../../components/StaticMatrix";
-import Input from "../../components/Typography/Form/Input";
+import Title from "@/components/Typography/Title";
+import Paragraph from "@/components/Typography/Paragraph";
+import DynamicMatrix from "@/components/DynamicMatrix";
+import Emphasis from "@/components/Typography/Emphasis";
+import Code from "@/components/Typography/Code";
+import Accordion from "@/components/Accordion";
+import StaticMatrix from "@/components/StaticMatrix";
+import Input from "@/components/Typography/Form/Input";
 
 export default {
   name: 'PPRUNLab1',
