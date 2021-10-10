@@ -44,7 +44,7 @@ export default {
 
   .loader-items-wrapper {
     position: relative;
-    perspective: 240px;
+    perspective: 1px;
     animation: wrapper var(--loader-speed) infinite;
   }
 
@@ -234,7 +234,7 @@ export default {
     opacity: 0.5;
     transform: translate(-5px, 9px) rotate(10deg);
   }
-  74%{
+  74% {
     opacity: 0.3;
     transform: translate(-5px, 9px) rotate(10deg);
   }
