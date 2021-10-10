@@ -37,10 +37,10 @@
 </template>
 
 <script>
-import Paragraph from "../components/Typography/Paragraph";
-import Title from "../components/Typography/Title";
-import Icon from "../components/Icon";
-import Link from "../components/Typography/Link";
+import Paragraph from "@/components/Typography/Paragraph";
+import Title from "@/components/Typography/Title";
+import Icon from "@/components/Icon";
+import Link from "@/components/Typography/Link";
 import LineChartWrapper from "@/components/Charts/LineChartWrapper";
 import Emphasis from "@/components/Typography/Emphasis";
 import NewLoader from "@/components/NewLoader";

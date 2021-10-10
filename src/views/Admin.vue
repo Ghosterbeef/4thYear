@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import Title from "../components/Typography/Title";
-import Paragraph from "../components/Typography/Paragraph";
-import List from "../components/Typography/List";
+import Title from "@/components/Typography/Title";
+import Paragraph from "@/components/Typography/Paragraph";
+import List from "@/components/Typography/List";
 import Emphasis from "@/components/Typography/Emphasis";
 import Button from "@/components/Typography/Button";
 import Icon from "@/components/Icon";

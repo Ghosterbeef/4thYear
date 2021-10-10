@@ -126,11 +126,11 @@
 </template>
 
 <script>
-import Title from "./Typography/Title";
-import Link from "./Typography/Link";
+import Title from "@/components/Typography/Title";
+import Link from "@/components/Typography/Link";
 import Accordion from "@/components/Accordion";
 import Icon from "@/components/Icon";
-import clickOutside from "../directives/clickOutside";
+import clickOutside from "@/directives/clickOutside";
 import VueToggles from "vue-toggles/src/VueToggles";
 
 export default {

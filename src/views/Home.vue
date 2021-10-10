@@ -9,14 +9,14 @@
       </Paragraph>
       <Paragraph styled-like="warning">
         Приложение находится в фазе активной разработки.
-        Баги и недоработки - нормальное явление на данном этапе разработки.
+        Баги и недоработки - нормальное явление на данном этапе.
       </Paragraph>
       <Paragraph>
         Публикация выполненных лабораторных работ будет происходить по мере их выполнения.
         Опубликованы будут работы, которые возможно выполнить в веб сфере.
       </Paragraph>
       <Paragraph>
-        Вы можете отслеживать активность разработки нас странице -
+        Вы можете отслеживать активность разработки на странице -
         <Link to="/soon">
           <Icon icon="soon" styled-like="link"/>
         </Link>
@@ -40,6 +40,7 @@
           <Emphasis
             lang="en"
             styled-like="success"
+            is-underline
           >
             Vue.js
           </Emphasis>
@@ -91,7 +92,7 @@ import Paragraph from "@/components/Typography/Paragraph";
 import Allusion from "@/components/Typography/Allusion";
 import Title from "@/components/Typography/Title";
 import Emphasis from "@/components/Typography/Emphasis";
-import Icon from "../components/Icon";
+import Icon from "@/components/Icon";
 
 export default {
   name: 'Home',

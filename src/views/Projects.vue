@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Title from "../components/Typography/Title";
-import ProjectCard from "../components/ProjectCard";
+import Title from "@/components/Typography/Title";
+import ProjectCard from "@/components/ProjectCard";
 
 export default {
   name: "Projects",

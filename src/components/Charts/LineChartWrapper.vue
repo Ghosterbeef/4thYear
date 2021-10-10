@@ -112,13 +112,13 @@ export default {
 
 <style scoped lang="scss">
 .cursor {
-  pointer-events: none;
+  position: absolute;
   display: none;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--cursor-color);
-  position: absolute;
+  pointer-events: none;
   transform: translate(-50%, -50%);
+  background-color: var(--cursor-color);
 }
 </style>

@@ -1,9 +1,7 @@
 <template>
   <span class="allusion" :class="{'special': isSpecial}">
     <Icon icon="respect" styled-like="description"/>
-    <p>
     <slot></slot>
-    </p>
   </span>
 </template>
 

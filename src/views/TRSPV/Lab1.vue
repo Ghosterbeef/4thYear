@@ -246,12 +246,12 @@
 </template>
 
 <script>
-import Title from "../../components/Typography/Title";
-import Paragraph from "../../components/Typography/Paragraph";
-import DynamicMatrix from "../../components/DynamicMatrix";
-import StaticMatrix from "../../components/StaticMatrix";
-import Accordion from "../../components/Accordion";
-import Emphasis from "../../components/Typography/Emphasis";
+import Title from "@/components/Typography/Title";
+import Paragraph from "@/components/Typography/Paragraph";
+import DynamicMatrix from "@/components/DynamicMatrix";
+import StaticMatrix from "@/components/StaticMatrix";
+import Accordion from "@/components/Accordion";
+import Emphasis from "@/components/Typography/Emphasis";
 
 export default {
   name: "Lab1",

@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import Title from "./Typography/Title";
-import Paragraph from "./Typography/Paragraph";
-import Emphasis from "./Typography/Emphasis";
-import Link from "./Typography/Link";
+import Title from "@/components/Typography/Title";
+import Paragraph from "@/components/Typography/Paragraph";
+import Emphasis from "@/components/Typography/Emphasis";
+import Link from "@/components/Typography/Link";
 
 export default {
   name: "ProjectCard",
@@ -50,12 +50,12 @@ export default {
 
 <style scoped lang="scss">
 .project-card {
-  background-color: var(--default-background);
-  max-width: 500px;
+  max-width: 400px;
   min-width: 220px;
   padding: var(--padding-universal) 0;
   border-radius: var(--border-radius-big);
-  box-shadow: 0 0 15px 1px black;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.5);
+  background-color: var(--default-background);
 
   img {
     max-width: 100%;

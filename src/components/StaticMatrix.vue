@@ -56,11 +56,9 @@
 </template>
 
 <script>
-import Icon from "./Icon";
 
 export default {
   name: "StaticMatrix",
-  components: {Icon},
   props: {
     matrix: {
       type: Array,

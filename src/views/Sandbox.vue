@@ -1,9 +1,9 @@
 <template>
   <div>
     <Title lang="en" :level="2" is-centered color="dark">Sandbox</Title>
-    <Paragraph styled-like="warning">Данная страница предназначена исключительно для разработки</Paragraph>
+    <Paragraph styled-like="warning">Данная страница предназначена исключительно для разработки и тестирования.</Paragraph>
     <div class="row">
-      <Paragraph>Эмулировать загрузку</Paragraph>
+      <Paragraph>Эмулировать процесс загрузки</Paragraph>
       <VueToggles
         :value="isLoading"
         width="50"

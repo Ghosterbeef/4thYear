@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import SideBarNav from "./components/SideBarNav";
-import Title from "./components/Typography/Title";
+import SideBarNav from "@/components/SideBarNav";
+import Title from "@/components/Typography/Title";
 import HeaderNotification from "@/components/Modals/HeaderNotification";
 
 export default {

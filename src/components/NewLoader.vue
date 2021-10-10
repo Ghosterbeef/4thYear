@@ -29,32 +29,37 @@ export default {
 <style scoped lang="scss">
 
 .loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 1px;
   min-width: 100%;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: calc(var(--loader-item-size) * 4);
 
+  & *::before,
+  & *::after {
+    content: "";
+    position: absolute;
+  }
+
   .loader-items-wrapper {
-    perspective: 240px;
     position: relative;
+    perspective: 240px;
     animation: wrapper var(--loader-speed) infinite;
   }
 
   .shadow-items-wrapper {
     position: relative;
     opacity: 0;
-    animation: shadow-items var(--loader-speed) infinite;
     filter: blur(1px);
+    animation: shadow-items var(--loader-speed) infinite;
 
     .shadow-item {
-      z-index: 0;
-      display: inline-block;
       position: absolute;
+      display: inline-block;
       top: 50%;
       left: 50%;
+      z-index: 0;
       width: var(--loader-item-size);
       height: var(--loader-item-size);
       background: linear-gradient(135deg, var(--logo-color1) 0%, var(--logo-color2) 100%);
@@ -77,13 +82,13 @@ export default {
   }
 
   .loader-item {
-    transform: translate(-50%, -50%);
-    display: inline-block;
     position: absolute;
+    display: inline-block;
     top: 50%;
     left: 50%;
     width: var(--loader-item-size);
     height: var(--loader-item-size);
+    transform: translate(-50%, -50%);
     background: linear-gradient(135deg, var(--logo-color1) 0%, var(--logo-color2) 100%);
 
     &:nth-child(1) {
@@ -93,17 +98,17 @@ export default {
 
       .drop {
         position: absolute;
+        right: 60%;
+        bottom: -70%;
         width: calc(var(--loader-item-size) / 12);
         height: calc(var(--loader-item-size) / 30);
-        bottom: -70%;
-        right: 60%;
-        background: linear-gradient(135deg, var(--logo-color1) 0%, var(--logo-color2) 100%);
-        animation: drop var(--loader-speed) infinite;
         opacity: 0;
+        animation: drop var(--loader-speed) infinite;
+        background: linear-gradient(135deg, var(--logo-color1) 0%, var(--logo-color2) 100%);
+
 
         &::before, &::after {
-          content: "";
-          position: absolute;
+          transform: rotateZ(90deg);
           width: calc(var(--loader-item-size) / 12);
           height: calc(var(--loader-item-size) / 20);
           background: linear-gradient(135deg, var(--logo-color1) 0%, var(--logo-color2) 100%);
@@ -111,43 +116,39 @@ export default {
 
         &::before {
           right: 60%;
-          transform: rotateZ(90deg);
         }
 
         &::after {
           top: 20%;
           left: 50%;
-          transform: rotateZ(90deg);
         }
       }
 
       .shadow {
+        position: absolute;
         top: 0;
         right: 0;
-        opacity: 0;
-        position: absolute;
         width: var(--loader-item-size);
         height: var(--loader-item-size);
-        animation: shadow var(--loader-speed) infinite;
+        opacity: 0;
         filter: blur(1px);
+        animation: shadow var(--loader-speed) infinite;
 
         &::before, &::after {
-          content: "";
-          position: absolute;
+          right: 0;
           width: 0;
           height: 0;
-          right: 0;
         }
 
         &::before {
-          border-top: calc(var(--loader-item-size) / 1.5) solid var(--logo-color1);
           border-left: calc(var(--loader-item-size) / 1.2) solid transparent;
+          border-top: calc(var(--loader-item-size) / 1.5) solid var(--logo-color1);
         }
 
         &::after {
           bottom: 0;
-          border-bottom: calc(var(--loader-item-size) / 2) solid var(--logo-color2);
           border-left: calc(var(--loader-item-size) / 5) solid transparent;
+          border-bottom: calc(var(--loader-item-size) / 2) solid var(--logo-color2);
         }
       }
     }
@@ -158,12 +159,12 @@ export default {
       animation: second-box var(--loader-speed) infinite;
 
       .glitch {
-        z-index: 10000;
         position: absolute;
-        right: -2px;
         top: 34%;
-        height: calc(var(--loader-item-size) / 10);
+        right: -2px;
+        z-index: 10000;
         width: 118%;
+        height: calc(var(--loader-item-size) / 10);
         opacity: 0;
         animation: second-box-glitch1 var(--loader-speed) infinite;
 
@@ -174,21 +175,19 @@ export default {
         }
 
         &::before, &::after {
-          content: "";
-          position: absolute;
           height: 100%;
         }
 
         &::before {
-          width: 75%;
           left: 0;
+          width: 75%;
           transform: skew(30deg);
           background: linear-gradient(135deg, var(--logo-color1) 0%, var(--logo-color2) 100%);
         }
 
         &::after {
-          width: 25%;
           right: 0;
+          width: 25%;
           transform: skew(18deg);
           background: var(--section-background);
         }
@@ -232,8 +231,8 @@ export default {
     opacity: 0;
   }
   70% {
-    transform: translate(-5px, 9px) rotate(10deg);
     opacity: 0.5;
+    transform: translate(-5px, 9px) rotate(10deg);
   }
   74%{
     opacity: 0.3;
@@ -259,9 +258,6 @@ export default {
     transform: translate(-80%, -50%) rotateY(-180deg);
   }
   27% {
-    transform: translate(-50%, -50%) rotateY(-180deg);
-  }
-  60% {
     transform: translate(-50%, -50%) rotateY(-180deg);
   }
   83% {
@@ -296,12 +292,10 @@ export default {
   34% {
     right: -30%;
     opacity: 0.5;
-    transform: rotate(-2deg);
   }
   36% {
     right: -50%;
     opacity: 0.6;
-    transform: rotate(-2deg);
   }
   40% {
     right: -55%;
@@ -363,26 +357,26 @@ export default {
     width: 117%;
   }
   32% {
+    top: 34%;
     opacity: 0.9;
     width: 124%;
-    top: 34%;
   }
   34% {
-    opacity: 0.9;
     top: 102%;
+    opacity: 0.9;
   }
   38% {
-    opacity: 0;
     top: 102%;
+    opacity: 0;
   }
   39% {
-    opacity: 0;
     top: 80%;
+    opacity: 0;
     width: 117%;
   }
   40% {
-    opacity: 0.9;
     top: 80%;
+    opacity: 0.9;
     width: 117%;
   }
   42% {
@@ -400,30 +394,30 @@ export default {
     width: 118%;
   }
   30% {
+    top: 57%;
     opacity: 0.8;
     width: 134%;
-    top: 57%;
   }
   32% {
     opacity: 0.9;
     width: 124%;
   }
   34% {
-    opacity: 0.9;
     top: 90%;
+    opacity: 0.9;
   }
   38% {
-    opacity: 0;
     top: 90%;
+    opacity: 0;
   }
   39% {
-    opacity: 0;
     top: 71%;
+    opacity: 0;
     width: 121%;
   }
   40% {
-    opacity: 0.9;
     top: 71%;
+    opacity: 0.9;
     width: 121%;
   }
   50% {
@@ -445,9 +439,6 @@ export default {
     transform: translate(-20%, -50%) rotateY(180deg);
   }
   27% {
-    transform: translate(-50%, -50%) rotateY(180deg);
-  }
-  60% {
     transform: translate(-50%, -50%) rotateY(180deg);
   }
   83% {
@@ -472,9 +463,6 @@ export default {
     transform: translate(-50%, -20%) rotateX(-180deg);
   }
   27% {
-    transform: translate(-50%, -50%) rotateX(-180deg);
-  }
-  60% {
     transform: translate(-50%, -50%) rotateX(-180deg);
   }
   83% {

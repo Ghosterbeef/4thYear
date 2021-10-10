@@ -22,65 +22,71 @@
           width: 100%;
       }
 
-      .loader-container {
+      .ldr-ctr {
           display: flex;
-          justify-content: center;
           align-items: center;
+          justify-content: center;
           height: 100%;
           min-width: 100%;
       }
 
-      .loader-items-wrapper {
-          perspective: 240px;
+      .ldr-ctr *::before,
+      .ldr-ctr *::after {
+          content: "";
+          position: absolute;
+      }
+
+      .ldr-itms-rppr {
           position: relative;
+          perspective: 240px;
           animation: wrapper 4s infinite;
       }
 
-      .shadow-items-wrapper {
+      .shdw-itms-rppr {
           position: relative;
           opacity: 0;
-          animation: shadow-items 4s infinite;
           filter: blur(1px);
+          animation: shdw-itms 4s infinite;
       }
 
-      .shadow-item {
-          z-index: 0;
-          display: inline-block;
+      .shdw-itm {
           position: absolute;
+          display: inline-block;
           top: 50%;
           left: 50%;
+          z-index: 0;
           width: 50px;
           height: 50px;
           background: gold;
       }
 
-      .shadow-item:nth-child(1) {
+      .shdw-itm:nth-child(1) {
           transform-origin: left;
           transform: translate(-50%, -50%) rotateY(180deg);
       }
 
-      .shadow-item:nth-child(2) {
+      .shdw-itm:nth-child(2) {
           transform-origin: right;
           transform: translate(-50%, -50%) rotateY(180deg);
       }
 
-      .shadow-item:nth-child(3) {
+      .shdw-itm:nth-child(3) {
           transform-origin: bottom;
           transform: translate(-50%, -50%) rotateX(180deg);
       }
 
-      .loader-item {
-          transform: translate(-50%, -50%);
-          display: inline-block;
+      .ldr-itm {
           position: absolute;
+          display: inline-block;
           top: 50%;
           left: 50%;
           width: 50px;
           height: 50px;
           background: gold;
+          transform: translate(-50%, -50%);
       }
 
-      .loader-item:nth-child(1) {
+      .ldr-itm:nth-child(1) {
           z-index: 1;
           transform-origin: left;
           animation: first-box 4s infinite;
@@ -90,115 +96,108 @@
           position: absolute;
           width: calc(50px / 12);
           height: calc(50px / 30);
-          bottom: -70%;
           right: 60%;
+          bottom: -70%;
+          opacity: 0;
           background: gold;
           animation: drop 4s infinite;
-          opacity: 0;
       }
 
       .drop::before, .drop::after {
-          content: "";
-          position: absolute;
           width: calc(50px / 12);
           height: calc(50px / 20);
           background: gold;
+          transform: rotateZ(90deg);
       }
 
       .drop::before {
           right: 60%;
-          transform: rotateZ(90deg);
       }
 
       .drop::after {
           top: 20%;
           left: 50%;
-          transform: rotateZ(90deg);
       }
 
-      .shadow {
+      .shdw {
+          position: absolute;
           top: 0;
           right: 0;
           opacity: 0;
-          position: absolute;
           width: 50px;
           height: 50px;
-          animation: shadow 4s infinite;
           filter: blur(1px);
+          animation: shdw 4s infinite;
       }
 
-      .shadow::before,
-      .shadow::after {
-          content: "";
-          position: absolute;
+      .shdw::before,
+      .shdw::after {
           width: 0;
           height: 0;
           right: 0;
       }
 
-      .shadow::before {
+      .shdw::before {
           border-top: calc(50px / 1.5) solid gold;
           border-left: calc(50px / 1.2) solid transparent;
       }
 
-      .shadow::after {
+      .shdw::after {
           bottom: 0;
           border-bottom: calc(50px / 2) solid gold;
           border-left: calc(50px / 5) solid transparent;
       }
 
 
-      .loader-item:nth-child(2) {
+      .ldr-itm:nth-child(2) {
           z-index: 2;
           transform-origin: top;
           animation: second-box 4s infinite;
       }
 
-      .glitch {
-          z-index: 10000;
+      .gltch {
           position: absolute;
-          right: -2px;
           top: 34%;
-          height: calc(50px / 10);
+          right: -2px;
+          z-index: 10000;
           width: 118%;
+          height: calc(50px / 10);
           opacity: 0;
-          animation: second-box-glitch1 4s infinite;
+          animation: second-box-gltch1 4s infinite;
       }
 
-      .glitch:nth-child(2) {
+      .gltch:nth-child(2) {
           top: 57%;
           width: 124%;
-          animation: second-box-glitch2 4s infinite;
+          animation: second-box-gltch2 4s infinite;
       }
 
-      .glitch::before,
-      .glitch::after {
-          content: "";
-          position: absolute;
+      .gltch::before,
+      .gltch::after {
           height: 100%;
       }
 
-      .glitch::before {
-          width: 75%;
+      .gltch::before {
           left: 0;
-          transform: skew(30deg);
+          width: 75%;
           background: gold;
+          transform: skew(30deg);
       }
 
-      .glitch::after {
-          width: 25%;
+      .gltch::after {
           right: 0;
-          transform: skew(18deg);
+          width: 25%;
           background: white;
+          transform: skew(18deg);
       }
 
-      .loader-item:nth-child(3) {
+      .ldr-itm:nth-child(3) {
           z-index: 3;
           transform-origin: right;
           animation: third-box 4s infinite;
       }
 
-      .loader-item:nth-child(4) {
+      .ldr-itm:nth-child(4) {
           z-index: 4;
           transform-origin: bottom;
           animation: fourth-box 4s infinite;
@@ -222,13 +221,13 @@
           }
       }
 
-      @keyframes shadow-items {
+      @keyframes shdw-itms {
           69% {
               opacity: 0;
           }
           70% {
-              transform: translate(-5px, 9px) rotate(10deg);
               opacity: 0.5;
+              transform: translate(-5px, 9px) rotate(10deg);
           }
           74% {
               opacity: 0.3;
@@ -256,9 +255,6 @@
           27% {
               transform: translate(-50%, -50%) rotateY(-180deg);
           }
-          60% {
-              transform: translate(-50%, -50%) rotateY(-180deg);
-          }
           83% {
               transform: translate(-50%, -50%) rotateY(-180deg);
           }
@@ -282,7 +278,7 @@
           }
       }
 
-      @keyframes shadow {
+      @keyframes shdw {
           33% {
               right: -20%;
               opacity: 0;
@@ -344,7 +340,7 @@
           }
       }
 
-      @keyframes second-box-glitch1 {
+      @keyframes second-box-gltch1 {
           27% {
               opacity: 0;
               width: 110%;
@@ -358,26 +354,26 @@
               width: 117%;
           }
           32% {
+              top: 34%;
               opacity: 0.9;
               width: 124%;
-              top: 34%;
           }
           34% {
-              opacity: 0.9;
               top: 102%;
+              opacity: 0.9;
           }
           38% {
-              opacity: 0;
               top: 102%;
+              opacity: 0;
           }
           39% {
-              opacity: 0;
               top: 80%;
+              opacity: 0;
               width: 117%;
           }
           40% {
-              opacity: 0.9;
               top: 80%;
+              opacity: 0.9;
               width: 117%;
           }
           42% {
@@ -385,7 +381,7 @@
           }
       }
 
-      @keyframes second-box-glitch2 {
+      @keyframes second-box-gltch2 {
           28% {
               opacity: 0;
               width: 124%;
@@ -395,30 +391,30 @@
               width: 118%;
           }
           30% {
+              top: 57%;
               opacity: 0.8;
               width: 134%;
-              top: 57%;
           }
           32% {
               opacity: 0.9;
               width: 124%;
           }
           34% {
-              opacity: 0.9;
               top: 90%;
+              opacity: 0.9;
           }
           38% {
-              opacity: 0;
               top: 90%;
+              opacity: 0;
           }
           39% {
-              opacity: 0;
               top: 71%;
+              opacity: 0;
               width: 121%;
           }
           40% {
-              opacity: 0.9;
               top: 71%;
+              opacity: 0.9;
               width: 121%;
           }
           50% {
@@ -440,9 +436,6 @@
               transform: translate(-20%, -50%) rotateY(180deg);
           }
           27% {
-              transform: translate(-50%, -50%) rotateY(180deg);
-          }
-          60% {
               transform: translate(-50%, -50%) rotateY(180deg);
           }
           83% {
@@ -469,9 +462,6 @@
           27% {
               transform: translate(-50%, -50%) rotateX(-180deg);
           }
-          60% {
-              transform: translate(-50%, -50%) rotateX(-180deg);
-          }
           83% {
               transform: translate(-50%, -50%) rotateX(-180deg);
           }
@@ -487,23 +477,23 @@
     Please enable it to continue.</strong>
 </noscript>
 <div id="app">
-  <div class="loader-container" v-if="!$root">
-    <div class="loader-items-wrapper">
-      <span class="loader-item">
+  <div class="ldr-ctr" v-if="!$root">
+    <div class="ldr-itms-rppr">
+      <span class="ldr-itm">
         <span class="drop"></span>
-        <span class="shadow"></span>
+        <span class="shdw"></span>
       </span>
-      <span class="loader-item">
-        <span class="glitch"></span>
-        <span class="glitch"></span>
+      <span class="ldr-itm">
+        <span class="gltch"></span>
+        <span class="gltch"></span>
       </span>
-      <span class="loader-item"></span>
-      <span class="loader-item"></span>
+      <span class="ldr-itm"></span>
+      <span class="ldr-itm"></span>
     </div>
-    <div class="shadow-items-wrapper">
-      <span class="shadow-item"></span>
-      <span class="shadow-item"></span>
-      <span class="shadow-item"></span>
+    <div class="shdw-itms-rppr">
+      <span class="shdw-itm"></span>
+      <span class="shdw-itm"></span>
+      <span class="shdw-itm"></span>
     </div>
   </div>
 </div>

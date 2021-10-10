@@ -51,7 +51,6 @@ a {
   &.special {
     font-weight: 700;
     font-size: var(--h6);
-    text-decoration: none;
   }
 
   &.light {
