@@ -44,7 +44,7 @@ export default {
 
   .loader-items-wrapper {
     position: relative;
-    perspective: 1px;
+    perspective: 200px;
     animation: wrapper var(--loader-speed) infinite;
   }
 

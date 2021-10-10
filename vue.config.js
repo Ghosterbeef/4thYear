@@ -2,8 +2,10 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                additionalData: `@import "@/scss/_variables.scss";`
+                additionalData: '@import "@/scss/_variables.scss";'
             }
         }
-    }
+    },
+
+    productionSourceMap: false
 };
