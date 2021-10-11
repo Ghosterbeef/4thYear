@@ -61,7 +61,7 @@ export default {
           emphasis: [
             'Vue.js'
           ],
-          link: 'https://vvv-holding.web.app/'
+          link: 'https://vvv-holding-home.web.app/'
         },
       ]
     }
