@@ -29,7 +29,7 @@
     </Paragraph>
     <Paragraph
       styled-like="danger"
-      v-if="!isLoading && isError && (!commits.length && !codeAdd.length && !codeDelete.length)"
+      v-if="!isLoading && (!isOkay || isError)"
     >
       С графиками что то случилось! Возможно, по пути к вам на них напали маньяки.
     </Paragraph>
@@ -74,16 +74,20 @@ export default {
   async created() {
     const github = await fetch('https://api.github.com/repos/Ghosterbeef/4thYear/stats/commit_activity')
       .then(res => {
-        this.isLoading = false
-        return res.ok ? res.json() : Promise.reject(res)
+        return res.ok ? res.json().then(parsed => {
+          this.isLoading = false
+          return parsed
+        }) : Promise.reject(res)
       })
       .catch(() => {
         this.isError = true
       })
     const github1 = await fetch('https://api.github.com/repos/Ghosterbeef/4thYear/stats/code_frequency')
       .then(res => {
-        this.isLoading = false
-        return res.ok ? res.json() : Promise.reject(res)
+        return res.ok ? res.json().then(parsed => {
+          this.isLoading = false
+          return parsed
+        }) : Promise.reject(res)
       })
       .catch(() => {
         this.isError = true
@@ -121,6 +125,11 @@ export default {
     }
   },
   computed: {
+    isOkay: function () {
+      return (Array.isArray(this.commits) && this.commits.length)
+        || (Array.isArray(this.codeAdd) && this.codeAdd.length)
+        || (Array.isArray(this.codeDelete) && this.codeDelete.length)
+    },
     transformCommits: function () {
       const temp = this.commits.filter(item => item !== undefined)
       return {
