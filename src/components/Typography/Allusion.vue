@@ -23,14 +23,18 @@ export default {
 <style scoped lang="scss">
 .allusion {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--gap-small);
   padding: 1px var(--padding-right-left);
   border-radius: var(--border-radius-small);
   background-color: var(--description-background);
   color: var(--description-font);
   margin-right: 5px;
   font-size: var(--p);
+
+  & > ::v-deep(*) {
+    margin: 0 var(--gap-small);
+  }
 
   &.special {
     font-weight: 700;

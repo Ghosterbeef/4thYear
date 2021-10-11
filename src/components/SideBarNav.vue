@@ -76,7 +76,7 @@
                   </Link>
                 </li>
                 <li class="sub_menu-items">
-                  <Link href="https://vvv-holding.web.app/" @click="isMinimized=true">
+                  <Link href="https://vvv-holding-home.web.app/" @click="isMinimized=true">
                     <span>
                       Агрегатор
                       <Icon icon="blank" styled-like="link" size="button"/>
